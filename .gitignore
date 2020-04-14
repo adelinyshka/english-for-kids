@@ -1,0 +1,10 @@
+node_modules/
+*.log
+*.lock
+.babelrc
+.DS_Store
+yarn.lock
+yarn-error.log
+.idea/
+todo.txt
+stats.json

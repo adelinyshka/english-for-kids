@@ -1,0 +1,49 @@
+@import '~bootstrap/scss/bootstrap';
+
+.custom-switch {
+  padding-left: 0;
+  padding-right: 3rem;
+}
+
+//todo сделать курсор картинкой
+.custom-control-label::before,
+.custom-control-label::after {
+  cursor: pointer;
+}
+
+.custom-control-label {
+  padding-left: 0;
+}
+
+.custom-switch .custom-control-label::before {
+  width: 5rem;
+  height: 2rem;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  content: 'train';
+  padding-left: 10px;
+  line-height: 32px;
+}
+
+.custom-control-input:not(:checked) ~ .custom-control-label::before {
+  content: 'play';
+  padding-left: 50px;
+  line-height: 32px;
+}
+
+.custom-switch .custom-control-label::after {
+  width: calc(2rem - 4px);
+  height: calc(2rem - 4px);
+  background: white;
+}
+
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+  transform: translateX(2.95rem);
+}
+
+.custom-control-label::before {
+  pointer-events: none;
+  background-color: #fe5e5e;
+  border: 1px solid #fe5e5e;
+}
