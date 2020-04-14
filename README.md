@@ -1,1 +1,5 @@
-English for kids for RS School
+**Проект "English for kids"**
+
+* сборка - webpack
+* препроцессор HTML - Pug(Jade)
+* препроцессор CSS -  Scss
