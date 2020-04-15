@@ -1,0 +1,11 @@
+mixin card(russianWord, englishWord, audio, img_src)
+	.card(style='width: 14rem;height: 200px;margin:20px;')
+		.card-face.front
+			img.card-img-top(src= img_src, alt='...')
+			.card-body
+				h5.card-title.front= russianWord
+				a.btn-turn.btn.btn-primary(href='#' data-buttonz) Поворот
+		.card-face.back
+			img.card-img-top(src= img_src, alt='...')
+			.card-body
+				h5.card-title.back test

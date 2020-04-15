@@ -1,8 +1,12 @@
-//сюда импортируются все scss файлы проекта
-
-@import "../pages/template/template.scss";
-@import "../pages/header/header.scss";
-@import "../pages/main/main.scss";
+//сюда импортируются все файлы scss проекта
+@import '../scss/custom';
+@import '../blocks/template/template.scss';
+@import '../blocks/header/header.scss';
+@import '../blocks/main/main.scss';
+@import '../blocks/includes/card/card';
+@import '../blocks/category/category';
+//@import "";
+//@import "";
 //@import "";
 //@import "";
 //@import "";

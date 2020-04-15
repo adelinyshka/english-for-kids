@@ -1,6 +1,14 @@
 import 'jquery';
 import 'bootstrap';
-import './fonts/fonts.scss';
-import './scss/_custom.scss';
+import './scss/all_styles.scss';
 import './js/common.js';
-import './pages/template/template.scss';
+// import '';
+// import '';
+// import '';
+// import '';
+// import '';
+// import '';
+// import '';
+// import '';
+// import '';
+// import '';
