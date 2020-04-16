@@ -1,4 +1,4 @@
-**Проект "English for kids"**
+[**Проект "English for kids"**](https://brave-adel.netlify.app/)
 
 Установка зависимостей
 ```yarn install```
@@ -9,8 +9,12 @@
 Запуск локально
 ```yarn dev```
 
+* размещен на netlify
+
 * сборка - webpack
 
 * препроцессор HTML - Pug(Jade)
 
 * препроцессор CSS -  Scss
+
+* vanilla JavaScript
