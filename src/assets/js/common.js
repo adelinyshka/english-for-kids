@@ -1,12 +1,19 @@
-let hamburgerIcon = document.querySelector('.hamburger');
-let pageMenu = document.querySelector('ul');
+window.onload = function () {
+  changeLayoutOnClickByCheckbox();
+  toggleMenuByClickOnHamburger();
+};
 
-hamburgerIcon.addEventListener('click', function () {
-  pageMenu.classList.toggle('d-none');
-  console.log('Hamburger works!');
-});
+function toggleMenuByClickOnHamburger() {
+  let hamburgerIcon = document.querySelector('.hamburger');
+  let pageMenu = document.querySelector('ul');
 
-function changeContentOnCheckbox() {
+  hamburgerIcon.addEventListener('click', function () {
+    pageMenu.classList.toggle('d-none');
+    console.log('Hamburger works!');
+  });
+}
+
+function changeLayoutOnClickByCheckbox() {
   //сделан контейнер
   let container = document.querySelector('#container');
 
@@ -79,8 +86,6 @@ function changeContentOnCheckbox() {
     }
   });
 }
-
-changeContentOnCheckbox();
 
 // картинка
 // слово

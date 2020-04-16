@@ -1,0 +1,19 @@
+//сюда импортируются все файлы scss проекта
+
+//переопределение бутстрапа
+@import '../../assets/scss/custom';
+
+//инклюды в основной файл
+@import '../../site_blocks/template/template';
+@import '../../site_blocks/header/header';
+@import '../../site_blocks/main/main';
+@import '../../site_blocks/card/card';
+@import '../../site_blocks/category/category';
+
+//@import "";
+//@import "";
+//@import "";
+//@import "";
+//@import "";
+//@import "";
+//@import "";

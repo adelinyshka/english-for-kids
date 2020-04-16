@@ -1,7 +1,7 @@
 import 'jquery';
 import 'bootstrap';
-import './scss/all_styles.scss';
-import './js/common.js';
+import './assets/scss/all_styles.scss';
+import './assets/js/common.js';
 // import '';
 // import '';
 // import '';

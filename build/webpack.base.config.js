@@ -79,7 +79,7 @@ module.exports = {
                         options: { sourceMap: true }
                     }, {
                         loader: 'postcss-loader',
-                        options: { sourceMap: true, config: { path: `${PATHS.src}/js/postcss.config.js` } }
+                        options: { sourceMap: true, config: { path: `${PATHS.src}/config/postcss.config.js` } }
                     }, {
                         loader: 'sass-loader',
                         options: { sourceMap: true }
@@ -105,12 +105,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             hash: false,
-            template: `${PATHS.src}/blocks/index.pug`,
+            template: `${PATHS.src}/index.pug`,
             filename: './index.html'
         }),
         new CopyWebpackPlugin([
             // { from: PATHS.src + '/img', to: PATHS.assets +`/img` },
-            { from: PATHS.src + '/static' },
+            { from: PATHS.src + '/site_blocks/static' },
         ]),
         new PrettierPlugin({
             printWidth: 100,
