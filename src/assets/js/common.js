@@ -9,7 +9,6 @@ let trainPage = document.querySelector('#trainPage');
 let playPage = document.querySelector('#playPage');
 let checker = document.querySelector('#switcher');
 let rowWithCards = document.querySelector('#rowWithCardsCategory');
-
 let animalCategory = document.querySelector('#insideCategoryAnimals');
 
 function moveToCategory() {
@@ -74,9 +73,9 @@ window.addEventListener('load', function () {
 
 // картинка
 // слово
-//перевод
-//аудио
-//состояние
+// перевод
+// аудио
+// состояние
 
 class Card {
   constructor(id, img_src, wordEn, wordRu, categoryName, linkToCategory, audio) {
@@ -107,10 +106,9 @@ class Card {
     let categoryCard = document.createElement('div');
 
     categoryCard.classList.add('card', 'category-card');
-    categoryCard.style =
-      'width: 13rem;height: 200px;' + ' width:200px;margin:10px;display:inline-block;';
-    categoryCard.href = this.href;
-    categoryCard.id = this.id;
+    categoryCard.style = 'width:13rem;height:200px;width:200px;margin:10px;display:inline-block;';
+    // categoryCard.href = this.href;
+    // categoryCard.id = this.id;
 
     let cardFace = document.createElement('div');
     cardFace.classList.add('card-face');
@@ -120,7 +118,7 @@ class Card {
     let pic = document.createElement('img');
     pic.classList.add('card-img-top');
     pic.src = this.img_src;
-    pic.style = 'width:70%';
+    pic.style = 'width:70%;';
     cardFace.append(pic);
 
     let cardBody = document.createElement('div');
@@ -145,26 +143,26 @@ class Card {
   }
 }
 
-const categoriesId = [
-  'animals',
-  'body_parts',
-  'food',
-  'house',
-  'nature',
-  'toys',
-  'tales',
-  'dishes',
+const linkToCategoryCards = [
+  '',
+  'google.com',
+  'mail.ru',
+  'yahoo.com',
+  'ya.ru',
+  'google.com',
+  'mail.ru',
+  'yahoo.com',
 ];
 
 const categoriesImages = [
   './assets/img/animals.png',
-  './assets/img/fruits.jpg',
-  './assets/img/vegetables.jpg',
-  './assets/img/house.png',
-  './assets/img/nature.png',
-  './assets/img/toys.jpg',
-  './assets/img/tales.jpg',
-  './assets/img/watermelon.png',
+  './assets/img/fruits2.png',
+  './assets/img/vegetables2.png',
+  './assets/img/house-1.png',
+  './assets/img/nature-1.png',
+  './assets/img/toys-1.png',
+  './assets/img/tales-1.png',
+  './assets/img/dishes-1.png',
 ];
 
 const categoriesNames = [
@@ -178,15 +176,15 @@ const categoriesNames = [
   'Dishes',
 ];
 
-const linkToCategoryCards = [
-  '',
-  'google.com',
-  'mail.ru',
-  'yahoo.com',
-  'ya.ru',
-  'google.com',
-  'mail.ru',
-  'yahoo.com',
+const categoriesId = [
+  'animals',
+  'body_parts',
+  'food',
+  'house',
+  'nature',
+  'toys',
+  'tales',
+  'dishes',
 ];
 
 for (let i = 0; i < 8; i++) {
@@ -194,15 +192,3 @@ for (let i = 0; i < 8; i++) {
   card.createCategoryCard();
   console.log(card);
 }
-
-// const putValues = '';
-// let card = new Card('animals', './assets/img/watermelon.png', 'hello', 'привет', 'Animals');
-// card.createCard();
-// console.log(card);
-
-// constructor(id, img_src, wordEn, wordRu, audio, categoryName) {
-
-// let card = new Card();
-// card.createCard('animals', 'Animals');
-
-// console.log(cardBee.getMistakesRate());
