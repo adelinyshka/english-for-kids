@@ -1,4 +1,4 @@
-[**Проект "English for kids"**](https://brave-adel.netlify.app/)
+[**Ссылка на English for kids**](https://brave-adel.netlify.app/)
 
 Установка зависимостей
 ```yarn install```
