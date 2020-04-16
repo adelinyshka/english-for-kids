@@ -23,6 +23,86 @@
         <label class="custom-control-label" for="switcher"></label>
       </div>
     </header>
-    <div id="container"></div>
+    <div id="container">
+      <div class="d-none" id="trainPage">
+        <div class="container-fluid">
+          <h1>Im TrainPage</h1>
+          <div class="row" id="rowWithCardsCategory">
+            <!--.col-3-->
+            <!--	+categoryCard('Animals','./assets/img/watermelon.png','animals')-->
+            <!--.col-3-->
+            <!--	+categoryCard('Colors','./assets/img/watermelon.png','colors')-->
+            <!--.col-3-->
+            <!--	+categoryCard('Toys')-->
+            <!--.col-3-->
+            <!--	+categoryCard('Tales')-->
+          </div>
+        </div>
+      </div>
+      <div class="d-none" id="playPage">
+        <h1>Im PlayPage</h1>
+      </div>
+      <div class="d-none" id="insideCategoryAnimals">
+        <h1>Im TrainPage inside Category</h1>
+        <div class="row">
+          <div class="col-3">
+            <div class="card" style="width: 13rem; height: 200px;margin:10px;">
+              <div class="card-face front"><img class="card-img-top" src="/assets/img/watermelon.png" alt="..." style="width:40%"/>
+                <div class="card-body">
+                  <h5 class="card-title front">hello</h5><a class="btn-turn btn btn-warning" href="#" data-button="data-button">&curarr;</a>
+                </div>
+              </div>
+              <div class="card-face back"><img class="card-img-top" src="/assets/img/watermelon.png" alt="..."/>
+                <div class="card-body">
+                  <h5 class="card-title back">привет</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card" style="width: 13rem; height: 200px;margin:10px;">
+              <div class="card-face front"><img class="card-img-top" src="/assets/img/watermelon.png" alt="..." style="width:40%"/>
+                <div class="card-body">
+                  <h5 class="card-title front">bye</h5><a class="btn-turn btn btn-warning" href="#" data-button="data-button">&curarr;</a>
+                </div>
+              </div>
+              <div class="card-face back"><img class="card-img-top" src="/assets/img/watermelon.png" alt="..."/>
+                <div class="card-body">
+                  <h5 class="card-title back">пока</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card" style="width: 13rem; height: 200px;margin:10px;">
+              <div class="card-face front"><img class="card-img-top" alt="..." style="width:40%"/>
+                <div class="card-body">
+                  <h5 class="card-title front"></h5><a class="btn-turn btn btn-warning" href="#" data-button="data-button">&curarr;</a>
+                </div>
+              </div>
+              <div class="card-face back"><img class="card-img-top" alt="..."/>
+                <div class="card-body">
+                  <h5 class="card-title back"></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card" style="width: 13rem; height: 200px;margin:10px;">
+              <div class="card-face front"><img class="card-img-top" alt="..." style="width:40%"/>
+                <div class="card-body">
+                  <h5 class="card-title front"></h5><a class="btn-turn btn btn-warning" href="#" data-button="data-button">&curarr;</a>
+                </div>
+              </div>
+              <div class="card-face back"><img class="card-img-top" alt="..."/>
+                <div class="card-body">
+                  <h5 class="card-title back"></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <script type="text/javascript" src="/assets/js/app.js"></script></body>
 </html>

@@ -11,7 +11,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  color: white;
+  color: black;
   text-align: center;
   font-weight: bold;
   font-size: 40px;
@@ -20,7 +20,7 @@
 }
 
 .card-face.front {
-  background: red;
+  background: wheat;
 }
 
 .card-face.back {
@@ -30,4 +30,32 @@
 
 .card-face.is-flipped {
   transform: rotateY(180deg);
+}
+
+.btn-turn {
+  font-size: 30px;
+  padding: 5px;
+  width: 70px;
+}
+
+//------- category card
+.category-card {
+  background: #fe5e5e;
+  color: black;
+  font-size: 40px;
+
+  &:hover,
+  &:focus {
+    box-shadow: 5px 5px 8px navajowhite;
+  }
+
+  &:active {
+    background: #c44949;
+    box-shadow: none;
+    color: white;
+  }
+}
+
+.category-card .card-face {
+  padding: 20px;
 }

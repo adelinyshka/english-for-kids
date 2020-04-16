@@ -1,11 +1,22 @@
-mixin card(russianWord, englishWord, audio, img_src)
-	.card(style='width: 14rem;height: 200px;margin:20px;')
+mixin card(russianWord, englishWord,  img_src, audio)
+	.card(style='width: 13rem; height: 200px;margin:10px;')
 		.card-face.front
-			img.card-img-top(src= img_src, alt='...')
+			img.card-img-top(src= img_src, alt='...'
+				style='width:40%')
 			.card-body
 				h5.card-title.front= russianWord
-				a.btn-turn.btn.btn-primary(href='#' data-buttonz) Поворот
+				a.btn-turn.btn.btn-warning(href='#' data-button) &curarr;
 		.card-face.back
 			img.card-img-top(src= img_src, alt='...')
 			.card-body
-				h5.card-title.back test
+				h5.card-title.back= englishWord
+
+
+mixin categoryCard(category_name,img_src_category, idCard)
+	.card.category-card(style='width: 13rem; height: 200px;margin:10px;' id= idCard)
+		.card-face
+			img.card-img-top(src= img_src_category, alt='...'
+				style='width:40%')
+			.card-body
+				h5.card-title.front= category_name
+
