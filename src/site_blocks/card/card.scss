@@ -1,3 +1,10 @@
+.scene {
+  width: 13rem;
+  height: 300px;
+  margin: 40px 0;
+  perspective: 600px;
+}
+
 .card {
   position: relative;
   transition: transform 1s;
@@ -17,6 +24,11 @@
   font-size: 40px;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+
+  &:hover,
+  &:focus {
+    box-shadow: 10px 10px 10px aliceblue;
+  }
 }
 
 .card-face.front {
@@ -24,11 +36,11 @@
 }
 
 .card-face.back {
-  background: blue;
   transform: rotateY(180deg);
+  background: pink;
 }
 
-.card-face.is-flipped {
+.card.is-flipped {
   transform: rotateY(180deg);
 }
 

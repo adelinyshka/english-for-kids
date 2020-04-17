@@ -97,6 +97,14 @@ module.exports = {
                         options: { sourceMap: true, config: { path: `${PATHS.src}/js/postcss.config.js` } }
                     }
                 ]
+            },
+            {
+                test: /\.(ogg|mp3|wav|mpe?g)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: "[name].[ext]",
+                    outputPath: PATHS.assets + 'audio',
+                }
             }]
     },
     plugins: [
@@ -109,7 +117,8 @@ module.exports = {
             filename: './index.html'
         }),
         new CopyWebpackPlugin([
-            // { from: PATHS.src + '/img', to: PATHS.assets +`/img` },
+            { from: PATHS.src + '/assets/img', to: PATHS.assets +`/img` },
+            { from: PATHS.src + '/assets/audio',to: PATHS.assets +`/audio` },
             { from: PATHS.src + '/site_blocks/static' },
         ]),
         new PrettierPlugin({

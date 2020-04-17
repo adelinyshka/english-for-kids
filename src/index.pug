@@ -5,10 +5,29 @@ block content
 	include site_blocks/header/header
 
 	div#container
+		div
+			.row.special-row
+				.col-3
+					.scene
+						.card(style='width: 13rem; height: 300px;')
+							audio(src='./assets/audio/bear.mp3')#audio
+							.card-face.front
+								img.card-img-top(src='./assets/img/dishes-1.png', alt='...'
+									style='width:50%')
+								.card-body
+									h5.card-title.front hello
+									a.btn-turn.btn.btn-warning(href='#' data-button) &curarr;
+							.card-face.back
+								img.card-img-top(src= './assets/img/dishes-1.png', alt=''
+									style='width:50%')
+								.card-body
+									h5.card-title.back привет
+
 		div#trainPage.d-none
 			.container-fluid
 				h1 Im TrainPage
 				.row#rowWithCardsCategory
+
 
 
 		div#playPage.d-none

@@ -1,15 +1,16 @@
 mixin card(russianWord, englishWord,  img_src, audio)
 	.card(style='width: 13rem; height: 200px;margin:10px;')
+		audio(src='./assets/audio/bear.mp3' autoplay='autoplay')
 		.card-face.front
-			img.card-img-top(src= img_src, alt='...'
+			img.card-img-top(src='./assets/img/dishes-1.png', alt='...'
 				style='width:40%')
 			.card-body
-				h5.card-title.front= russianWord
+				h5.card-title.front hello
 				a.btn-turn.btn.btn-warning(href='#' data-button) &curarr;
 		.card-face.back
-			img.card-img-top(src= img_src, alt='...')
+			img.card-img-top(src= 'src/assets/img/dishes-1.png', alt='')
 			.card-body
-				h5.card-title.back= englishWord
+				h5.card-title.back привет
 
 
 mixin categoryCard(category_name,img_src_category, idCard)

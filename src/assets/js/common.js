@@ -1,7 +1,28 @@
+import cards from './storage';
+
 window.onload = function () {
   changeLayoutByCheckboxHandler();
   toggleMenuHamburgerHandler();
 };
+
+//по клику на ряд - находим кнопочку
+
+let checkCard = document.querySelector('.special-row');
+let cardFace = document.querySelector('.card');
+
+checkCard.addEventListener('click', function (e) {
+  let btn = e.target.closest('a.btn-turn');
+
+  if (e.target === btn) {
+    cardFace.classList.add('is-flipped');
+  } else audio.play();
+});
+
+cardFace.addEventListener('mouseleave', function (e) {
+  if (e.target.classList.contains('is-flipped')) {
+    cardFace.classList.remove('is-flipped');
+  }
+});
 
 let container = document.querySelector('#container');
 let trainPage = document.querySelector('#trainPage');
@@ -162,7 +183,7 @@ function moveInsideCategory(fromWhere, toWhere) {
 moveInsideCategory(rowWithCards, trainPage);
 moveInsideCategory(rowWithCardsForPlay, playPage);
 
-//вывод картинок
+// вывод картинок
 // for (let i = 0; i < 8; i++) {
 //   let card = new Card(categoriesId[i], categoriesImages[i], 'hello', 'привет', categoriesNames[i]);
 //   card.createCategoryCard();
@@ -176,7 +197,7 @@ moveInsideCategory(rowWithCardsForPlay, playPage);
 // состояние
 
 // id, img_src, wordEn, wordRu, categoryName, linkToCategory, audio
-
+//
 class Card {
   constructor() {
     this.id = id;
@@ -196,31 +217,48 @@ class Card {
     this.guessWrong = 0;
   }
 
-  createCard() {}
+  createCard(url, word) {
+    const card = document.createElement('div');
+    // cardEl.innerHTML =
+    //       `<div class="card" style="width: 13rem; height: 200px;margin:10px;"><audio src="./assets/audio/bear.mp3" autoplay="autoplay"></audio>
+    //       `<div class="card-face front"><img class="card-img-top" src="./assets/img/dishes-1.png" alt="..." style="width:40%;" />
+    //         <div class="card-body">
+    //             <h5 class="card-title front">hello</h5><a class="btn-turn btn btn-warning" href="#" data-button="data-button">&curarr;</a></div>
+    //     </div>
+    //     <div class="card-face back"><img class="card-img-top" src="src/assets/img/dishes-1.png" alt="" />
+    //         <div class="card-body">
+    //             <h5 class="card-title back">привет</h5>
+    //         </div>
+    //     </div>
+    // </div>`
+
+    // return cardEl;
+  }
 
   getMistakesRate() {
     return (this.guessWrong / this.clickedInPlayMode) * 100 + '%';
   }
 }
-
-class Card2 {
-  constructor(url, word) {
-    this.url = url;
-    this.word = word;
-  }
-
-  createElement(url, word) {
-    const cardEl = document.createElement('div');
-    cardEl.innerHTML =
-      `<div class="card category-card" style="width: 13rem; height: 200px;margin:10px;" id="category">` +
-      `<div class="card-face"><img class="card-img-top"` +
-      ` src="" alt="..." style="width:40%; background: url(${url})"` +
-      `        <div class="card-body">` +
-      `           <h5 class="card-title front">${word}</h5>` +
-      `        </div>` +
-      `    </div>` +
-      `</div>`;
-
-    return cardEl;
-  }
-}
+//
+// class Card2 {
+//   constructor(url, word) {
+//     this.url = url;
+//     this.word = word;
+//   }
+//
+//   createElement(url, word) {
+//     const cardEl = document.createElement('div');
+//     cardEl.innerHTML =
+//       `<div class="card category-card" style="width: 13rem; height: 200px;margin:10px;" id="category">` +
+//       `<audio src='./assets/audio/bear.mp3' autoplay='autoplay'></audio>`+
+//       `<div class="card-face"><img class="card-img-top"` +
+//       ` src="" alt="..." style="width:40%; background: url(${url})"` +
+//       `        <div class="card-body">` +
+//       `           <h5 class="card-title front">${word}</h5>` +
+//       `        </div>` +
+//       `    </div>` +
+//       `</div>`;
+//
+//     return cardEl;
+//   }
+// }
