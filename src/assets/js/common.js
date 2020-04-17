@@ -1,7 +1,6 @@
 window.onload = function () {
-  moveToCategory();
-  toggleMenuHamburgerHandler();
   changeLayoutByCheckboxHandler();
+  toggleMenuHamburgerHandler();
 };
 
 let container = document.querySelector('#container');
@@ -9,18 +8,10 @@ let trainPage = document.querySelector('#trainPage');
 let playPage = document.querySelector('#playPage');
 let checker = document.querySelector('#switcher');
 let rowWithCards = document.querySelector('#rowWithCardsCategory');
+let rowWithCardsForPlay = document.querySelector('#rowWithCardsCategoryForPlay');
 let animalCategory = document.querySelector('#insideCategoryAnimals');
 
-function moveToCategory() {
-  rowWithCards.addEventListener('click', function (e) {
-    let divCard = e.target.closest('.card');
-    if (divCard.id === 'animals') {
-      rowWithCards.classList.add('d-none');
-      animalCategory.classList.remove('d-none');
-      animalCategory.classList.add('d-block');
-    }
-  });
-}
+//====== создание гамбургера меню
 
 function toggleMenuHamburgerHandler() {
   let hamburgerIcon = document.querySelector('.hamburger');
@@ -28,9 +19,26 @@ function toggleMenuHamburgerHandler() {
 
   hamburgerIcon.addEventListener('click', function () {
     pageMenu.classList.toggle('d-none');
-    console.log('Hamburger works!'); //DEL!
   });
 }
+
+//====== отрисовка экрана в зависимости от положения свитчера
+
+window.addEventListener('load', function () {
+  if (checker.checked === true) {
+    playPage.classList.remove('d-block');
+    playPage.classList.add('d-none');
+    trainPage.classList.remove('d-none');
+    trainPage.classList.add('d-block');
+  } else {
+    trainPage.classList.remove('d-block');
+    trainPage.classList.add('d-none');
+    playPage.classList.remove('d-none');
+    playPage.classList.add('d-block');
+  }
+});
+
+//====== смена режима тренировка/игра по клику на свитчер
 
 function changeLayoutByCheckboxHandler() {
   document.addEventListener('change', function () {
@@ -40,7 +48,6 @@ function changeLayoutByCheckboxHandler() {
       playPage.classList.add('d-none');
       trainPage.classList.remove('d-none');
       trainPage.classList.add('d-block');
-      console.log('I check switcher position'); //DEL!
     }
     //play
     if (checker.checked !== true) {
@@ -48,28 +55,119 @@ function changeLayoutByCheckboxHandler() {
       trainPage.classList.add('d-none');
       playPage.classList.remove('d-none');
       playPage.classList.add('d-block');
-      console.log('I TOO check switcher position'); //DEL!
     }
   });
 }
 
-// при загрузке dom смотреть за состоянием чекбокса и в заивисмости от него
-// подгружать что надо
-window.addEventListener('load', function () {
+//====== создание категорий
+
+const categoryData = [
+  {
+    word: 'Animals',
+    pic: './assets/img/animals.png',
+  },
+  {
+    word: 'Dishes',
+    pic: './assets/img/dishes-1.png',
+  },
+  {
+    word: 'Fruits',
+    pic: './assets/img/fruits2.png',
+  },
+  {
+    word: 'House',
+    pic: './assets/img/house-1.png',
+  },
+  {
+    word: 'Nature',
+    pic: './assets/img/nature-1.png',
+  },
+  {
+    word: 'Tales',
+    pic: './assets/img/tales-1.png',
+  },
+  {
+    word: 'Toys',
+    pic: './assets/img/toys-1.png',
+  },
+  {
+    word: 'Vegetables',
+    pic: './assets/img/vegetables2.png',
+  },
+];
+
+//====== создание страницы с категориями
+
+function createCategories(arr, where, bgColor) {
+  arr.forEach((card) => {
+    const cardElement = document.createElement('div');
+    cardElement.classList.add('col-3');
+
+    cardElement.innerHTML =
+      `<div class="card category-card" style="background:${bgColor};width: 13rem; height: 200px;margin:10px;" id=${card.word}>` +
+      `<div class="card-face"><img class="card-img-top"` +
+      ` src="${card.pic}" alt="..." style="width:40%;"` +
+      `        <div class="card-body">` +
+      `           <h5 class="card-title front">${card.word}</h5>` +
+      `        </div>` +
+      `    </div>` +
+      `</div>`;
+
+    where.append(cardElement);
+  });
+}
+
+//====== смена цвета в зависимости от режима приложения
+
+createCategories(categoryData, rowWithCards, 'blue');
+createCategories(categoryData, rowWithCardsForPlay, 'red');
+
+//====== создание страницы внутри категории
+
+function createPageInsideCategory(id, whereToPut) {
+  let cardBlock = document.createElement('div');
+  cardBlock.classList.add('d-block');
   if (checker.checked === true) {
-    console.log('I check DOM reload ' + checker.checked); //DEL
-    playPage.classList.remove('d-block');
-    playPage.classList.add('d-none');
-    trainPage.classList.remove('d-none');
-    trainPage.classList.add('d-block');
-  } else {
-    console.log('Im too! I check DOM reload ' + checker.checked); //DEL
-    trainPage.classList.remove('d-block');
-    trainPage.classList.add('d-none');
-    playPage.classList.remove('d-none');
-    playPage.classList.add('d-block');
+    cardBlock.id = `insideCategoryTrain${id}`;
   }
-});
+  if (checker.checked !== true) {
+    let title = document.querySelector('#container .container-fluid > h1');
+    cardBlock.id = `insideCategoryPlay${id}`;
+  }
+
+  let row = document.createElement('div');
+  row.classList.add('row');
+
+  if (checker.checked === true) {
+    row.innerHTML = 'yes i can boogie!';
+  }
+  if (checker.checked !== true) {
+    row.innerHTML = 'and i can play!';
+  }
+
+  cardBlock.append(row);
+  whereToPut.append(cardBlock);
+}
+
+//====== переключение режима ВНУТРИ категории
+
+function moveInsideCategory(fromWhere, toWhere) {
+  fromWhere.addEventListener('click', function (e) {
+    let divCard = e.target.closest('.card');
+    fromWhere.classList.add('d-none');
+    createPageInsideCategory(divCard.id, toWhere);
+  });
+}
+
+moveInsideCategory(rowWithCards, trainPage);
+moveInsideCategory(rowWithCardsForPlay, playPage);
+
+//вывод картинок
+// for (let i = 0; i < 8; i++) {
+//   let card = new Card(categoriesId[i], categoriesImages[i], 'hello', 'привет', categoriesNames[i]);
+//   card.createCategoryCard();
+//   console.log(card);
+// }
 
 // картинка
 // слово
@@ -77,21 +175,18 @@ window.addEventListener('load', function () {
 // аудио
 // состояние
 
+// id, img_src, wordEn, wordRu, categoryName, linkToCategory, audio
+
 class Card {
-  constructor(id, img_src, wordEn, wordRu, categoryName, linkToCategory, audio) {
+  constructor() {
     this.id = id;
     this.img_src = img_src;
     this.wordRu = wordRu;
     this.wordEn = wordEn;
-    this.categoryName = categoryName;
-    this.linkToCategory = linkToCategory;
-    // this.audio = audio;
-
-    this.isCategoryCard = true;
+    this.audio = audio;
 
     this.isTurned = false;
     this.isTrainMode = false;
-
     this.isPlayMode = false;
 
     //статистика
@@ -101,94 +196,31 @@ class Card {
     this.guessWrong = 0;
   }
 
-  //
-  createCategoryCard() {
-    let categoryCard = document.createElement('div');
-
-    categoryCard.classList.add('card', 'category-card');
-    categoryCard.style = 'width:13rem;height:200px;width:200px;margin:10px;display:inline-block;';
-    // categoryCard.href = this.href;
-    // categoryCard.id = this.id;
-
-    let cardFace = document.createElement('div');
-    cardFace.classList.add('card-face');
-
-    categoryCard.append(cardFace);
-
-    let pic = document.createElement('img');
-    pic.classList.add('card-img-top');
-    pic.src = this.img_src;
-    pic.style = 'width:70%;';
-    cardFace.append(pic);
-
-    let cardBody = document.createElement('div');
-    pic.classList.add('card-body');
-    categoryCard.append(cardBody);
-
-    let titleH5 = document.createElement('h5');
-    titleH5.classList.add('card-title', 'front');
-    titleH5.innerText = this.categoryName;
-    cardFace.append(titleH5);
-
-    let col = document.createElement('div');
-    col.classList.add('col-3');
-
-    rowWithCards.append(col);
-
-    col.append(categoryCard);
-  }
+  createCard() {}
 
   getMistakesRate() {
     return (this.guessWrong / this.clickedInPlayMode) * 100 + '%';
   }
 }
 
-const linkToCategoryCards = [
-  '',
-  'google.com',
-  'mail.ru',
-  'yahoo.com',
-  'ya.ru',
-  'google.com',
-  'mail.ru',
-  'yahoo.com',
-];
+class Card2 {
+  constructor(url, word) {
+    this.url = url;
+    this.word = word;
+  }
 
-const categoriesImages = [
-  './assets/img/animals.png',
-  './assets/img/fruits2.png',
-  './assets/img/vegetables2.png',
-  './assets/img/house-1.png',
-  './assets/img/nature-1.png',
-  './assets/img/toys-1.png',
-  './assets/img/tales-1.png',
-  './assets/img/dishes-1.png',
-];
+  createElement(url, word) {
+    const cardEl = document.createElement('div');
+    cardEl.innerHTML =
+      `<div class="card category-card" style="width: 13rem; height: 200px;margin:10px;" id="category">` +
+      `<div class="card-face"><img class="card-img-top"` +
+      ` src="" alt="..." style="width:40%; background: url(${url})"` +
+      `        <div class="card-body">` +
+      `           <h5 class="card-title front">${word}</h5>` +
+      `        </div>` +
+      `    </div>` +
+      `</div>`;
 
-const categoriesNames = [
-  'Animals',
-  'Fruits',
-  'Vegetables',
-  'House',
-  'Nature',
-  'Toys',
-  'Tales',
-  'Dishes',
-];
-
-const categoriesId = [
-  'animals',
-  'body_parts',
-  'food',
-  'house',
-  'nature',
-  'toys',
-  'tales',
-  'dishes',
-];
-
-for (let i = 0; i < 8; i++) {
-  let card = new Card(categoriesId[i], categoriesImages[i], 'hello', 'привет', categoriesNames[i]);
-  card.createCategoryCard();
-  console.log(card);
+    return cardEl;
+  }
 }

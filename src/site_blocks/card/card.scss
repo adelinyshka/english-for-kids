@@ -40,7 +40,6 @@
 
 //------- category card
 .category-card {
-  background: white;
   color: black;
   font-size: 40px;
 
@@ -52,7 +51,7 @@
   &:active {
     background: #c44949;
     box-shadow: none;
-    color: white;
+    color: red;
   }
 }
 
