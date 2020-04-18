@@ -27,7 +27,7 @@
 
   &:hover,
   &:focus {
-    box-shadow: 10px 10px 10px aliceblue;
+    transform: scale(1.1);
   }
 }
 
@@ -57,7 +57,7 @@
 
   &:hover,
   &:focus {
-    box-shadow: 5px 5px 8px navajowhite;
+    transform: scale(1.1);
   }
 
   &:active {
