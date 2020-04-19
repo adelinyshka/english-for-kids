@@ -5,13 +5,15 @@ window.addEventListener('load', function () {
 });
 
 function initFunctions() {
-  // alerting('Прошу вас проверить работу не раньше' +
-  //   ' субботы 25 апреля, пожалуйста,' +
-  //   ' пока что не все успела сделать. Спасибо! Если' +
-  //   ' можете, то оставьте свои контакты, пожалуйста.');
+  alerting(
+    'Прошу вас проверить работу не раньше' +
+      ' субботы 25 апреля, пожалуйста,' +
+      ' пока что не все успела сделать. Спасибо! Если' +
+      ' можете, то оставьте свои контакты, пожалуйста.',
+  );
   changeLayoutByClickCheckbox();
-  toggleMenu();
   createMenu();
+  toggleMenu();
 }
 
 function alerting(text) {
@@ -162,6 +164,12 @@ const categoryData = [
 //====== создание гамбургера меню
 
 const pageMenu = document.querySelector('ul');
+const firstLi = document.createElement('li');
+const firstA = document.createElement('a');
+firstLi.append(firstA);
+firstA.innerHTML = 'Main menu';
+pageMenu.append(firstLi);
+
 //генерация списка меню
 function createMenu() {
   categoryData.forEach((item) => {
@@ -174,12 +182,15 @@ function createMenu() {
   });
 }
 
-//скрытие/открытие меню по клику
 function toggleMenu() {
   const hamburgerIcon = document.querySelector('.hamburger');
 
-  hamburgerIcon.addEventListener('click', function () {
-    pageMenu.classList.toggle('d-none');
+  document.body.addEventListener('click', function (e) {
+    if (e.target === hamburgerIcon) {
+      pageMenu.classList.toggle('d-none');
+    } else {
+      pageMenu.classList.add('d-none');
+    }
   });
 }
 

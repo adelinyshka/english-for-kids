@@ -14,8 +14,15 @@ header nav a.hamburger {
   color: white !important;
   font-size: 35px;
   position: relative;
-  z-index: 5;
+  z-index: 7;
   cursor: pointer;
+
+  &:after {
+    content: '|||';
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+  }
 
   &:hover,
   &:focus,
@@ -24,24 +31,66 @@ header nav a.hamburger {
     color: aqua;
     outline: none;
     text-decoration: none;
+
+    &:after {
+      content: '×';
+    }
   }
 }
 
 .page-menu {
   position: absolute;
-  z-index: 3;
+  z-index: 5;
+  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  border-radius: 79%;
+  left: -176px;
+  padding: 110px 20px 20px 175px;
+  height: 500px;
+  width: 404px;
+  top: -50px;
+  color: white;
+  animation: hello 0.5s linear;
 
-  background: #90ee90;
+  & span:first-child {
+    display: inline-block;
+    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
 
-  padding: 80px 20px;
+    position: absolute;
 
-  top: -30px;
+    width: 100px;
 
-  left: -30px;
+    height: 100px;
 
-  height: 100vw;
+    bottom: -95px;
 
-  width: 200px;
+    border-top-left-radius: 150%;
+
+    transform: rotate(226deg);
+
+    right: 160px;
+
+    z-index: 2;
+  }
+
+  //& span:last-child {
+  //  width: 6px;
+  //  height: 161px;
+  //  display: inline-block;
+  //  background: blue;
+  //  position: absolute;
+  //  bottom: -184px;
+  //  right: 210px;
+  //  }
+}
+
+@keyframes hello {
+  from {
+    left: -270px;
+  }
+  //50% {  left: -376px;}
+  to {
+    left: -176px;
+  }
 }
 
 //todo сделать анимацию для выезда и закрытия меню
