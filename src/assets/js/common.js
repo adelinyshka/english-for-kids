@@ -1,20 +1,33 @@
 import cards from './storage';
 
 window.addEventListener('load', function () {
+  initFunctions();
+});
+
+function initFunctions() {
+  alerting(
+    'Прошу вас проверить работу не раньше' +
+      ' субботы 25 апреля, пожалуйста,' +
+      ' пока что не все успела сделать. Спасибо! Если' +
+      ' можете, то оставьте свои контакты, пожалуйста.',
+  );
   changeLayoutByClickCheckbox();
   toggleMenu();
   createMenu();
-  // clickOnMenu();
-});
+}
 
-let container = document.querySelector('#container');
-let trainPage = document.querySelector('#trainPage');
-let playPage = document.querySelector('#playPage');
-let checker = document.querySelector('#switcher');
-let rowWithCardsCategoryForTrain = document.querySelector('#rowWithCardsCategoryForTrain');
-let rowWithCardsCategoryForPlay = document.querySelector('#rowWithCardsCategoryForPlay');
-let animalCategory = document.querySelector('#insideCategoryAnimals');
-let rowWithAllCards = document.querySelector('.special-row');
+function alerting(text) {
+  alert(text);
+}
+
+const container = document.querySelector('#container');
+const trainPage = document.querySelector('#trainPage');
+const playPage = document.querySelector('#playPage');
+const checker = document.querySelector('#switcher');
+const rowWithCardsCategoryForTrain = document.querySelector('#rowWithCardsCategoryForTrain');
+const rowWithCardsCategoryForPlay = document.querySelector('#rowWithCardsCategoryForPlay');
+const animalCategory = document.querySelector('#insideCategoryAnimals');
+const rowWithAllCards = document.querySelector('.special-row');
 
 //====== карточка со словами
 
@@ -41,8 +54,15 @@ class Card {
   }
 
   createCard(wordEn, wordRu) {
-    let cardWord = document.createElement('div');
-    cardWord.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'col-12');
+    const cardWord = document.createElement('div');
+    cardWord.classList.add(
+      'col-sm-6',
+      'col-md-4',
+      'col-lg-3',
+      'col-12',
+      'justify-content-center',
+      'd-flex',
+    );
     cardWord.innerHTML = `
       <div class="scene">
           <div class="card" id="idFor${wordEn}" style="width: 13rem; height: 300px;">
@@ -76,12 +96,10 @@ class Card {
 //данные по категориям
 const categoryData = [
   {
-    //1
     word: 'Animals',
     pic: './assets/img/animals.png',
   },
   {
-    //2
     word: 'Dishes',
     pic: './assets/img/dishes-1.png',
   },
@@ -113,13 +131,13 @@ const categoryData = [
 
 //====== создание гамбургера меню
 
-let pageMenu = document.querySelector('ul');
+const pageMenu = document.querySelector('ul');
 //генерация списка меню
 function createMenu() {
   categoryData.forEach((item) => {
-    let menuList = document.createElement('li');
+    const menuList = document.createElement('li');
     menuList.classList.add('p-1');
-    let menuListLink = document.createElement('a');
+    const menuListLink = document.createElement('a');
     menuList.append(menuListLink);
     menuListLink.innerText = item.word;
     pageMenu.append(menuList);
@@ -128,26 +146,34 @@ function createMenu() {
 
 //скрытие/открытие меню по клику
 function toggleMenu() {
-  let hamburgerIcon = document.querySelector('.hamburger');
+  const hamburgerIcon = document.querySelector('.hamburger');
 
   hamburgerIcon.addEventListener('click', function () {
     pageMenu.classList.toggle('d-none');
   });
 }
 
+function showTrainPage() {
+  playPage.classList.remove('d-block');
+  playPage.classList.add('d-none');
+  trainPage.classList.remove('d-none');
+  trainPage.classList.add('d-block');
+}
+
+function showPlayPage() {
+  trainPage.classList.remove('d-block');
+  trainPage.classList.add('d-none');
+  playPage.classList.remove('d-none');
+  playPage.classList.add('d-block');
+}
+
 //====== отрисовка экрана в зависимости от положения свитчера
 
 window.addEventListener('load', function () {
-  if (checker.checked === true) {
-    playPage.classList.remove('d-block');
-    playPage.classList.add('d-none');
-    trainPage.classList.remove('d-none');
-    trainPage.classList.add('d-block');
+  if (checker.checked) {
+    showTrainPage();
   } else {
-    trainPage.classList.remove('d-block');
-    trainPage.classList.add('d-none');
-    playPage.classList.remove('d-none');
-    playPage.classList.add('d-block');
+    showPlayPage();
   }
 });
 
@@ -156,18 +182,12 @@ window.addEventListener('load', function () {
 function changeLayoutByClickCheckbox() {
   document.addEventListener('change', function () {
     //train
-    if (checker.checked === true) {
-      playPage.classList.remove('d-block');
-      playPage.classList.add('d-none');
-      trainPage.classList.remove('d-none');
-      trainPage.classList.add('d-block');
+    if (checker.checked) {
+      showTrainPage();
     }
     //play
-    if (checker.checked !== true) {
-      trainPage.classList.remove('d-block');
-      trainPage.classList.add('d-none');
-      playPage.classList.remove('d-none');
-      playPage.classList.add('d-block');
+    if (!checker.checked) {
+      showPlayPage();
     }
   });
 }
@@ -177,8 +197,14 @@ function changeLayoutByClickCheckbox() {
 function createCategories(arr, where, bgColor, color) {
   arr.forEach((card) => {
     const cardElement = document.createElement('div');
-    cardElement.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'col-12');
-
+    cardElement.classList.add(
+      'col-sm-6',
+      'col-md-4',
+      'col-lg-3',
+      'col-12',
+      'justify-content-center',
+      'd-flex',
+    );
     cardElement.innerHTML =
       `<div class="card category-card" 
         style="background:${bgColor};
@@ -229,7 +255,11 @@ moveInsideCategory(rowWithCardsCategoryForPlay, playPage);
 //поворот карточки(не работает для нескольких)
 // todo сделать поворот карточки
 
-let cardClicked = document.querySelector('.card');
+//поворот карточки(не работает для нескольких)
+// todo сделать поворот карточки
+
+const cardClicked = document.querySelector('.card');
+
 rowWithAllCards.addEventListener('click', function (e) {
   let btn = e.target.closest('a.btn-turn');
 
@@ -245,12 +275,45 @@ cardClicked.addEventListener('mouseleave', function (e) {
   }
 });
 
+const containerItem = document.querySelectorAll('.scene .card');
+// console.log(containerItem);
+const rotate = document.querySelectorAll('a.btn-turn');
+
+containerItem.forEach((a) => a.addEventListener('click', flipCard));
+
+function flipCard(a) {
+  console.log(rotate(a));
+  // rotate[+a.target];
+  console.log(a.target);
+}
+
+// let btn = document.querySelectorAll('a.btn-turn');
+// btn.forEach((a) => a.addEventListener('click',  turnCard))
+// function turnCard(a) {
+//   a.target.closest(cardClicked).classList.add('is-flipped');
+// }
+
+// let containerItem = document.querySelectorAll('.container__item');
+// let rotate = document.querySelectorAll('.rotate');
+
+// rotate.forEach((a) => a.addEventListener('click', flipCard));
+//
+// function flipCard(a) {
+//   cardClicked[+a.target].classList.add('is-flipped');
+// }
+
+// cardClicked.addEventListener('mouseleave', function (e) {
+//   if (e.target.classList.contains('is-flipped')) {
+//     cardClicked.classList.remove('is-flipped');
+//   }
+// });
+
 //====== создание страницы  внутри категории
 
 function createPageInsideCategory(divCardId, whereToPut) {
-  let cardBlock = document.createElement('div');
+  const cardBlock = document.createElement('div');
 
-  let row = document.createElement('div');
+  const row = document.createElement('div');
   cardBlock.classList.add('d-block');
   row.classList.add('row');
   if (checker.checked === true) {
@@ -297,7 +360,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
   }
 
   if (checker.checked !== true) {
-    let title = document.querySelector('#container .container-fluid > h1');
+    const title = document.querySelector('#container .container-fluid > h1');
     row.id = `inside${divCardId}Play`;
     if (divCardId === 'Animals') {
       let card = new Card();
