@@ -24,28 +24,52 @@
 
 .custom-control-input:checked ~ .custom-control-label::before {
   content: 'train';
-  padding-left: 10px;
-  line-height: 32px;
+  padding-left: 11px;
+  color: black;
+  font-weight: bold;
+  line-height: 33px;
+  background-image: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);
+  border: 2px solid white;
 }
 
 .custom-control-input:not(:checked) ~ .custom-control-label::before {
   content: 'play';
-  padding-left: 50px;
-  line-height: 32px;
+  padding-left: 44px;
+  line-height: 34px;
+  color: white;
+  font-weight: bold;
 }
 
 .custom-switch .custom-control-label::after {
-  width: calc(2rem - 4px);
-  height: calc(2rem - 4px);
   background: white;
+  width: calc(2rem - 6px);
+  height: calc(2rem - 8px);
 }
 
 .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
   transform: translateX(2.95rem);
+  border-radius: 0.3rem;
+  top: calc(0.25rem + 4px);
+  left: calc(-2.25rem + 3px);
 }
 
 .custom-control-label::before {
   pointer-events: none;
-  background-color: #fe5e5e;
-  border: 1px solid #fe5e5e;
+  background-image: linear-gradient(
+    to top,
+    #4fb576 0%,
+    #44c489 30%,
+    #28a9ae 46%,
+    #28a2b7 59%,
+    #4c7788 71%,
+    #6c4f63 86%,
+    #432c39 100%
+  );
+  border: 2px solid white;
+}
+
+.custom-switch .custom-control-label::after {
+  top: calc(0.25rem + 4px);
+  left: calc(-2.25rem + 4px);
+  border-radius: 0.3rem;
 }

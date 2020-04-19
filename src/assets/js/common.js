@@ -47,7 +47,8 @@ class Card {
       <div class="scene">
           <div class="card" id="idFor${wordEn}" style="width: 13rem; height: 300px;">
             <audio src="./assets/audio/${wordEn}.mp3" id="audioFor${wordEn}"></audio>
-              <div class="card-face front"><img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" style="width:100%;" />
+              <div class="card-face front"><img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" 
+              style="width:100%;" />
                   <div class="card-body">
                       <h5 class="card-title front">${wordEn}</h5>
                       <a class="btn-turn btn btn-warning" href="#" data-button="data-button">&curarr;</a></div>
@@ -173,13 +174,17 @@ function changeLayoutByClickCheckbox() {
 
 //====== создание страницы с категориями
 
-function createCategories(arr, where, bgColor) {
+function createCategories(arr, where, bgColor, color) {
   arr.forEach((card) => {
     const cardElement = document.createElement('div');
     cardElement.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'col-12');
 
     cardElement.innerHTML =
-      `<div class="card category-card" style="background:${bgColor};width: 13rem; height: 200px;margin:10px;" id=${card.word}>` +
+      `<div class="card category-card" 
+        style="background:${bgColor};
+        width: 13rem; height: 200px;margin:10px;border:8px solid white;
+        border-radius: 8px; color:${color}" 
+        id=${card.word}>` +
       `<div class="card-face"><img class="card-img-top"` +
       ` src="${card.pic}" alt="..." style="width:40%;"` +
       `        <div class="card-body">` +
@@ -197,13 +202,15 @@ function createCategories(arr, where, bgColor) {
 createCategories(
   categoryData,
   rowWithCardsCategoryForTrain,
-  'linear-gradient(135deg, #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#fdffff' +
-    ' 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%);',
+  ' linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);',
+  'black',
 );
 createCategories(
   categoryData,
   rowWithCardsCategoryForPlay,
-  'linear-gradient(135deg, #f9e4df 7%,#fad4cc 15%,#fad4cc 17%,#fad4cc 35%,#f8c9c0 54%,#fffffd 88%);',
+  'linear-gradient(to top, #4fb576 0%, #44c489 30%, #28a9ae 46%, #28a2b7' +
+    ' 59%, #4c7788 71%, #6c4f63 86%, #432c39 100%);',
+  'white',
 );
 
 //====== переключение режима ВНУТРИ категории
