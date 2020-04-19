@@ -42,7 +42,7 @@ class Card {
 
   createCard(wordEn, wordRu) {
     let cardWord = document.createElement('div');
-    cardWord.classList.add('col-3');
+    cardWord.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'col-12');
     cardWord.innerHTML = `
       <div class="scene">
           <div class="card" id="idFor${wordEn}" style="width: 13rem; height: 300px;">
@@ -176,7 +176,7 @@ function changeLayoutByClickCheckbox() {
 function createCategories(arr, where, bgColor) {
   arr.forEach((card) => {
     const cardElement = document.createElement('div');
-    cardElement.classList.add('col-3');
+    cardElement.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'col-12');
 
     cardElement.innerHTML =
       `<div class="card category-card" style="background:${bgColor};width: 13rem; height: 200px;margin:10px;" id=${card.word}>` +
