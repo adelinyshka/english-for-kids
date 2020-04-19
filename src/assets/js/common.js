@@ -51,7 +51,7 @@ class Card {
     this.guessWrong = 0;
   }
 
-  createCard(wordEn, wordRu) {
+  createCard(wordEn, wordRu, bgColor) {
     const cardWord = document.createElement('div');
     cardWord.classList.add(
       'col-sm-6',
@@ -61,11 +61,12 @@ class Card {
       'justify-content-center',
       'd-flex',
     );
+
     cardWord.innerHTML = `
       <div class="scene">
           <div class="card" id="idFor${wordEn}" style="width: 13rem; height: 300px;">
             <audio src="./assets/audio/${wordEn}.mp3" id="audioFor${wordEn}"></audio>
-              <div class="card-face front"><img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" 
+              <div class="card-face front" style="background:${bgColor}"><img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" 
               style="width:100%;" />
                   <div class="card-body">
                       <h5 class="card-title front">${wordEn}</h5>
@@ -82,10 +83,41 @@ class Card {
     return cardWord;
   }
 
+  createCardPlayMode(wordEn) {
+    const cardWord = document.createElement('div');
+    cardWord.classList.add(
+      'col-sm-6',
+      'col-md-4',
+      'col-lg-3',
+      'col-12',
+      'justify-content-center',
+      'd-flex',
+    );
+
+    cardWord.innerHTML = `
+      <div class="scene" style="width: 16rem; height: 192px;">
+          <div class="card" id="idFor${wordEn}" style="width: 16rem; height: 192px;">
+            <audio src="./assets/audio/${wordEn}.mp3" id="audioFor${wordEn}"></audio>
+              <div class="card-face front">
+              <img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" 
+              style="width:100%;" />
+          </div>
+      </div>
+      </div>
+     `;
+    return cardWord;
+  }
   //генерация массива карточек
-  iterateArrCard(arr, num, where) {
+  iterateArrCard(arr, num, where, bgColor) {
     arr.forEach((item, index) => {
-      let card = this.createCard(arr[num][index].word, arr[num][index].translation);
+      let card = this.createCard(arr[num][index].word, arr[num][index].translation, bgColor);
+      where.append(card);
+    });
+  }
+
+  iterateArrCardPlay(arr, num, where) {
+    arr.forEach((item, index) => {
+      let card = this.createCardPlayMode(arr[num][index].word);
       where.append(card);
     });
   }
@@ -324,40 +356,40 @@ function createPageInsideCategory(divCardId, whereToPut) {
     //не получилось по-другому пока, только так 8-|
     if (divCardId === 'Animals') {
       let card = new Card();
-      card.iterateArrCard(cards, 0, row);
+      card.iterateArrCard(cards, 0, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'Dishes') {
       let card = new Card();
-      card.iterateArrCard(cards, 1, row);
+      card.iterateArrCard(cards, 1, row), 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);';
     }
 
     if (divCardId === 'Fruits') {
       let card = new Card();
-      card.iterateArrCard(cards, 2, row);
+      card.iterateArrCard(cards, 2, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'House') {
       let card = new Card();
-      card.iterateArrCard(cards, 3, row);
+      card.iterateArrCard(cards, 3, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
     if (divCardId === 'Nature') {
       let card = new Card();
-      card.iterateArrCard(cards, 4, row);
+      card.iterateArrCard(cards, 4, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
     if (divCardId === 'Tales') {
       let card = new Card();
-      card.iterateArrCard(cards, 5, row);
+      card.iterateArrCard(cards, 5, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'Toys') {
       let card = new Card();
-      card.iterateArrCard(cards, 6, row);
+      card.iterateArrCard(cards, 6, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'Vegetables') {
       let card = new Card();
-      card.iterateArrCard(cards, 7, row);
+      card.iterateArrCard(cards, 7, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
   }
 
@@ -366,40 +398,39 @@ function createPageInsideCategory(divCardId, whereToPut) {
     row.id = `inside${divCardId}Play`;
     if (divCardId === 'Animals') {
       let card = new Card();
-      card.iterateArrCard(cards, 0, row);
+      card.iterateArrCardPlay(cards, 0, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
 
     if (divCardId === 'Dishes') {
       let card = new Card();
-      card.iterateArrCard(cards, 1, row);
+      card.iterateArrCardPlay(cards, 1, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
-
     if (divCardId === 'Fruits') {
       let card = new Card();
-      card.iterateArrCard(cards, 2, row);
+      card.iterateArrCardPlay(cards, 2, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
 
     if (divCardId === 'House') {
       let card = new Card();
-      card.iterateArrCard(cards, 3, row);
+      card.iterateArrCardPlay(cards, 3, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
     if (divCardId === 'Nature') {
       let card = new Card();
-      card.iterateArrCard(cards, 4, row);
+      card.iterateArrCardPlay(cards, 4, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
     if (divCardId === 'Tales') {
       let card = new Card();
-      card.iterateArrCard(cards, 5, row);
+      card.iterateArrCardPlay(cards, 5, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
 
     if (divCardId === 'Toys') {
       let card = new Card();
-      card.iterateArrCard(cards, 6, row);
+      card.iterateArrCardPlay(cards, 6, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
 
     if (divCardId === 'Vegetables') {
       let card = new Card();
-      card.iterateArrCard(cards, 7, row);
+      card.iterateArrCardPlay(cards, 7, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
   }
 
