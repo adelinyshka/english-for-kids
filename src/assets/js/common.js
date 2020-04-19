@@ -5,12 +5,10 @@ window.addEventListener('load', function () {
 });
 
 function initFunctions() {
-  alerting(
-    'Прошу вас проверить работу не раньше' +
-      ' субботы 25 апреля, пожалуйста,' +
-      ' пока что не все успела сделать. Спасибо! Если' +
-      ' можете, то оставьте свои контакты, пожалуйста.',
-  );
+  // alerting('Прошу вас проверить работу не раньше' +
+  //   ' субботы 25 апреля, пожалуйста,' +
+  //   ' пока что не все успела сделать. Спасибо! Если' +
+  //   ' можете, то оставьте свои контакты, пожалуйста.');
   changeLayoutByClickCheckbox();
   toggleMenu();
   createMenu();
@@ -312,10 +310,14 @@ function flipCard(a) {
 
 function createPageInsideCategory(divCardId, whereToPut) {
   const cardBlock = document.createElement('div');
-
   const row = document.createElement('div');
+  const title = document.createElement('h3');
+
+  title.innerText = divCardId;
   cardBlock.classList.add('d-block');
+  cardBlock.append(title);
   row.classList.add('row');
+
   if (checker.checked === true) {
     row.id = `inside${divCardId}Train`;
 

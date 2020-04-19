@@ -2,23 +2,22 @@ extends site_blocks/template/template
 include site_blocks/card/card
 
 block content
-	include site_blocks/header/header
+	div#containerApp
+		include site_blocks/header/header
 
-	div#container
-		div
-			.row.special-row
+		div#container
+			div
+				.row.special-row
 
-		div#trainPage.d-none
-			.container-fluid
-				h1 Im TrainPage
-				.row#rowWithCardsCategoryForTrain
-
+			div#trainPage.d-none
+				.container-fluid
+					.row#rowWithCardsCategoryForTrain
 
 
-		div#playPage.d-none
-			.container-fluid
-				h1 Im Play Page
-				.row#rowWithCardsCategoryForPlay
+
+			div#playPage.d-none
+				.container-fluid
+					.row#rowWithCardsCategoryForPlay
 
 
 
