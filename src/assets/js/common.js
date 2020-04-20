@@ -1,15 +1,15 @@
 import cards from './wordsData';
 import categoryData from './categoryData';
 import Card from './Card';
-// import { makeBlur, ask} from './preloader';
+import { makeBlur, ask } from './preloader';
 
 window.addEventListener('load', function () {
   initFunctions();
 });
 
 function initFunctions() {
-  // makeBlur();
-  // ask();
+  makeBlur();
+  ask();
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
@@ -147,36 +147,41 @@ createCategories(
 function moveInsideCategory(fromWhere, toWhere) {
   fromWhere.addEventListener('click', function (e) {
     let divCard = e.target.closest('.card');
+
     if (e.target.closest('.card') === divCard) {
       fromWhere.classList.add('d-none');
+
       createPageInsideCategory(divCard.id, toWhere);
-
-      const cardsClicked = Array.from(document.querySelectorAll('.scene'));
-
-      cardsClicked.forEach((element) => {
-        const btnInCard = element.querySelector('a.btn-turn');
-        const cardFace = element.querySelector('.card');
-        const audio = element.querySelector('audio');
-
-        element.addEventListener('click', function (e) {
-          e.preventDefault();
-          if (e.target === btnInCard) {
-            cardFace.classList.add('is-flipped');
-          } else audio.play();
-        });
-
-        cardFace.addEventListener('mouseleave', function (e) {
-          if (e.target.classList.contains('is-flipped')) {
-            cardFace.classList.remove('is-flipped');
-          }
-        });
-      });
+      turnOrAudioOnClick();
     }
   });
 }
 
 moveInsideCategory(rowWithCardsCategoryForTrain, trainPage);
 moveInsideCategory(rowWithCardsCategoryForPlay, playPage);
+
+function turnOrAudioOnClick() {
+  const cardsClicked = Array.from(document.querySelectorAll('.scene'));
+
+  cardsClicked.forEach((element) => {
+    const btnInCard = element.querySelector('a.btn-turn');
+    const cardFace = element.querySelector('.card');
+    const audio = element.querySelector('audio');
+
+    element.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (e.target === btnInCard) {
+        cardFace.classList.add('is-flipped');
+      } else audio.play();
+    });
+
+    cardFace.addEventListener('mouseleave', function (e) {
+      if (e.target.classList.contains('is-flipped')) {
+        cardFace.classList.remove('is-flipped');
+      }
+    });
+  });
+}
 
 //поворот карточки(не работает для нескольких)
 // todo сделать поворот карточки
