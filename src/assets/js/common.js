@@ -1,36 +1,18 @@
 import cards from './wordsData';
 import categoryData from './categoryData';
 import Card from './Card';
+// import { makeBlur, ask} from './preloader';
 
 window.addEventListener('load', function () {
   initFunctions();
 });
 
 function initFunctions() {
-  makeBlur();
-  ask();
+  // makeBlur();
+  // ask();
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
-}
-const preloader = document.querySelector('.preloader');
-const app = document.querySelector('#containerApp');
-
-function makeBlur() {
-  app.classList.add('wrapper-blur');
-}
-
-function ask() {
-  document.body.addEventListener('click', function (e) {
-    if (e.target.closest('.btn.btn-danger')) {
-      app.classList.remove('wrapper-blur');
-      preloader.style.display = 'none';
-    }
-  });
-}
-
-function alerting(text) {
-  // alert(text);
 }
 
 const container = document.querySelector('#containerApp');
@@ -39,7 +21,6 @@ const playPage = document.querySelector('#playPage');
 const checker = document.querySelector('#switcher');
 const rowWithCardsCategoryForTrain = document.querySelector('#rowWithCardsCategoryForTrain');
 const rowWithCardsCategoryForPlay = document.querySelector('#rowWithCardsCategoryForPlay');
-const animalCategory = document.querySelector('#insideCategoryAnimals');
 const rowWithAllCards = document.querySelector('.special-row');
 
 //====== создание гамбургера меню
@@ -162,15 +143,33 @@ createCategories(
 );
 
 //====== переключение режима ВНУТРИ категории
-// todo ошибка внутри функции - все исчезает по клику вне карточки!
 
 function moveInsideCategory(fromWhere, toWhere) {
   fromWhere.addEventListener('click', function (e) {
     let divCard = e.target.closest('.card');
-    console.log(divCard);
     if (e.target.closest('.card') === divCard) {
       fromWhere.classList.add('d-none');
       createPageInsideCategory(divCard.id, toWhere);
+
+      const cardsClicked = Array.from(document.querySelectorAll('.scene'));
+
+      cardsClicked.forEach((element) => {
+        const btnInCard = element.querySelector('a.btn-turn');
+        const cardFace = element.querySelector('.card');
+        const audio = element.querySelector('audio');
+
+        element.addEventListener('click', function (e) {
+          if (e.target === btnInCard) {
+            cardFace.classList.add('is-flipped');
+          } else audio.play();
+        });
+
+        cardFace.addEventListener('mouseleave', function (e) {
+          if (e.target.classList.contains('is-flipped')) {
+            cardFace.classList.remove('is-flipped');
+          }
+        });
+      });
     }
   });
 }
@@ -181,25 +180,20 @@ moveInsideCategory(rowWithCardsCategoryForPlay, playPage);
 //поворот карточки(не работает для нескольких)
 // todo сделать поворот карточки
 
-//поворот карточки(не работает для нескольких)
-// todo сделать поворот карточки
+// rowWithAllCards.addEventListener('click', function (e) {
+//   let btn = e.target.closest('a.btn-turn');
+//
+//   if (e.target === btn) {
+//     cardClicked.classList.add('is-flipped');
+//   }
+//   // else audio.play();
+// });
 
-const cardClicked = document.querySelector('.card');
-
-rowWithAllCards.addEventListener('click', function (e) {
-  let btn = e.target.closest('a.btn-turn');
-
-  if (e.target === btn) {
-    cardClicked.classList.add('is-flipped');
-  }
-  // else audio.play();
-});
-
-cardClicked.addEventListener('mouseleave', function (e) {
-  if (e.target.classList.contains('is-flipped')) {
-    cardClicked.classList.remove('is-flipped');
-  }
-});
+// cardClicked.addEventListener('mouseleave', function (e) {
+//   if (e.target.classList.contains('is-flipped')) {
+//     cardClicked.classList.remove('is-flipped');
+//   }
+// });
 
 const containerItem = document.querySelectorAll('.scene .card');
 // console.log(containerItem);
