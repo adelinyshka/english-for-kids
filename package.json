@@ -9,16 +9,17 @@
     "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
     "build": "webpack --config ./build/webpack.build.conf.js",
     "prettier": "prettier --write src/**/*.js",
-    "lint": "eslint --debug src/",
-    "lint:write": "eslint --debug src/ --fix"
+    "fix": "eslint --debug src/**/*.js --fix",
+    "test": "yarn run eslint"
   },
   "dependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "all": "^0.0.0",
     "analyzer": "^1.2.1",
     "autoprefixer": "^9.5.0",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.1.0",
     "bootstrap": "4.3.1",
     "browserslist": "4.6.2",
     "caniuse-lite": "1.0.30000974",
@@ -42,7 +43,6 @@
     "jslint": "^0.12.1",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.13.1",
-    "owl.carousel": "^2.3.4",
     "path": "^0.12.7",
     "popper.js": "^1.15.0",
     "postcss": "^7.0.14",
@@ -57,10 +57,8 @@
     "punycode": "^2.1.1",
     "runtime": "^0.14.1",
     "sass-loader": "^7.1.0",
-    "slick-carousel": "^1.8.1",
     "style-loader": "^0.23.1",
-    "vue": "^2.6.8",
-    "webpack": "^4.29.6",
+    "webpack": "^4.42.1",
     "webpack-bundle-analyzer": "^3.1.0",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
@@ -69,6 +67,7 @@
     "webpack-stream": "^5.2.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "browserslist": "4.6.2",
     "prettier": "^2.0.4",
     "pug-loader": "^2.4.0"
