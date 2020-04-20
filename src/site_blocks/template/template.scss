@@ -17,6 +17,27 @@ body {
   //padding-left: 200px;
 }
 
-.preloader {
+.wrapper-blur {
   position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: -30px;
+  filter: blur(10px);
+  z-index: 10;
+}
+
+.preloader {
+  border-radius: 16px;
+  box-shadow: 20px 20px 20px grey;
+  width: 95%;
+  height: 100%;
+  background: white;
+  padding: 30px;
+  text-align: center;
+  z-index: 999;
+}
+
+.btn.btn-danger {
+  cursor: pointer;
+  max-height: 40px;
 }

@@ -7,15 +7,26 @@ window.addEventListener('load', function () {
 });
 
 function initFunctions() {
-  alerting(
-    'Прошу вас проверить работу не раньше' +
-      ' субботы 25 апреля, пожалуйста,' +
-      ' пока что не все успела сделать. Спасибо! Если' +
-      ' можете, то оставьте свои контакты, пожалуйста.',
-  );
+  makeBlur();
+  ask();
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
+}
+const preloader = document.querySelector('.preloader');
+const app = document.querySelector('#containerApp');
+
+function makeBlur() {
+  app.classList.add('wrapper-blur');
+}
+
+function ask() {
+  document.body.addEventListener('click', function (e) {
+    if (e.target.closest('.btn.btn-danger')) {
+      app.classList.remove('wrapper-blur');
+      preloader.style.display = 'none';
+    }
+  });
 }
 
 function alerting(text) {
@@ -58,7 +69,6 @@ function toggleMenu() {
   container.addEventListener('click', function (e) {
     if (e.target === hamburgerIcon) {
       pageMenu.classList.toggle('d-none');
-      console.log('yyyy');
     } else {
       pageMenu.classList.add('d-none');
     }
