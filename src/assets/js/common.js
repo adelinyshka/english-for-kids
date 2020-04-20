@@ -111,7 +111,7 @@ function createCategories(arr, where, bgColor, color) {
     cardElement.innerHTML =
       `<div class="card category-card" 
         style="background:${bgColor};
-        width: 13rem; height: 200px;margin:10px;border:8px solid white;
+        width: 13rem; height: 200px;margin:10px;border:4px solid white;
         border-radius: 8px; color:${color}" 
         id=${card.word}>` +
       `<div class="card-face"><img class="card-img-top"` +
@@ -183,68 +183,31 @@ function turnOrAudioOnClick() {
   });
 }
 
-//поворот карточки(не работает для нескольких)
-// todo сделать поворот карточки
-
-// rowWithAllCards.addEventListener('click', function (e) {
-//   let btn = e.target.closest('a.btn-turn');
-//
-//   if (e.target === btn) {
-//     cardClicked.classList.add('is-flipped');
-//   }
-//   // else audio.play();
-// });
-
-// cardClicked.addEventListener('mouseleave', function (e) {
-//   if (e.target.classList.contains('is-flipped')) {
-//     cardClicked.classList.remove('is-flipped');
-//   }
-// });
-
 const containerItem = document.querySelectorAll('.scene .card');
-// console.log(containerItem);
+
 const rotate = document.querySelectorAll('a.btn-turn');
 
 containerItem.forEach((a) => a.addEventListener('click', flipCard));
-
-function flipCard(a) {
-  console.log(rotate(a));
-  // rotate[+a.target];
-  console.log(a.target);
-}
-
-// let btn = document.querySelectorAll('a.btn-turn');
-// btn.forEach((a) => a.addEventListener('click',  turnCard))
-// function turnCard(a) {
-//   a.target.closest(cardClicked).classList.add('is-flipped');
-// }
-
-// let containerItem = document.querySelectorAll('.container__item');
-// let rotate = document.querySelectorAll('.rotate');
-
-// rotate.forEach((a) => a.addEventListener('click', flipCard));
-//
-// function flipCard(a) {
-//   cardClicked[+a.target].classList.add('is-flipped');
-// }
-
-// cardClicked.addEventListener('mouseleave', function (e) {
-//   if (e.target.classList.contains('is-flipped')) {
-//     cardClicked.classList.remove('is-flipped');
-//   }
-// });
 
 //====== создание страницы  внутри категории
 
 function createPageInsideCategory(divCardId, whereToPut) {
   const cardBlock = document.createElement('div');
   const row = document.createElement('div');
+  const secondRow = document.createElement('div');
   const title = document.createElement('h3');
+  const btnPlay = document.createElement('button');
+  btnPlay.innerHTML = 'Start Game';
+  btnPlay.style.width = '200px';
+  btnPlay.classList.add('btn', 'btn-play');
 
+  title.classList.add('text-center');
+  title.style.letterSpacing = '2px';
   title.innerText = divCardId;
   cardBlock.classList.add('d-block');
   cardBlock.append(title);
   row.classList.add('row');
+  secondRow.classList.add('col-12', 'd-flex', 'justify-content-center');
 
   if (checker.checked === true) {
     row.id = `inside${divCardId}Train`;
@@ -328,6 +291,8 @@ function createPageInsideCategory(divCardId, whereToPut) {
       let card = new Card();
       card.iterateArrCardPlay(cards, 7, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
+    row.append(secondRow);
+    secondRow.append(btnPlay);
   }
 
   cardBlock.append(row);

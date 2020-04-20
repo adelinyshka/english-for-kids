@@ -14,6 +14,8 @@
   height: 100%;
   justify-content: center;
   display: flex;
+  border: 2px solid white;
+  border-radius: 20px;
 }
 
 .card-face {
@@ -35,12 +37,14 @@
 }
 
 .card-face.front {
-  background: wheat;
+  //background: wheat;
+  border-radius: 20px;
 }
 
 .card-face.back {
   transform: rotateY(180deg);
-  background: pink;
+  background: #f4ba49;
+  border-radius: 20px;
 }
 
 .card.is-flipped {
@@ -51,6 +55,8 @@
   font-size: 30px;
   padding: 5px;
   width: 70px;
+  border-radius: 20%;
+  border: 2px solid white;
 }
 
 //------- category card
@@ -73,4 +79,8 @@
 
 .category-card .card-face {
   padding: 20px;
+}
+
+.card-img-top {
+  border-radius: 18px;
 }

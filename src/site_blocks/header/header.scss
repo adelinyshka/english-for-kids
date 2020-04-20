@@ -1,6 +1,3 @@
-header {
-}
-
 nav {
   position: relative;
 }
@@ -71,34 +68,15 @@ header nav a.hamburger {
 
     z-index: 2;
   }
-
-  //& span:last-child {
-  //  width: 6px;
-  //  height: 161px;
-  //  display: inline-block;
-  //  background: blue;
-  //  position: absolute;
-  //  bottom: -184px;
-  //  right: 210px;
-  //  }
 }
 
 @keyframes hello {
   from {
     left: -270px;
   }
-  //50% {  left: -376px;}
   to {
     left: -176px;
   }
-}
-
-//todo сделать анимацию для выезда и закрытия меню
-//todo сделать меню шариком
-@keyframes slow-slide-from-left {
-}
-
-.switch {
 }
 
 ul.page-menu li a {

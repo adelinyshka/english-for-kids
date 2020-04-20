@@ -41,9 +41,9 @@ class Card {
                       <h5 class="card-title front">${wordEn}</h5>
                       <a class="btn-turn btn btn-warning" href="#" data-button="data-button">&curarr;</a></div>
               </div>
-              <div class="card-face back"><img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordRu}" style="width:50%;" />
+              <div class="card-face back"><img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordRu}" style="width:100%;" />
                   <div class="card-body">
-                      <h5 class="card-title back">${wordRu}</h5>
+                      <h3 class="card-title back" style="display:inline;vertical-align:bottom">${wordRu}</h3>
                   </div>
               </div>
           </div>
