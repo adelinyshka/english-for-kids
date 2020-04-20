@@ -159,6 +159,7 @@ function moveInsideCategory(fromWhere, toWhere) {
         const audio = element.querySelector('audio');
 
         element.addEventListener('click', function (e) {
+          e.preventDefault();
           if (e.target === btnInCard) {
             cardFace.classList.add('is-flipped');
           } else audio.play();
