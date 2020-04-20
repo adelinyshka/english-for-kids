@@ -30,11 +30,12 @@ body {
   border-radius: 16px;
   box-shadow: 20px 20px 20px grey;
   width: 95%;
-  height: 100%;
-  background: white;
+  height: max-content;
+  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
   padding: 30px;
   text-align: center;
   z-index: 999;
+  position: absolute;
 }
 
 .btn.btn-danger {
