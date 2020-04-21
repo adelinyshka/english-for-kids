@@ -13,26 +13,38 @@ function initFunctions() {
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
+  changeMenuBg('trainColor');
 }
 
 const container = document.querySelector('#containerApp');
+
 const trainPage = document.querySelector('#trainPage');
 const playPage = document.querySelector('#playPage');
 const checker = document.querySelector('#switcher');
 const rowWithCardsCategoryForTrain = document.querySelector('#rowWithCardsCategoryForTrain');
 const rowWithCardsCategoryForPlay = document.querySelector('#rowWithCardsCategoryForPlay');
-const rowWithAllCards = document.querySelector('.special-row');
 
 //====== создание гамбургера меню
 
 const pageMenu = document.querySelector('ul.page-menu');
+const spanPageMenu = document.querySelector('nav span');
 const firstLi = document.createElement('li');
 const firstA = document.createElement('a');
+firstLi.classList.add('p-1');
 firstLi.append(firstA);
 firstA.innerHTML = 'Main menu';
 pageMenu.append(firstLi);
 
 //генерация списка меню
+function changeMenuBg(colorClass) {
+  if (checker.checked) {
+    pageMenu.classList.add(colorClass);
+  }
+  if (!checker.checked) {
+    pageMenu.classList.remove(colorClass);
+  }
+}
+
 function createMenu() {
   categoryData.forEach((item) => {
     const menuList = document.createElement('li');
@@ -42,6 +54,57 @@ function createMenu() {
     menuListLink.innerText = item.word;
     pageMenu.append(menuList);
   });
+
+  const menuLinks = Array.from(pageMenu.querySelectorAll('li a'));
+  console.log(menuLinks);
+
+  //пееходы по кликам
+  menuLinks.forEach((item) => {
+    item.addEventListener('click', function (e) {
+      if (checker.checked) {
+        if (e.target.textContent === 'Main menu') {
+          cleanTrainPage();
+          createEnviromentForCategories(trainPage, rowWithCardsCategoryForTrain);
+          hideMenu();
+        } else {
+          cleanTrainPage();
+          createPageInsideCategory(e.target.textContent, trainPage);
+          turnOrAudioOnClick();
+        }
+      }
+
+      if (!checker.checked) {
+        if (e.target.textContent === 'Main menu') {
+          cleanPlayPage();
+          createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
+          hideMenu();
+        } else {
+          cleanPlayPage();
+          createPageInsideCategory(e.target.textContent, playPage);
+        }
+      }
+    });
+  });
+}
+
+function hideMenu() {
+  pageMenu.classList.add('d-none');
+}
+
+function cleanTrainPage() {
+  trainPage.innerHTML = '';
+}
+
+function cleanPlayPage() {
+  playPage.innerHTML = '';
+}
+
+function createEnviromentForCategories(what, whereToAdd) {
+  const containerFluid = document.createElement('div');
+  containerFluid.classList.add('container-fluid');
+  what.append(containerFluid);
+  whereToAdd.classList.remove('d-none');
+  containerFluid.append(whereToAdd);
 }
 
 function toggleMenu() {
@@ -74,8 +137,12 @@ function showPlayPage() {
 
 window.addEventListener('load', function () {
   if (checker.checked) {
+    changeMenuBg('trainColor');
+    creatCategoryForTrain();
     showTrainPage();
   } else {
+    changeMenuBg('trainColor');
+    creatCategoryForPlay();
     showPlayPage();
   }
 });
@@ -84,12 +151,17 @@ window.addEventListener('load', function () {
 
 function changeLayoutByClickCheckbox() {
   document.addEventListener('change', function () {
-    //train
     if (checker.checked) {
+      // creatCategoryForTrain();
+      changeMenuBg('trainColor');
+      creatCategoryForTrain();
       showTrainPage();
     }
-    //play
     if (!checker.checked) {
+      changeMenuBg('trainColor');
+
+      // creatCategoryForPlay();
+      creatCategoryForPlay();
       showPlayPage();
     }
   });
@@ -128,30 +200,31 @@ function createCategories(arr, where, bgColor, color) {
 
 //====== смена цвета в зависимости от режима приложения
 
-createCategories(
-  categoryData,
-  rowWithCardsCategoryForTrain,
-  ' linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);',
-  'black',
-);
-createCategories(
-  categoryData,
-  rowWithCardsCategoryForPlay,
-  'linear-gradient(to top, #4fb576 0%, #44c489 30%, #28a9ae 46%, #28a2b7' +
-    ' 59%, #4c7788 71%, #6c4f63 86%, #432c39 100%);',
-  'white',
-);
+function creatCategoryForTrain() {
+  createCategories(
+    categoryData,
+    rowWithCardsCategoryForTrain,
+    ' linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);',
+    'black',
+  );
+}
+function creatCategoryForPlay() {
+  createCategories(
+    categoryData,
+    rowWithCardsCategoryForPlay,
+    'linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);',
+    'white',
+  );
+}
 
 //====== переключение режима ВНУТРИ категории
 
 function moveInsideCategory(fromWhere, toWhere) {
   fromWhere.addEventListener('click', function (e) {
-    let divCard = e.target.closest('.card');
-
-    if (e.target.closest('.card') === divCard) {
+    if (e.target.closest('.card')) {
       fromWhere.classList.add('d-none');
 
-      createPageInsideCategory(divCard.id, toWhere);
+      createPageInsideCategory(e.target.closest('.card').id, toWhere);
       turnOrAudioOnClick();
     }
   });
@@ -185,8 +258,6 @@ function turnOrAudioOnClick() {
 
 const containerItem = document.querySelectorAll('.scene .card');
 
-const rotate = document.querySelectorAll('a.btn-turn');
-
 containerItem.forEach((a) => a.addEventListener('click', flipCard));
 
 //====== создание страницы  внутри категории
@@ -197,6 +268,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
   const secondRow = document.createElement('div');
   const title = document.createElement('h3');
   const btnPlay = document.createElement('button');
+
   btnPlay.innerHTML = 'Start Game';
   btnPlay.style.width = '200px';
   btnPlay.classList.add('btn', 'btn-play');
@@ -220,7 +292,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
 
     if (divCardId === 'Dishes') {
       let card = new Card();
-      card.iterateArrCard(cards, 1, row), 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);';
+      card.iterateArrCard(cards, 1, row, 'linear-gradient(to top, #fff1eb' + ' 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'Fruits') {
@@ -253,7 +325,6 @@ function createPageInsideCategory(divCardId, whereToPut) {
   }
 
   if (checker.checked !== true) {
-    const title = document.querySelector('#container .container-fluid > h1');
     row.id = `inside${divCardId}Play`;
     if (divCardId === 'Animals') {
       let card = new Card();
@@ -299,46 +370,15 @@ function createPageInsideCategory(divCardId, whereToPut) {
   whereToPut.append(cardBlock);
 }
 
-//создание ряда для карточек в заивисмости от их ID и категории
+function moveInsideCategoryByClick() {
+  fromWhere.addEventListener('click', function (e) {
+    let divCard = e.target.closest('.card');
 
-// function generateRowId(categoryId) {
-//   if (checker.checked === true) { return`inside${categoryId}Train`; }
-//   if (checker.checked !== true) { return`inside${categoryId}Play`; }
-// }
+    if (e.target.closest('.card') === divCard) {
+      fromWhere.classList.add('d-none');
 
-//возврат индекса(не используется, но потом пригодится)
-// function givIndex(parent, child) {
-//   return [].indexOf.call(parent, child);
-// }
-
-// попытка сделать по клику на меню - вывод карточек(в процессе)
-
-// let body = document.body;
-
-// function clickOnMenu() {
-//   pageMenu.addEventListener('click', function (e) {
-//     let insideLink = e.target.closest('a').innerHTML;
-//     console.log(insideLink);
-//     if (checker.checked === true) {
-//       moveInsideCategoryFromMenu(body,rowWithCardsCategoryForTrain)
-//
-//     } else {
-//       moveInsideCategory(rowWithCardsCategoryForPlay, playPage);
-//       createPageInsideCategory(insideLink, rowWithCardsCategoryForPlay);
-//
-//     }
-//   });
-// }
-
-// function moveInsideCategoryFromMenu() {
-//   body.addEventListener('click', function (e) {
-//     let divCard = e.target.closest('#container');
-//     console.log(divCard);
-//   });
-
-// fromWhere.addEventListener('click', function (e) {
-//   let divCard = e.target.closest('.card');
-//   fromWhere.classList.add('d-none');
-//   createPageInsideCategory(divCard.id, toWhere);
-// });
-// }
+      createPageInsideCategory(divCard.id, toWhere);
+      turnOrAudioOnClick();
+    }
+  });
+}

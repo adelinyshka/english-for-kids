@@ -38,7 +38,7 @@ header nav a.hamburger {
 .page-menu {
   position: absolute;
   z-index: 5;
-  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
   border-radius: 79%;
   left: -176px;
   padding: 110px 20px 20px 175px;
@@ -48,14 +48,11 @@ header nav a.hamburger {
   color: white;
   animation: hello 0.5s linear;
 
-  & span:first-child {
+  & span {
     display: inline-block;
-    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
-
+    background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
     position: absolute;
-
     width: 100px;
-
     height: 100px;
 
     bottom: -95px;
@@ -90,5 +87,40 @@ ul.page-menu li a {
     color: grey;
     text-decoration: none;
     outline: none;
+  }
+}
+
+.wrapper-blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: -30px;
+  filter: blur(10px);
+  z-index: 10;
+}
+
+.preloader {
+  border-radius: 16px;
+  box-shadow: 20px 20px 20px grey;
+  width: 95%;
+  height: max-content;
+  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+  padding: 30px;
+  text-align: center;
+  z-index: 999;
+  position: absolute;
+}
+
+.btn.btn-danger {
+  cursor: pointer;
+  max-height: 40px;
+}
+
+.trainColor {
+  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+  color: black;
+
+  & span {
+    background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
   }
 }
