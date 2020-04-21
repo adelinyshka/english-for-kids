@@ -3,17 +3,18 @@ import categoryData from './categoryData';
 import Card from './Card';
 import { makeBlur, ask } from './preloader';
 
+// todo при определенных действиях 2 раза подгружаютс] категории
+
 window.addEventListener('load', function () {
   initFunctions();
 });
 
 function initFunctions() {
-  makeBlur();
-  ask();
+  // makeBlur();
+  // ask();
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
-  changeMenuBg('trainColor');
 }
 
 const container = document.querySelector('#containerApp');
@@ -27,7 +28,6 @@ const rowWithCardsCategoryForPlay = document.querySelector('#rowWithCardsCategor
 //====== создание гамбургера меню
 
 const pageMenu = document.querySelector('ul.page-menu');
-const spanPageMenu = document.querySelector('nav span');
 const firstLi = document.createElement('li');
 const firstA = document.createElement('a');
 firstLi.classList.add('p-1');
@@ -222,10 +222,15 @@ function creatCategoryForPlay() {
 function moveInsideCategory(fromWhere, toWhere) {
   fromWhere.addEventListener('click', function (e) {
     if (e.target.closest('.card')) {
-      fromWhere.classList.add('d-none');
+      if (checker.checked) {
+        fromWhere.classList.add('d-none');
 
-      createPageInsideCategory(e.target.closest('.card').id, toWhere);
-      turnOrAudioOnClick();
+        createPageInsideCategory(e.target.closest('.card').id, toWhere);
+        turnOrAudioOnClick();
+      } else {
+        fromWhere.classList.add('d-none');
+        createPageInsideCategory(e.target.closest('.card').id, toWhere);
+      }
     }
   });
 }
@@ -370,15 +375,15 @@ function createPageInsideCategory(divCardId, whereToPut) {
   whereToPut.append(cardBlock);
 }
 
-function moveInsideCategoryByClick() {
-  fromWhere.addEventListener('click', function (e) {
-    let divCard = e.target.closest('.card');
-
-    if (e.target.closest('.card') === divCard) {
-      fromWhere.classList.add('d-none');
-
-      createPageInsideCategory(divCard.id, toWhere);
-      turnOrAudioOnClick();
-    }
-  });
-}
+// function moveInsideCategoryByClick() {
+//   fromWhere.addEventListener('click', function (e) {
+//     let divCard = e.target.closest('.card');
+//
+//     if (e.target.closest('.card') === divCard) {
+//       fromWhere.classList.add('d-none');
+//
+//       createPageInsideCategory(divCard.id, toWhere);
+//       turnOrAudioOnClick();
+//     }
+//   });
+// }
