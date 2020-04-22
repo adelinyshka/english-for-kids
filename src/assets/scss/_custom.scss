@@ -7,10 +7,9 @@
   padding-right: 3rem;
 }
 
-//todo сделать курсор картинкой
 .custom-control-label::before,
 .custom-control-label::after {
-  cursor: url('./../../assets/img/cursor.gif'), pointer;
+  cursor: pointer;
 }
 
 .custom-control-label {

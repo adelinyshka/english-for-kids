@@ -3,15 +3,13 @@ import categoryData from './categoryData';
 import Card from './Card';
 import { makeBlur, ask } from './preloader';
 
-// todo при определенных действиях 2 раза подгружаются категории
-
 window.addEventListener('load', function () {
   initFunctions();
 });
 
 function initFunctions() {
-  // makeBlur();
-  // ask();
+  makeBlur();
+  ask();
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
@@ -140,7 +138,7 @@ window.addEventListener('load', function () {
     creatCategoryForTrain();
     showTrainPage();
   } else {
-    changeMenuBg('trainColor');
+    changeMenuBg('playColor');
     creatCategoryForPlay();
     showPlayPage();
   }
@@ -156,15 +154,17 @@ function changeLayoutByClickCheckbox() {
         creatCategoryForTrain();
         showTrainPage();
       } else {
+        changeMenuBg('trainColor');
         showTrainPage();
       }
     }
     if (!checker.checked) {
       if (rowWithCardsCategoryForPlay.innerHTML === '') {
-        changeMenuBg('trainColor');
+        changeMenuBg('playColor');
         creatCategoryForPlay();
         showPlayPage();
       } else {
+        changeMenuBg('playColor');
         showPlayPage();
       }
     }
@@ -191,7 +191,7 @@ function createCategories(arr, where, bgColor, color) {
         border-radius: 8px; color:${color}" 
         id=${card.word}>` +
       `<div class="card-face"><img class="card-img-top"` +
-      ` src="${card.pic}" alt="..." style="width:40%;"` +
+      ` src="${card.pic}" alt="..." style="width:70%;"` +
       `        <div class="card-body">` +
       `           <h5 class="card-title front">${card.word}</h5>` +
       `        </div>` +
@@ -345,7 +345,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
       let card = new Card();
       card.iterateArrCard(cards, 4, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
-    if (divCardId === 'Tales') {
+    if (divCardId === 'Clothes') {
       let card = new Card();
       card.iterateArrCard(cards, 5, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
@@ -387,7 +387,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
       let card = new Card();
       card.iterateArrCardPlay(cards, 4, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
-    if (divCardId === 'Tales') {
+    if (divCardId === 'Clothes') {
       let card = new Card();
       card.iterateArrCardPlay(cards, 5, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
@@ -512,9 +512,14 @@ function initGame() {
             setTimeout(function () {
               cleanAnswerRow();
               giveResult();
-            }, 2000);
+            }, 1000);
             btnPlay.innerHTML = 'Start Game';
             btnPlay.classList.remove('round-btn');
+
+            setTimeout(function () {
+              starYes = 0;
+              starNo = 0;
+            }, 10000);
           } else {
             setTimeout(playOnce, 600);
           }

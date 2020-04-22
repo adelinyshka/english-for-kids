@@ -5,32 +5,33 @@ const categoryData = [
   },
   {
     word: 'Dishes',
-    pic: './assets/img/dishes-1.png',
+    pic: './assets/img/dishes.png',
   },
   {
     word: 'Fruits',
-    pic: './assets/img/fruits2.png',
+    pic: './assets/img/fruits.png',
   },
   {
     word: 'House',
-    pic: './assets/img/house-1.png',
+    pic: './assets/img/house.png',
   },
   {
     word: 'Nature',
-    pic: './assets/img/nature-1.png',
+    pic: './assets/img/nature.png',
   },
   {
-    word: 'Tales',
-    pic: './assets/img/tales-1.png',
+    word: 'Clothes',
+    pic: './assets/img/clothes.png',
   },
   {
     word: 'Toys',
-    pic: './assets/img/toys-1.png',
+    pic: './assets/img/toys.png',
   },
   {
     word: 'Vegetables',
-    pic: './assets/img/vegetables2.png',
+    pic: './assets/img/vegetables.png',
   },
 ];
 
 export default categoryData;
+// todo заменить картинку категории одежды
