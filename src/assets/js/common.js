@@ -396,178 +396,66 @@ function returnIdFromAudio(word) {
   return word.slice(8);
 }
 
-const playYes = playPage.querySelector('#yes');
-const playNo = playPage.querySelector('#no');
+const audioYes = playPage.querySelector('#yes');
+const audioNo = playPage.querySelector('#no');
 
-function playYesF() {
-  playYes.play();
+function playYes() {
+  audioYes.play();
 }
 
-function playNoF() {
-  playNo.play();
+function playNo() {
+  audioNo.play();
 }
-//
-// function minusOne(arr) {
-//   arr.pop();
-// }
-
-// function startGame() {
-//   const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
-//
-//   console.log(containerCards);
-
-// function setArr() {
-//   minusOne(containerCards)
-// }
-//
-// function timeoutForArr(){
-//   setTimeout(setArr,1000)
-// }
 
 function recievePushStar() {}
 
-function createFullStar() {}
+function createFullStar() {
+  let star = document.createElement('div');
+}
 
 function createEmptyStar() {}
-//
-//   btnPlay.addEventListener('click', function (e) {
-//     e.stopPropagation();
-//
-//     if (btnPlay.innerHTML !== 'Repeat') {
-//       btnPlay.innerHTML = 'Repeat';
-//       shuffle(containerCards);
-//       containerCards[containerCards.length - 1].play();
-//     } else {
-//
-//       playPage.addEventListener('click', function (e) {
-//         // e.stopPropagation();
-//         if (e.target.alt === returnIdFromAudio(containerCards[containerCards.length - 1].id)) {
-//           e.stopPropagation();
-//           playYesF();
-//           e.target.style.opacity = '0.5';
-//           containerCards.pop();
-//           console.log(containerCards);
-//         }
-//         if (e.target.alt === undefined) {
-//           return;
-//         }
-//         if (returnIdFromAudio(containerCards[containerCards.length - 1].id) !== e.target.alt) {
-//           playNoF();
-//           console.log('no');
-//         }
-//         if (containerCards[containerCards.length - 1] === []) {
-//           console.log('finish items');
-//         } else {
-//           console.log(e.target.alt + ' boooo');
-//         }
-//
-//         // containerCards[containerCards.length - 1].play();
-//       });
-//
-//     }
-//
-//
-//     containerCards[containerCards.length - 1].play();
-//   });
-// }
-//
-// playPage.addEventListener('load', function (e) {
-//   const playButton = playPage.querySelector('button.btn-play');
-//
-//   playButton.addEventListener('click', function () {
-//     playButton.innerHTML = 'Repeat';
-//     shuffle(what);
-//     what[what.length - 1].play();
-//     console.log('btn pressed');
-//   });
-//
-//   // console.log('hhhh');
-//   if (e.target) {
-//     console.log(e.target);
-//   }
-//   // console.log(playButton.innerText);
-//   // if(playButton.innerText === 'Start Game') {
-//
-//   // }
-// });
-//
-// function pressButton(what) {
-//   const playButton = playPage.querySelector('button.btn-play');
-//
-//   playButton.addEventListener('click', function () {
-//     playButton.innerHTML = 'Repeat';
-//     shuffle(what);
-//     what[what.length - 1].play();
-//   });
-// }
-//
-// const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
-//
-// function startGame() {
-//
-//
-//   const playButton = document.querySelector('button.btn-play');
-//
-//
-//       playPage.addEventListener('click', function (e) {
-//
-//         //обработка клика по кнопке
-//         if(e.target === playButton)   {
-//           if (playButton.innerHTML !== 'Repeat') {
-//             playButton.innerHTML = 'Repeat';
-//             shuffle(containerCards);
-//             containerCards[(containerCards.length - 1)].play();
-//           }
-//           if (playButton.innerHTML === 'Repeat') {
-//             containerCards[(containerCards.length - 1)].play();
-//           }
-//         }
-//
-//         if (e.target.alt === returnIdFromAudio(containerCards[containerCards.length - 1].id)) {
-//           e.target.style.opacity = '0.5';
-//           playYesF();
-//           console.log('yes');
-//           // console.log('push star =)')
-//         }
-//
-//         if (containerCards[containerCards.length - 1].id === undefined) {
-//           console.log('finish game');
-//         }
-//
-//         if (e.target.alt !== returnIdFromAudio(containerCards[containerCards.length-1].id)) {
-//           // playNoF();
-//
-//         }
-//         // containerCards.pop();
-//       });
-// }
-//
 
 function initGame() {
   btnPlay.addEventListener('click', function (e) {
     e.stopPropagation();
     const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
+
+    function playOnce() {
+      containerCards[containerCards.length - 1].play();
+    }
+
+    function deleteOne() {
+      containerCards.pop();
+    }
+
+    // todo заменить на иконку повтора
     btnPlay.innerHTML = 'clicked';
     shuffle(containerCards);
-    containerCards[containerCards.length - 1].play();
+    playOnce();
 
     playPage.addEventListener('click', function (e) {
+      let arrWisthStars = [];
+      let starYes = '';
+      let starNo = '';
+
       let audioId = returnIdFromAudio(containerCards[containerCards.length - 1].id);
 
       if (audioId === e.target.alt) {
-        console.log('u guess');
-        containerCards.pop();
+        playYes();
+        deleteOne();
+        //вверху в ряд записать звезду полную
 
         if (containerCards.length === 0) {
           console.log('game is finished');
+          //вставить итоговую страницу с ошибками/без
         } else {
-          containerCards[containerCards.length - 1].play();
-          console.log('guess next');
+          setTimeout(playOnce, 1000);
         }
       }
 
       if (audioId !== e.target.alt) {
-        console.log('oops');
+        playNo();
+        //вверху записать звезду пустую
       }
     });
   });
