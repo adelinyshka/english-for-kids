@@ -4,7 +4,6 @@ import Card from './Card';
 import { makeBlur, ask } from './preloader';
 
 // todo при определенных действиях 2 раза подгружаются категории
-//todo при клике вне карточки - тоже неверно
 
 window.addEventListener('load', function () {
   initFunctions();
@@ -57,7 +56,6 @@ function createMenu() {
 
   const menuLinks = Array.from(pageMenu.querySelectorAll('li a'));
 
-  //пееходы по кликам
   menuLinks.forEach((item) => {
     item.addEventListener('click', function (e) {
       if (checker.checked) {
@@ -153,14 +151,22 @@ window.addEventListener('load', function () {
 function changeLayoutByClickCheckbox() {
   document.addEventListener('change', function () {
     if (checker.checked) {
-      changeMenuBg('trainColor');
-      creatCategoryForTrain();
-      showTrainPage();
+      if (rowWithCardsCategoryForTrain.innerHTML === '') {
+        changeMenuBg('trainColor');
+        creatCategoryForTrain();
+        showTrainPage();
+      } else {
+        showTrainPage();
+      }
     }
     if (!checker.checked) {
-      changeMenuBg('trainColor');
-      creatCategoryForPlay();
-      showPlayPage();
+      if (rowWithCardsCategoryForPlay.innerHTML === '') {
+        changeMenuBg('trainColor');
+        creatCategoryForPlay();
+        showPlayPage();
+      } else {
+        showPlayPage();
+      }
     }
   });
 }
@@ -457,7 +463,7 @@ function initGame() {
 
       function giveResult() {
         finalPage.classList.remove('d-none');
-        finalResultText.innerHTML = 'Верных ответов: ' + starYes + '.  Ошибок:' + starNo + '.';
+        finalResultText.innerHTML = 'Верных ответов: ' + starYes + '.  Ошибок: ' + starNo + '.';
         let finalImg = document.createElement('div');
 
         if (starNo === 0) {
