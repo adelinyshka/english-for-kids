@@ -3,7 +3,7 @@ import categoryData from './categoryData';
 import Card from './Card';
 import { makeBlur, ask } from './preloader';
 
-// todo при определенных действиях 2 раза подгружаютс] категории
+// todo при определенных действиях 2 раза подгружаются категории
 
 window.addEventListener('load', function () {
   initFunctions();
@@ -67,7 +67,7 @@ function createMenu() {
         } else {
           cleanTrainPage();
           createPageInsideCategory(e.target.textContent, trainPage);
-          console.log('x1')
+          console.log('x1');
           turnOrAudioOnClick();
           hideMenu();
         }
@@ -81,7 +81,7 @@ function createMenu() {
         } else {
           cleanPlayPage();
           createPageInsideCategory(e.target.textContent, playPage);
-          console.log('x2')
+          console.log('x2');
           hideMenu();
         }
       }
@@ -146,7 +146,6 @@ window.addEventListener('load', function () {
     changeMenuBg('trainColor');
     creatCategoryForPlay();
     showPlayPage();
-
   }
 });
 
@@ -226,12 +225,12 @@ function moveInsideCategory(fromWhere, toWhere) {
         fromWhere.classList.add('d-none');
 
         createPageInsideCategory(e.target.closest('.card').id, toWhere);
-        console.log('x3')
+        console.log('x3');
         turnOrAudioOnClick();
       } else {
         fromWhere.classList.add('d-none');
         createPageInsideCategory(e.target.closest('.card').id, toWhere);
-        console.log('x4')
+        console.log('x4');
       }
     }
   });
@@ -386,11 +385,6 @@ function createPageInsideCategory(divCardId, whereToPut) {
 
   cardBlock.append(row);
   whereToPut.append(cardBlock);
-  startGame()
-
-  // if (!checker.checked) {
-  //   startGame();
-  // }
 }
 
 function shuffle(array) {
@@ -417,74 +411,75 @@ function playNoF() {
 //   arr.pop();
 // }
 
-
-
-function startGame() {
-  const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
-
-  console.log(containerCards);
-
-  // function setArr() {
-  //   minusOne(containerCards)
-  // }
-  //
-  // function timeoutForArr(){
-  //   setTimeout(setArr,1000)
-  // }
-
-  function recievePushStar() {
-  }
-
-  function createFullStar() {
-  }
-
-  function createEmptyStar() {
-  }
-
-  btnPlay.addEventListener('click', function () {
-    if (btnPlay.innerHTML !== 'Repeat') {
-      btnPlay.innerHTML = 'Repeat';
-      shuffle(containerCards);
-      containerCards[containerCards.length - 1].play();
-
-    playPage.addEventListener('click', function (e) {
-      if (e.target.alt === returnIdFromAudio(containerCards[containerCards.length - 1].id)) {
-        playYesF();
-        e.target.style.opacity = '0.5';
-        containerCards.pop();
-        console.log(containerCards);
-
-      }  if (e.target.alt === undefined) {
-        return;
-      }  if (returnIdFromAudio(containerCards[containerCards.length - 1].id) !== e.target.alt) {
-        playNoF();
-        console.log('no');
-      }  if (containerCards[containerCards.length - 1] === []) {
-        console.log('finish items');
-      } else {
-        console.log(e.target.alt + ' boooo');
-      }
-
-        // containerCards[containerCards.length - 1].play();
-    });
-      containerCards[containerCards.length - 1].play();
-  }
-  });
-  }
-
-
+// function startGame() {
+//   const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
 //
+//   console.log(containerCards);
+
+// function setArr() {
+//   minusOne(containerCards)
+// }
+//
+// function timeoutForArr(){
+//   setTimeout(setArr,1000)
+// }
+
+function recievePushStar() {}
+
+function createFullStar() {}
+
+function createEmptyStar() {}
+//
+//   btnPlay.addEventListener('click', function (e) {
+//     e.stopPropagation();
+//
+//     if (btnPlay.innerHTML !== 'Repeat') {
+//       btnPlay.innerHTML = 'Repeat';
+//       shuffle(containerCards);
+//       containerCards[containerCards.length - 1].play();
+//     } else {
+//
+//       playPage.addEventListener('click', function (e) {
+//         // e.stopPropagation();
+//         if (e.target.alt === returnIdFromAudio(containerCards[containerCards.length - 1].id)) {
+//           e.stopPropagation();
+//           playYesF();
+//           e.target.style.opacity = '0.5';
+//           containerCards.pop();
+//           console.log(containerCards);
+//         }
+//         if (e.target.alt === undefined) {
+//           return;
+//         }
+//         if (returnIdFromAudio(containerCards[containerCards.length - 1].id) !== e.target.alt) {
+//           playNoF();
+//           console.log('no');
+//         }
+//         if (containerCards[containerCards.length - 1] === []) {
+//           console.log('finish items');
+//         } else {
+//           console.log(e.target.alt + ' boooo');
+//         }
+//
+//         // containerCards[containerCards.length - 1].play();
+//       });
+//
+//     }
+//
+//
+//     containerCards[containerCards.length - 1].play();
+//   });
+// }
 //
 // playPage.addEventListener('load', function (e) {
-//
 //   const playButton = playPage.querySelector('button.btn-play');
 //
-// playButton.addEventListener('click', function () {
-//   playButton.innerHTML = 'Repeat';
-//   shuffle(what);
-//   what[what.length - 1].play();
-//   console.log('btn pressed')
-// });
+//   playButton.addEventListener('click', function () {
+//     playButton.innerHTML = 'Repeat';
+//     shuffle(what);
+//     what[what.length - 1].play();
+//     console.log('btn pressed');
+//   });
 //
 //   // console.log('hhhh');
 //   if (e.target) {
@@ -492,10 +487,10 @@ function startGame() {
 //   }
 //   // console.log(playButton.innerText);
 //   // if(playButton.innerText === 'Start Game') {
-
+//
 //   // }
 // });
-
+//
 // function pressButton(what) {
 //   const playButton = playPage.querySelector('button.btn-play');
 //
@@ -503,7 +498,6 @@ function startGame() {
 //     playButton.innerHTML = 'Repeat';
 //     shuffle(what);
 //     what[what.length - 1].play();
-
 //   });
 // }
 //
@@ -542,10 +536,41 @@ function startGame() {
 //
 //         if (e.target.alt !== returnIdFromAudio(containerCards[containerCards.length-1].id)) {
 //           // playNoF();
-
+//
 //         }
 //         // containerCards.pop();
 //       });
 // }
+//
 
+function initGame() {
+  btnPlay.addEventListener('click', function (e) {
+    e.stopPropagation();
+    const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
+    btnPlay.innerHTML = 'clicked';
+    shuffle(containerCards);
+    containerCards[containerCards.length - 1].play();
 
+    playPage.addEventListener('click', function (e) {
+      let audioId = returnIdFromAudio(containerCards[containerCards.length - 1].id);
+
+      if (audioId === e.target.alt) {
+        console.log('u guess');
+        containerCards.pop();
+
+        if (containerCards.length === 0) {
+          console.log('game is finished');
+        } else {
+          containerCards[containerCards.length - 1].play();
+          console.log('guess next');
+        }
+      }
+
+      if (audioId !== e.target.alt) {
+        console.log('oops');
+      }
+    });
+  });
+}
+
+initGame();
