@@ -4,6 +4,7 @@ import Card from './Card';
 import { makeBlur, ask } from './preloader';
 
 // todo при определенных действиях 2 раза подгружаются категории
+//todo при клике вне карточки - тоже неверно
 
 window.addEventListener('load', function () {
   initFunctions();
@@ -67,7 +68,6 @@ function createMenu() {
         } else {
           cleanTrainPage();
           createPageInsideCategory(e.target.textContent, trainPage);
-          console.log('x1');
           turnOrAudioOnClick();
           hideMenu();
         }
@@ -81,7 +81,6 @@ function createMenu() {
         } else {
           cleanPlayPage();
           createPageInsideCategory(e.target.textContent, playPage);
-          console.log('x2');
           hideMenu();
         }
       }
@@ -207,6 +206,7 @@ function creatCategoryForTrain() {
     'black',
   );
 }
+
 function creatCategoryForPlay() {
   createCategories(
     categoryData,
@@ -225,12 +225,10 @@ function moveInsideCategory(fromWhere, toWhere) {
         fromWhere.classList.add('d-none');
 
         createPageInsideCategory(e.target.closest('.card').id, toWhere);
-        console.log('x3');
         turnOrAudioOnClick();
       } else {
         fromWhere.classList.add('d-none');
         createPageInsideCategory(e.target.closest('.card').id, toWhere);
-        console.log('x4');
       }
     }
   });
@@ -284,13 +282,13 @@ col12.innerHTML = '';
 
 function createSunIcon() {
   col12.innerHTML += `
-  <div class = 'star text-warning fas fa-sun fa-3x'></div>
+  <div class = 'star m-1 text-warning fas fa-sun fa-3x'></div>
   `;
 }
 
 function createCloudIcon() {
   col12.innerHTML += `
-  <div class = 'star text-secondary fas fa-cloud fa-3x'></div>
+  <div class = 'star m-1 text-secondary fas fa-cloud fa-3x'></div>
   `;
 }
 
@@ -303,10 +301,11 @@ function createPageInsideCategory(divCardId, whereToPut) {
   const row = document.createElement('div');
   const secondRow = document.createElement('div');
   const title = document.createElement('h3');
-  const col = document.createElement('div');
 
   title.classList.add('text-center');
   title.style.letterSpacing = '2px';
+
+  title.style.fontWeight = 'bold';
   title.innerText = divCardId;
   cardBlock.classList.add('d-block');
   cardBlock.append(title);
@@ -315,7 +314,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
 
   if (checker.checked) {
     row.id = `inside${divCardId}Train`;
-
+    title.style.color = '#009efd';
     //не получилось по-другому пока, только так 8-|
     if (divCardId === 'Animals') {
       let card = new Card();
@@ -358,6 +357,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
 
   if (!checker.checked) {
     row.id = `inside${divCardId}Play`;
+    title.style.color = '#7873f5';
 
     if (divCardId === 'Animals') {
       let card = new Card();
@@ -427,50 +427,100 @@ function playNo() {
 
 let starYes = 0;
 let starNo = 0;
+let finalPage = document.querySelector('.final-page');
+let finalTitle = document.querySelector('.final-page h1');
+let finalResultText = document.createElement('div');
+finalResultText.classList.add('d-flex', 'align-items-center', 'flex-column', 'text-secondary');
+
+const close = document.querySelector('.final-page span');
+
+close.addEventListener('click', function () {
+  finalPage.classList.add('d-none');
+  cleanPlayPage();
+  createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
+});
 
 function initGame() {
   btnPlay.addEventListener('click', function (e) {
-    e.stopPropagation();
+    // e.stopPropagation();
+
     const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
 
-    function playOnce() {
-      containerCards[containerCards.length - 1].play();
-    }
+    if (btnPlay.innerText === 'Start Game') {
+      function playOnce() {
+        containerCards[containerCards.length - 1].play();
+      }
 
-    function deleteOne() {
-      containerCards.pop();
-    }
+      function deleteOne() {
+        containerCards.pop();
+      }
 
-    // todo заменить на иконку повтора
-    btnPlay.innerHTML = 'clicked';
-    shuffle(containerCards);
-    playOnce();
+      function giveResult() {
+        finalPage.classList.remove('d-none');
+        finalResultText.innerHTML = 'Верных ответов: ' + starYes + '.  Ошибок:' + starNo + '.';
+        let finalImg = document.createElement('div');
 
-    playPage.addEventListener('click', function (e) {
-      let audioId = returnIdFromAudio(containerCards[containerCards.length - 1].id);
-
-      if (audioId === e.target.alt) {
-        playYes();
-        deleteOne();
-        createSunIcon();
-        starYes++;
-
-        if (containerCards.length === 0) {
-          console.log('game is finished');
-          cleanAnswerRow();
-          console.log(starYes, starNo);
-          //вставить итоговую страницу с ошибками/без
+        if (starNo === 0) {
+          finalImg.classList.add('final-img', 'goodResult');
         } else {
-          setTimeout(playOnce, 1000);
+          finalImg.classList.add('final-img', 'badResult');
         }
+        finalResultText.append(finalImg);
+        finalTitle.append(finalResultText);
       }
 
-      if (audioId !== e.target.alt) {
-        playNo();
-        createCloudIcon();
-        starNo++;
-      }
-    });
+      //кнопка повтора
+      let iconReload = document.createElement('i');
+      iconReload.classList.add('text-light', 'fas', 'fa-redo-alt', 'f-2x');
+      btnPlay.innerHTML = '';
+      btnPlay.classList.add('round-btn');
+      btnPlay.append(iconReload);
+
+      shuffle(containerCards);
+      playOnce();
+
+      playPage.addEventListener('click', function (e) {
+        let audioId = returnIdFromAudio(containerCards[containerCards.length - 1].id);
+
+        if (e.target.closest('.btn-play') === btnPlay) {
+          playOnce();
+        }
+
+        if (e.target.alt == null) {
+          return;
+        }
+
+        if (audioId === e.target.alt) {
+          deleteOne();
+          createSunIcon();
+          setTimeout(function () {
+            playYes();
+          }, 100);
+          starYes++;
+
+          setTimeout(function () {
+            e.target.style.opacity = '0.5';
+          }, 300);
+
+          if (containerCards.length === 0) {
+            setTimeout(function () {
+              cleanAnswerRow();
+              giveResult();
+            }, 2000);
+            btnPlay.innerHTML = 'Start Game';
+            btnPlay.classList.remove('round-btn');
+          } else {
+            setTimeout(playOnce, 600);
+          }
+        } else if (audioId !== e.target.alt && e.target.style.opacity === '0.5') {
+          return;
+        } else if (audioId !== e.target.alt && e.target.closest('.btn-play') !== btnPlay) {
+          createCloudIcon();
+          playNo();
+          starNo++;
+        }
+      });
+    }
   });
 }
 

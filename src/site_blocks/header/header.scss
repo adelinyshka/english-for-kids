@@ -89,16 +89,15 @@ ul.page-menu li a {
     outline: none;
   }
 }
-
 //
 //.wrapper-blur {
-//	position: absolute;
-//	width: 100%;
-//	height: 100%;
-//	margin: -30px;
-//	filter: blur(10px);
-//	z-index: 10;
-//	}
+//  position: absolute;
+//  width: 100%;
+//  height: 100%;
+//  margin: -30px;
+//  filter: blur(10px);
+//  z-index: 10;
+//}
 //
 //.preloader {
 //	border-radius: 16px;
@@ -124,4 +123,51 @@ ul.page-menu li a {
   & span {
     background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
   }
+}
+
+.final-page {
+  border-radius: 16px;
+  box-shadow: 20px 20px 20px grey;
+  width: 100%;
+  height: max-content;
+  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+  padding: 30px;
+  text-align: center;
+  z-index: 999;
+  position: absolute;
+  min-height: 400px;
+  max-height: 95%;
+  font-family: 'Exo', sans-serif;
+  margin: -20px;
+
+  & span {
+    color: grey;
+    font-size: 50px;
+    display: flex;
+    justify-content: right;
+    cursor: pointer;
+    outline: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: black;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+}
+
+.final-img.goodResult {
+  background: url('./../../assets/img/yesGif2.gif');
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+}
+
+.final-img.badResult {
+  background: url('./../../assets/img/NoGif.gif');
+  width: 250px;
+  height: 319px;
+  display: inline-block;
 }

@@ -10,7 +10,7 @@
 //todo сделать курсор картинкой
 .custom-control-label::before,
 .custom-control-label::after {
-  cursor: pointer;
+  cursor: url('./../../assets/img/cursor.gif'), pointer;
 }
 
 .custom-control-label {

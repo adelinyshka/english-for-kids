@@ -1,5 +1,4 @@
 extends site_blocks/template/template
-include site_blocks/card/card
 
 block content
 	//.preloader.p-5
@@ -13,6 +12,9 @@ block content
 
 	div#containerApp
 		include site_blocks/header/header
+		.final-page.d-none
+			span ×
+			h1.text-danger.font-weight-bold Ваши результаты
 
 		div#trainPage.d-none
 			.container-fluid

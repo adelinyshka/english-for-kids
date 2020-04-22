@@ -3,16 +3,17 @@
   height: 60px;
   display: block;
   margin: 30px;
-  background: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+  background: #7873f5;
+
   font-weight: bold;
   border: 2px solid white;
-  border-radius: 4px;
-  color: black;
+  border-radius: 12px;
+  color: white;
   font-size: 30px;
 }
 
 .row-star.col-12 {
-  height: 50px;
+  height: 54px;
   overflow: scroll;
   display: flex;
   flex-wrap: nowrap;
@@ -22,4 +23,31 @@
 
 .star {
   flex-shrink: 0;
+}
+
+.round-btn {
+  width: 100px !important;
+  height: 100px;
+  border-radius: 100%;
+  background-image: linear-gradient(
+    to right,
+    #eea2a2 0%,
+    #bbc1bf 19%,
+    #57c6e1 42%,
+    #b49fda 79%,
+    #7ac5d8 100%
+  );
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-image: linear-gradient(
+      to right,
+      #bc7f7f 0%,
+      #949a98 19%,
+      #48a0b7 42%,
+      #a28fc4 79%,
+      #5a92a2 100%
+    );
+  }
 }

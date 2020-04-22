@@ -56,7 +56,7 @@ class Card {
 
     cardWord.innerHTML = `
       <div class="scene" style="width: 16rem; height: 192px;">
-          <div class="card" id="idFor${wordEn}" style="width: 16rem; height: 192px;">
+          <div class="card" id="idFor${wordEn}" style="width: 13rem; height: 158px;">
             <audio src="./assets/audio/${wordEn}.mp3" id="audioFor${wordEn}"></audio>
               <div class="card-face front">
               <img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" 
