@@ -273,13 +273,36 @@ btnPlay.innerHTML = 'Start Game';
 btnPlay.style.width = '200px';
 btnPlay.classList.add('btn', 'btn-play');
 
+//====== ряд для звезд
+
+let rowForAnswers = document.createElement('div');
+rowForAnswers.classList.add('row');
+let col12 = document.createElement('div');
+col12.classList.add('col-12', 'row-star');
+rowForAnswers.append(col12);
+col12.innerHTML = '';
+
+function createSunIcon() {
+  col12.innerHTML += `
+  <div class = 'star text-warning fas fa-sun fa-3x'></div>
+  `;
+}
+
+function createCloudIcon() {
+  col12.innerHTML += `
+  <div class = 'star text-secondary fas fa-cloud fa-3x'></div>
+  `;
+}
+
+function cleanAnswerRow() {
+  col12.innerHTML = '';
+}
+
 function createPageInsideCategory(divCardId, whereToPut) {
   const cardBlock = document.createElement('div');
   const row = document.createElement('div');
   const secondRow = document.createElement('div');
   const title = document.createElement('h3');
-
-  const rowWithStars = document.createElement('div');
   const col = document.createElement('div');
 
   title.classList.add('text-center');
@@ -289,11 +312,6 @@ function createPageInsideCategory(divCardId, whereToPut) {
   cardBlock.append(title);
   row.classList.add('row');
   secondRow.classList.add('col-12', 'd-flex', 'justify-content-center');
-
-  rowWithStars.classList.add('row');
-  col.classList.add('col-12', 'row-star');
-  col.innerHTML = 'place for stars';
-  rowWithStars.append(col);
 
   if (checker.checked) {
     row.id = `inside${divCardId}Train`;
@@ -379,7 +397,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
     }
 
     row.append(secondRow);
-    title.after(rowWithStars);
+    title.after(rowForAnswers);
     secondRow.append(btnPlay);
   }
 
@@ -407,13 +425,8 @@ function playNo() {
   audioNo.play();
 }
 
-function recievePushStar() {}
-
-function createFullStar() {
-  let star = document.createElement('div');
-}
-
-function createEmptyStar() {}
+let starYes = 0;
+let starNo = 0;
 
 function initGame() {
   btnPlay.addEventListener('click', function (e) {
@@ -434,19 +447,18 @@ function initGame() {
     playOnce();
 
     playPage.addEventListener('click', function (e) {
-      let arrWisthStars = [];
-      let starYes = '';
-      let starNo = '';
-
       let audioId = returnIdFromAudio(containerCards[containerCards.length - 1].id);
 
       if (audioId === e.target.alt) {
         playYes();
         deleteOne();
-        //вверху в ряд записать звезду полную
+        createSunIcon();
+        starYes++;
 
         if (containerCards.length === 0) {
           console.log('game is finished');
+          cleanAnswerRow();
+          console.log(starYes, starNo);
           //вставить итоговую страницу с ошибками/без
         } else {
           setTimeout(playOnce, 1000);
@@ -455,7 +467,8 @@ function initGame() {
 
       if (audioId !== e.target.alt) {
         playNo();
-        //вверху записать звезду пустую
+        createCloudIcon();
+        starNo++;
       }
     });
   });

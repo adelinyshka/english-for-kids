@@ -11,7 +11,15 @@
   font-size: 30px;
 }
 
-.row-star {
+.row-star.col-12 {
   height: 50px;
-  align-items: flex-end;
+  overflow: scroll;
+  display: flex;
+  flex-wrap: nowrap;
+  width: content-box;
+  justify-content: flex-end;
+}
+
+.star {
+  flex-shrink: 0;
 }
