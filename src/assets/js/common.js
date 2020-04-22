@@ -18,7 +18,6 @@ function initFunctions() {
 }
 
 const container = document.querySelector('#containerApp');
-
 const trainPage = document.querySelector('#trainPage');
 const playPage = document.querySelector('#playPage');
 const checker = document.querySelector('#switcher');
@@ -56,7 +55,6 @@ function createMenu() {
   });
 
   const menuLinks = Array.from(pageMenu.querySelectorAll('li a'));
-  console.log(menuLinks);
 
   //пееходы по кликам
   menuLinks.forEach((item) => {
@@ -69,7 +67,9 @@ function createMenu() {
         } else {
           cleanTrainPage();
           createPageInsideCategory(e.target.textContent, trainPage);
+          console.log('x1')
           turnOrAudioOnClick();
+          hideMenu();
         }
       }
 
@@ -81,6 +81,8 @@ function createMenu() {
         } else {
           cleanPlayPage();
           createPageInsideCategory(e.target.textContent, playPage);
+          console.log('x2')
+          hideMenu();
         }
       }
     });
@@ -144,6 +146,7 @@ window.addEventListener('load', function () {
     changeMenuBg('trainColor');
     creatCategoryForPlay();
     showPlayPage();
+
   }
 });
 
@@ -152,15 +155,12 @@ window.addEventListener('load', function () {
 function changeLayoutByClickCheckbox() {
   document.addEventListener('change', function () {
     if (checker.checked) {
-      // creatCategoryForTrain();
       changeMenuBg('trainColor');
       creatCategoryForTrain();
       showTrainPage();
     }
     if (!checker.checked) {
       changeMenuBg('trainColor');
-
-      // creatCategoryForPlay();
       creatCategoryForPlay();
       showPlayPage();
     }
@@ -226,10 +226,12 @@ function moveInsideCategory(fromWhere, toWhere) {
         fromWhere.classList.add('d-none');
 
         createPageInsideCategory(e.target.closest('.card').id, toWhere);
+        console.log('x3')
         turnOrAudioOnClick();
       } else {
         fromWhere.classList.add('d-none');
         createPageInsideCategory(e.target.closest('.card').id, toWhere);
+        console.log('x4')
       }
     }
   });
@@ -267,16 +269,19 @@ containerItem.forEach((a) => a.addEventListener('click', flipCard));
 
 //====== создание страницы  внутри категории
 
+const btnPlay = document.createElement('button');
+btnPlay.innerHTML = 'Start Game';
+btnPlay.style.width = '200px';
+btnPlay.classList.add('btn', 'btn-play');
+
 function createPageInsideCategory(divCardId, whereToPut) {
   const cardBlock = document.createElement('div');
   const row = document.createElement('div');
   const secondRow = document.createElement('div');
   const title = document.createElement('h3');
-  const btnPlay = document.createElement('button');
 
-  btnPlay.innerHTML = 'Start Game';
-  btnPlay.style.width = '200px';
-  btnPlay.classList.add('btn', 'btn-play');
+  const rowWithStars = document.createElement('div');
+  const col = document.createElement('div');
 
   title.classList.add('text-center');
   title.style.letterSpacing = '2px';
@@ -286,7 +291,12 @@ function createPageInsideCategory(divCardId, whereToPut) {
   row.classList.add('row');
   secondRow.classList.add('col-12', 'd-flex', 'justify-content-center');
 
-  if (checker.checked === true) {
+  rowWithStars.classList.add('row');
+  col.classList.add('col-12', 'row-star');
+  col.innerHTML = 'place for stars';
+  rowWithStars.append(col);
+
+  if (checker.checked) {
     row.id = `inside${divCardId}Train`;
 
     //не получилось по-другому пока, только так 8-|
@@ -329,8 +339,9 @@ function createPageInsideCategory(divCardId, whereToPut) {
     }
   }
 
-  if (checker.checked !== true) {
+  if (!checker.checked) {
     row.id = `inside${divCardId}Play`;
+
     if (divCardId === 'Animals') {
       let card = new Card();
       card.iterateArrCardPlay(cards, 0, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
@@ -367,23 +378,174 @@ function createPageInsideCategory(divCardId, whereToPut) {
       let card = new Card();
       card.iterateArrCardPlay(cards, 7, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
+
     row.append(secondRow);
+    title.after(rowWithStars);
     secondRow.append(btnPlay);
   }
 
   cardBlock.append(row);
   whereToPut.append(cardBlock);
+  startGame()
+
+  // if (!checker.checked) {
+  //   startGame();
+  // }
 }
 
-// function moveInsideCategoryByClick() {
-//   fromWhere.addEventListener('click', function (e) {
-//     let divCard = e.target.closest('.card');
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
+//возврат значения из id audio
+function returnIdFromAudio(word) {
+  return word.slice(8);
+}
+
+const playYes = playPage.querySelector('#yes');
+const playNo = playPage.querySelector('#no');
+
+function playYesF() {
+  playYes.play();
+}
+
+function playNoF() {
+  playNo.play();
+}
 //
-//     if (e.target.closest('.card') === divCard) {
-//       fromWhere.classList.add('d-none');
+// function minusOne(arr) {
+//   arr.pop();
+// }
+
+
+
+function startGame() {
+  const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
+
+  console.log(containerCards);
+
+  // function setArr() {
+  //   minusOne(containerCards)
+  // }
+  //
+  // function timeoutForArr(){
+  //   setTimeout(setArr,1000)
+  // }
+
+  function recievePushStar() {
+  }
+
+  function createFullStar() {
+  }
+
+  function createEmptyStar() {
+  }
+
+  btnPlay.addEventListener('click', function () {
+    if (btnPlay.innerHTML !== 'Repeat') {
+      btnPlay.innerHTML = 'Repeat';
+      shuffle(containerCards);
+      containerCards[containerCards.length - 1].play();
+
+    playPage.addEventListener('click', function (e) {
+      if (e.target.alt === returnIdFromAudio(containerCards[containerCards.length - 1].id)) {
+        playYesF();
+        e.target.style.opacity = '0.5';
+        containerCards.pop();
+        console.log(containerCards);
+
+      }  if (e.target.alt === undefined) {
+        return;
+      }  if (returnIdFromAudio(containerCards[containerCards.length - 1].id) !== e.target.alt) {
+        playNoF();
+        console.log('no');
+      }  if (containerCards[containerCards.length - 1] === []) {
+        console.log('finish items');
+      } else {
+        console.log(e.target.alt + ' boooo');
+      }
+
+        // containerCards[containerCards.length - 1].play();
+    });
+      containerCards[containerCards.length - 1].play();
+  }
+  });
+  }
+
+
 //
-//       createPageInsideCategory(divCard.id, toWhere);
-//       turnOrAudioOnClick();
-//     }
+//
+// playPage.addEventListener('load', function (e) {
+//
+//   const playButton = playPage.querySelector('button.btn-play');
+//
+// playButton.addEventListener('click', function () {
+//   playButton.innerHTML = 'Repeat';
+//   shuffle(what);
+//   what[what.length - 1].play();
+//   console.log('btn pressed')
+// });
+//
+//   // console.log('hhhh');
+//   if (e.target) {
+//     console.log(e.target);
+//   }
+//   // console.log(playButton.innerText);
+//   // if(playButton.innerText === 'Start Game') {
+
+//   // }
+// });
+
+// function pressButton(what) {
+//   const playButton = playPage.querySelector('button.btn-play');
+//
+//   playButton.addEventListener('click', function () {
+//     playButton.innerHTML = 'Repeat';
+//     shuffle(what);
+//     what[what.length - 1].play();
+
 //   });
 // }
+//
+// const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
+//
+// function startGame() {
+//
+//
+//   const playButton = document.querySelector('button.btn-play');
+//
+//
+//       playPage.addEventListener('click', function (e) {
+//
+//         //обработка клика по кнопке
+//         if(e.target === playButton)   {
+//           if (playButton.innerHTML !== 'Repeat') {
+//             playButton.innerHTML = 'Repeat';
+//             shuffle(containerCards);
+//             containerCards[(containerCards.length - 1)].play();
+//           }
+//           if (playButton.innerHTML === 'Repeat') {
+//             containerCards[(containerCards.length - 1)].play();
+//           }
+//         }
+//
+//         if (e.target.alt === returnIdFromAudio(containerCards[containerCards.length - 1].id)) {
+//           e.target.style.opacity = '0.5';
+//           playYesF();
+//           console.log('yes');
+//           // console.log('push star =)')
+//         }
+//
+//         if (containerCards[containerCards.length - 1].id === undefined) {
+//           console.log('finish game');
+//         }
+//
+//         if (e.target.alt !== returnIdFromAudio(containerCards[containerCards.length-1].id)) {
+//           // playNoF();
+
+//         }
+//         // containerCards.pop();
+//       });
+// }
+
+

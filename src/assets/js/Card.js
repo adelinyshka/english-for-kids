@@ -3,15 +3,6 @@ class Card {
     //внутри карточки
     this.id = id;
     this.audio = audio;
-    this.img_src = img_src;
-    this.wordEn = wordEn;
-    this.wordRu = wordRu;
-    this.bgColor = bgColor;
-
-    //состояние карточки
-    this.isTurned = false;
-    this.isTrainMode = false;
-    this.isPlayMode = false;
 
     //учет для статистики
     this.clickedInPlayMode = 0;
