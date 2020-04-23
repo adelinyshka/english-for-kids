@@ -1,6 +1,6 @@
 import cards from './wordsData';
 import categoryData from './categoryData';
-import Card from './Card';
+import CardComponent from './card.component';
 import { makeBlur, ask } from './preloader';
 
 window.addEventListener('load', function () {
@@ -323,40 +323,40 @@ function createPageInsideCategory(divCardId, whereToPut) {
     title.style.color = '#009efd';
     //не получилось по-другому пока, только так 8-|
     if (divCardId === 'Animals') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCard(cards, 0, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'Dishes') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCard(cards, 1, row, 'linear-gradient(to top, #fff1eb' + ' 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'Fruits') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCard(cards, 2, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'House') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCard(cards, 3, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
     if (divCardId === 'Nature') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCard(cards, 4, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
     if (divCardId === 'Clothes') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCard(cards, 5, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'Toys') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCard(cards, 6, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
 
     if (divCardId === 'Vegetables') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCard(cards, 7, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
     }
   }
@@ -366,39 +366,39 @@ function createPageInsideCategory(divCardId, whereToPut) {
     title.style.color = '#7873f5';
 
     if (divCardId === 'Animals') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCardPlay(cards, 0, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
 
     if (divCardId === 'Dishes') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCardPlay(cards, 1, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
     if (divCardId === 'Fruits') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCardPlay(cards, 2, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
 
     if (divCardId === 'House') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCardPlay(cards, 3, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
     if (divCardId === 'Nature') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCardPlay(cards, 4, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
     if (divCardId === 'Clothes') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCardPlay(cards, 5, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
 
     if (divCardId === 'Toys') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCardPlay(cards, 6, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
 
     if (divCardId === 'Vegetables') {
-      let card = new Card();
+      let card = new CardComponent();
       card.iterateArrCardPlay(cards, 7, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
     }
 
@@ -468,8 +468,10 @@ function initGame() {
 
         if (starNo === 0) {
           finalImg.classList.add('final-img', 'goodResult');
+          document.querySelector('#goodEnd').play();
         } else {
           finalImg.classList.add('final-img', 'badResult');
+          document.querySelector('#badEnd').play();
         }
         finalResultText.append(finalImg);
         finalTitle.append(finalResultText);

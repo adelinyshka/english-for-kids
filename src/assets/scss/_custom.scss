@@ -23,19 +23,20 @@
 
 .custom-control-input:checked ~ .custom-control-label::before {
   content: 'train';
-  padding-left: 9px;
+  padding-left: 6px;
   color: black;
   font-weight: bold;
-  line-height: 33px;
+  line-height: 30px;
   background-image: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);
   border: 2px solid white;
   letter-spacing: 1px;
+  outline: none;
 }
 
 .custom-control-input:not(:checked) ~ .custom-control-label::before {
   content: 'play';
-  padding-left: 42px;
-  line-height: 34px;
+  padding-left: 35px;
+  line-height: 29px;
   color: white;
   font-weight: 700;
   letter-spacing: 1px;

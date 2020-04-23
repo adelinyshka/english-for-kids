@@ -1,5 +1,5 @@
-class Card {
-  constructor(id, audio, img_src, wordEn, wordRu, bgColor) {
+class CardComponent {
+  constructor(id, audio) {
     //внутри карточки
     this.id = id;
     this.audio = audio;
@@ -55,8 +55,8 @@ class Card {
     );
 
     cardWord.innerHTML = `
-      <div class="scene" style="width: 16rem; height: 192px;">
-          <div class="card" id="idFor${wordEn}" style="width: 13rem; height: 158px;">
+      <div class="scene" style="width: 16rem;">
+          <div class="card" id="idFor${wordEn}" style="width: 13rem; height: 140px;">
             <audio src="./assets/audio/${wordEn}.mp3" id="audioFor${wordEn}"></audio>
               <div class="card-face front">
               <img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" 
@@ -84,4 +84,4 @@ class Card {
   }
 }
 
-export default Card;
+export default CardComponent;

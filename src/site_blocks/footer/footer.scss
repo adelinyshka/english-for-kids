@@ -1,0 +1,19 @@
+footer {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  & a {
+    text-decoration: none;
+    outline: none;
+    color: black;
+    font-size: 20px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: white;
+      text-decoration: none;
+      outline: none;
+    }
+  }
+}
