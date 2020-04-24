@@ -8,8 +8,8 @@ window.addEventListener('load', function () {
 });
 
 function initFunctions() {
-  // makeBlur();
-  // ask();
+  makeBlur();
+  ask();
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
