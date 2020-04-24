@@ -8,8 +8,8 @@ window.addEventListener('load', function () {
 });
 
 function initFunctions() {
-  makeBlur();
-  ask();
+  // makeBlur();
+  // ask();
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
@@ -81,6 +81,10 @@ function createMenu() {
         }
       }
     });
+  });
+
+  trainPage.addEventListener('load', function () {
+    console.log('ddd');
   });
 }
 
@@ -307,10 +311,10 @@ function createPageInsideCategory(divCardId, whereToPut) {
   const row = document.createElement('div');
   const secondRow = document.createElement('div');
   const title = document.createElement('h3');
+  let linkMenu = Array.from(document.querySelectorAll('#containerApp header' + ' nav ul li a'));
 
   title.classList.add('text-center');
   title.style.letterSpacing = '2px';
-
   title.style.fontWeight = 'bold';
   title.innerText = divCardId;
   cardBlock.classList.add('d-block');
@@ -318,10 +322,22 @@ function createPageInsideCategory(divCardId, whereToPut) {
   row.classList.add('row');
   secondRow.classList.add('col-12', 'd-flex', 'justify-content-center');
 
+  linkMenu.forEach((item) => {
+    if (item.innerText === title.innerText) {
+      item.style.color = 'black';
+      item.style.fontWeight = 'bold';
+    }
+
+    if (item.innerText !== title.innerText) {
+      item.style.color = 'white';
+      item.style.fontWeight = 'normal';
+    }
+  });
+
   if (checker.checked) {
     row.id = `inside${divCardId}Train`;
     title.style.color = '#009efd';
-    //не получилось по-другому пока, только так 8-|
+
     if (divCardId === 'Animals') {
       let card = new CardComponent();
       card.iterateArrCard(cards, 0, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
@@ -448,8 +464,6 @@ close.addEventListener('click', function () {
 
 function initGame() {
   btnPlay.addEventListener('click', function (e) {
-    // e.stopPropagation();
-
     const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
 
     if (btnPlay.innerText === 'Start Game') {
@@ -467,11 +481,11 @@ function initGame() {
         let finalImg = document.createElement('div');
 
         if (starNo === 0) {
-          finalImg.classList.add('final-img', 'goodResult');
           document.querySelector('#goodEnd').play();
+          finalImg.classList.add('final-img', 'goodResult');
         } else {
-          finalImg.classList.add('final-img', 'badResult');
           document.querySelector('#badEnd').play();
+          finalImg.classList.add('final-img', 'badResult');
         }
         finalResultText.append(finalImg);
         finalTitle.append(finalResultText);

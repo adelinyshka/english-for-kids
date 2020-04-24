@@ -10,56 +10,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link href="/assets/css/app.css" rel="stylesheet"></head>
   <body>
-    <header class="d-flex justify-content-between">
-      <nav><a class="hamburger" title="open menu">|||</a>
-        <ul class="page-menu list-unstyled flex-column d-none">
-          <li class="p-1"><a href="#test1" title="link to category">to category 1</a></li>
-          <li class="p-1"><a href="#test2" title="link to category">to category 2</a></li>
-          <li class="p-1"><a href="" title="link to category">to category 3</a></li>
-        </ul>
-      </nav>
-      <div class="custom-control custom-switch switch">
-        <input class="custom-control-input" id="switcher" type="checkbox">
-        <label class="custom-control-label" for="switcher"></label>
-      </div>
-    </header>
-    <div id="container">
-      <div>
-        <div class="row special-row">
-          <div class="col-3">
-            <div class="scene">
-              <div class="card" style="width: 13rem; height: 300px;">
-                <audio src="./assets/audio/bear.mp3" autoplay="autoplay" id="audio"></audio>
-                <div class="card-face front"><img class="card-img-top" src="/assets/img/dishes-1.png" alt="..." style="width:50%">
-                  <div class="card-body">
-                    <h5 class="card-title front">hello</h5><a class="btn-turn btn btn-warning" href="#" data-button>&curarr;</a>
-                  </div>
-                </div>
-                <div class="card-face back"><img class="card-img-top" src="/assets/img/dishes-1.png" alt="" style="width:50%">
-                  <div class="card-body">
-                    <h5 class="card-title back">привет</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!--.preloader.p-5-->
+    <!--	h5.p-3.text-center Здравствуйте!-->
+    <!--	p Прошу вас проверить работу не раньше субботы, 25 апреля, пожалуйста,-->
+    <!--		|  пока что не все успела сделать.-->
+    <!--	p.font-weight-bold  Спасибо!-->
+    <!--	p Если можете, то оставьте свои контакты, пожалуйста, при выставлении оценки-->
+    <!--	.btn.btn-danger.text-center Хорошо-->
+    <div id="containerApp">
+      <header class="d-flex justify-content-between">
+        <nav><a class="hamburger" title="open menu"></a>
+          <ul class="page-menu list-unstyled flex-column d-none"><span></span></ul>
+        </nav>
+        <div class="custom-control custom-switch switch">
+          <input class="custom-control-input" id="switcher" type="checkbox">
+          <label class="custom-control-label" for="switcher"></label>
         </div>
+      </header>
+      <div class="final-page d-none"><span>×</span>
+        <h1 class="text-danger font-weight-bold">Ваши результаты</h1>
       </div>
       <div class="d-none" id="trainPage">
         <div class="container-fluid">
-          <h1>Im TrainPage</h1>
-          <div class="row" id="rowWithCardsCategory"></div>
+          <div class="row" id="rowWithCardsCategoryForTrain"></div>
         </div>
       </div>
       <div class="d-none" id="playPage">
+        <audio id="yes" src="./assets/audio/yes.mp3"></audio>
+        <audio id="no" src="./assets/audio/nope.mp3"></audio>
+        <audio id="goodEnd" src="./assets/audio/goodEnd.mp3"></audio>
+        <audio id="badEnd" src="./assets/audio/badEnd.mp3"></audio>
         <div class="container-fluid">
-          <h1>Im Play Page</h1>
           <div class="row" id="rowWithCardsCategoryForPlay"></div>
         </div>
       </div>
-      <!--div.d-none#insideCategoryAnimals-->
-      <!--	h1 Im TrainPage inside Category-->
-      <!--	.row-->
+      <footer><a class="telegram-link p-3" href="https://tlgg.ru/@adel_dubinnikova" title="telegram">Telegram</a><a class="github-link p-3" href="https://github.com/adelinyshka" title="github">Github</a></footer>
     </div>
   <script type="text/javascript" src="/assets/js/app.js"></script></body>
 </html>
