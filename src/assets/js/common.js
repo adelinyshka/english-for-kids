@@ -322,17 +322,21 @@ function createPageInsideCategory(divCardId, whereToPut) {
   row.classList.add('row');
   secondRow.classList.add('col-12', 'd-flex', 'justify-content-center');
 
-  linkMenu.forEach((item) => {
-    if (item.innerText === title.innerText) {
-      item.style.color = 'black';
-      item.style.fontWeight = 'bold';
-    }
+  // todo меню работает но с багами- при переключении режимов не меняется на
+  // новый пункт
+  //особо глючит переключение на главное меню
 
-    if (item.innerText !== title.innerText) {
-      item.style.color = 'white';
-      item.style.fontWeight = 'normal';
-    }
-  });
+  // linkMenu.forEach((item) => {
+  //   if (item.innerText === title.innerText) {
+  //     item.style.color = 'black';
+  //     item.style.fontWeight = 'bold';
+  //   }
+  //
+  //   if (item.innerText !== title.innerText) {
+  //     item.style.color = 'white';
+  //     item.style.fontWeight = 'normal';
+  //   }
+  // });
 
   if (checker.checked) {
     row.id = `inside${divCardId}Train`;
