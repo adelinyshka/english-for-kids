@@ -21,6 +21,74 @@ main {
   border-radius: 20px;
 }
 
+.card-animation-play {
+  animation: show 200ms;
+}
+
+@keyframes show {
+  0% {
+    width: 0;
+    height: 0;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    width: 13rem;
+    height: 140px;
+    animation-timing-function: ease-out;
+  }
+}
+
+.card-animation-h5 {
+  animation: show-train-h5 600ms;
+}
+
+.card-animation-btn {
+  animation: show-train-btn 600ms;
+}
+
+.card-animation-img {
+  animation: show-train-img 600ms;
+}
+
+@keyframes show-train-h5 {
+  0% {
+    font-size: 0;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    font-size: 1.25rem;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes show-train-btn {
+  0% {
+    font-size: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    font-size: 30px;
+    padding: 5px;
+    width: 70px;
+    height: auto;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes show-train-img {
+  0% {
+    width: 0;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    width: 100%;
+    animation-timing-function: ease-out;
+  }
+}
+
 .card-face {
   position: absolute;
   width: 100%;
@@ -40,7 +108,6 @@ main {
 }
 
 .card-face.front {
-  //background: wheat;
   border-radius: 20px;
 }
 

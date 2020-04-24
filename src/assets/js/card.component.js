@@ -26,11 +26,11 @@ class CardComponent {
       <div class="scene">
           <div class="card" id="idFor${wordEn}" style="width: 13rem; height: 300px;">
             <audio src="./assets/audio/${wordEn}.mp3" id="audioFor${wordEn}"></audio>
-              <div class="card-face front" style="background:${bgColor}"><img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" 
+              <div class="card-face front" style="background:${bgColor}"><img class="card-img-top card-animation-img" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" 
               style="width:100%;" />
                   <div class="card-body">
-                      <h5 class="card-title front">${wordEn}</h5>
-                      <a class="btn-turn btn btn-warning" href="#" data-button="data-button">&curarr;</a></div>
+                      <h5 class="card-title front card-animation-h5">${wordEn}</h5>
+                      <a class="btn-turn btn btn-warning card-animation-btn" href="#" data-button="data-button">&curarr;</a></div>
               </div>
               <div class="card-face back"><img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordRu}" style="width:100%;" />
                   <div class="card-body">
@@ -56,7 +56,7 @@ class CardComponent {
 
     cardWord.innerHTML = `
       <div class="scene" style="width: 16rem;">
-          <div class="card" id="idFor${wordEn}" style="width: 13rem; height: 140px;">
+          <div class="card card-animation-play" id="idFor${wordEn}" style="width: 13rem; height: 140px;">
             <audio src="./assets/audio/${wordEn}.mp3" id="audioFor${wordEn}"></audio>
               <div class="card-face front">
               <img class="card-img-top" src="./assets/img/${wordEn}.jpg" alt="${wordEn}" 
