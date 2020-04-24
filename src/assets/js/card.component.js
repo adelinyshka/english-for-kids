@@ -11,6 +11,13 @@ class CardComponent {
     this.guessWrong = 0;
   }
 
+  clickedPlayMode() {
+    cardWord.addEventListener('click', function () {
+      this.clickedInPlayMode++;
+      console.log(clickedInPlayMode);
+    });
+  }
+
   createCard(wordEn, wordRu, bgColor) {
     const cardWord = document.createElement('div');
     cardWord.classList.add(

@@ -1,6 +1,8 @@
 import cards from './wordsData';
 import categoryData from './categoryData';
 import CardComponent from './card.component';
+import data from './data';
+import storage from './operateData';
 // import { makeBlur, ask } from './preloader';
 
 window.addEventListener('load', function () {
@@ -13,6 +15,7 @@ function initFunctions() {
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
+  storage(data);
 }
 
 const container = document.querySelector('#containerApp');
@@ -105,7 +108,6 @@ function createMenu() {
           cleanPlayPage();
           createStatisticsPage();
           removeButtonGame();
-          console.log('sssss');
           hideMenu();
         } else {
           removeStatisticsPage();
@@ -116,49 +118,6 @@ function createMenu() {
         }
       }
     });
-
-    // menuLinks.forEach((item) => {
-    //   item.addEventListener('click', function (e) {
-    //     if (checker.checked) {
-    //       if (e.target.textContent === 'Main menu') {
-    //         removeStatisticsPage();
-    //         cleanTrainPage();
-    //         createEnviromentForCategories(trainPage, rowWithCardsCategoryForTrain);
-    //         hideMenu();
-    //       } else {
-    //         removeStatisticsPage();
-    //         cleanTrainPage();
-    //         createPageInsideCategory(e.target.textContent, trainPage);
-    //         turnOrAudioOnClick();
-    //         hideMenu();
-    //       }
-    //     }
-    //
-    //     if (!checker.checked) {
-    //       if (e.target.innerText === 'Main menu') {
-    //         console.log(e.target.innerText);
-    //
-    //         cleanPlayPage();
-    //         createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
-    //         creatCategoryForPlay()
-    //         // removeButtonGame();
-    //         // removeStatisticsPage();
-    //         hideMenu();
-    //       }
-    //       if (e.target.innerText === 'Statistics') {
-    //         cleanPlayPage();
-    //         createStatisticsPage();
-    //         removeButtonGame();
-    //         console.log('sssss');
-    //         hideMenu();
-    //       } else {
-    //         removeStatisticsPage();
-    //         cleanPlayPage();
-    //         createPageInsideCategory(e.target.textContent, playPage);
-    //         hideMenu();
-    //       }
-    //     }
-    //   });
   });
 
   trainPage.addEventListener('load', function () {
