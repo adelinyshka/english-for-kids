@@ -1,14 +1,7 @@
 extends site_blocks/template/template
 
 block content
-	.preloader.p-5
-		h5.p-3.text-center Здравствуйте!
-		p Прошу вас проверить работу не раньше субботы, 25 апреля, пожалуйста,
-			|  пока что не все успела сделать.
-		p.font-weight-bold  Спасибо!
-		p Если можете, то оставьте свои контакты, пожалуйста, при выставлении оценки
-		.btn.btn-danger.text-center Хорошо
-
+	//include site_blocks/preloader/preloader
 
 	div#containerApp
 		include site_blocks/header/header
@@ -18,6 +11,26 @@ block content
 			h1.text-danger.font-weight-bold Ваши результаты
 
 		main(role='main')
+			div#statistics.d-none
+				h1 Statistic
+				.d-flex.justify-content-center
+					input.btn-secondary.m-2.text-center.p-2.bold(value='reset'
+style='border-radius:8px;cursor:pointer;')
+					input.btn-warning.m-2.text-center.p-2(value='train difficult ' +
+'words'	style='border-radius:8px;font-weight: bold;cursor:pointer;')
+				.table-responsive
+					table.table
+						thead
+							tr
+								th(scope='col') category
+								th(scope='col') word
+								th(scope='col') translation
+								th(scope='col') train mode
+								th(scope='col') play mode
+								th(scope='col') right
+								th(scope='col') wrong
+								th(scope='col')  wrong %
+
 			div#trainPage.d-none
 				.container-fluid
 					.row#rowWithCardsCategoryForTrain

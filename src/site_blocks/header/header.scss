@@ -41,7 +41,7 @@ header nav a.hamburger {
   background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
   border-radius: 79%;
   left: -176px;
-  padding: 110px 20px 20px 175px;
+  padding: 89px 20px 20px 182px;
   height: 500px;
   width: 404px;
   top: -50px;
@@ -88,27 +88,6 @@ ul.page-menu li a {
     text-decoration: none;
     outline: none;
   }
-}
-
-.wrapper-blur {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  margin: -30px;
-  filter: blur(10px);
-  z-index: 10;
-}
-
-.preloader {
-  border-radius: 16px;
-  box-shadow: 20px 20px 20px grey;
-  width: 95%;
-  height: max-content;
-  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
-  padding: 30px;
-  text-align: center;
-  z-index: 999;
-  position: absolute;
 }
 
 .btn.btn-danger {

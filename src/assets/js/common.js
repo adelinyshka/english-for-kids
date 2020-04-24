@@ -1,15 +1,15 @@
 import cards from './wordsData';
 import categoryData from './categoryData';
 import CardComponent from './card.component';
-import { makeBlur, ask } from './preloader';
+// import { makeBlur, ask } from './preloader';
 
 window.addEventListener('load', function () {
   initFunctions();
 });
 
 function initFunctions() {
-  makeBlur();
-  ask();
+  // makeBlur();
+  // ask();
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
@@ -52,18 +52,44 @@ function createMenu() {
     pageMenu.append(menuList);
   });
 
+  const menuListStat = document.createElement('li');
+  menuListStat.classList.add('p-1');
+  const menuListLinkStat = document.createElement('a');
+  menuListLinkStat.innerText = 'Statistics';
+  menuListLinkStat.id = 'statistics-menu-link';
+  menuListStat.append(menuListLinkStat);
+  pageMenu.append(menuListStat);
+  // const menuLinks = Array.from(pageMenu.querySelectorAll('li a'));
+
+  function removeButtonGame() {
+    btnPlay.classList.add('d-none');
+  }
+
+  function returnButtonGame() {
+    btnPlay.classList.remove('d-none');
+    btnPlay.classList.add('d-block');
+  }
+
   const menuLinks = Array.from(pageMenu.querySelectorAll('li a'));
 
   menuLinks.forEach((item) => {
     item.addEventListener('click', function (e) {
       if (checker.checked) {
         if (e.target.textContent === 'Main menu') {
+          removeStatisticsPage();
           cleanTrainPage();
           createEnviromentForCategories(trainPage, rowWithCardsCategoryForTrain);
           hideMenu();
+        } else if (e.target.innerText === 'Statistics') {
+          cleanTrainPage();
+          createStatisticsPage();
+          removeButtonGame();
+          hideMenu();
         } else {
+          removeStatisticsPage();
           cleanTrainPage();
           createPageInsideCategory(e.target.textContent, trainPage);
+          returnButtonGame();
           turnOrAudioOnClick();
           hideMenu();
         }
@@ -71,16 +97,68 @@ function createMenu() {
 
       if (!checker.checked) {
         if (e.target.textContent === 'Main menu') {
+          removeStatisticsPage();
           cleanPlayPage();
           createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
           hideMenu();
+        } else if (e.target.innerText === 'Statistics') {
+          cleanPlayPage();
+          createStatisticsPage();
+          removeButtonGame();
+          console.log('sssss');
+          hideMenu();
         } else {
+          removeStatisticsPage();
           cleanPlayPage();
           createPageInsideCategory(e.target.textContent, playPage);
+          returnButtonGame();
           hideMenu();
         }
       }
     });
+
+    // menuLinks.forEach((item) => {
+    //   item.addEventListener('click', function (e) {
+    //     if (checker.checked) {
+    //       if (e.target.textContent === 'Main menu') {
+    //         removeStatisticsPage();
+    //         cleanTrainPage();
+    //         createEnviromentForCategories(trainPage, rowWithCardsCategoryForTrain);
+    //         hideMenu();
+    //       } else {
+    //         removeStatisticsPage();
+    //         cleanTrainPage();
+    //         createPageInsideCategory(e.target.textContent, trainPage);
+    //         turnOrAudioOnClick();
+    //         hideMenu();
+    //       }
+    //     }
+    //
+    //     if (!checker.checked) {
+    //       if (e.target.innerText === 'Main menu') {
+    //         console.log(e.target.innerText);
+    //
+    //         cleanPlayPage();
+    //         createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
+    //         creatCategoryForPlay()
+    //         // removeButtonGame();
+    //         // removeStatisticsPage();
+    //         hideMenu();
+    //       }
+    //       if (e.target.innerText === 'Statistics') {
+    //         cleanPlayPage();
+    //         createStatisticsPage();
+    //         removeButtonGame();
+    //         console.log('sssss');
+    //         hideMenu();
+    //       } else {
+    //         removeStatisticsPage();
+    //         cleanPlayPage();
+    //         createPageInsideCategory(e.target.textContent, playPage);
+    //         hideMenu();
+    //       }
+    //     }
+    //   });
   });
 
   trainPage.addEventListener('load', function () {
@@ -138,10 +216,14 @@ function showPlayPage() {
 
 window.addEventListener('load', function () {
   if (checker.checked) {
+    removeStatisticsPage();
+
     changeMenuBg('trainColor');
     creatCategoryForTrain();
     showTrainPage();
   } else {
+    removeStatisticsPage();
+
     changeMenuBg('playColor');
     creatCategoryForPlay();
     showPlayPage();
@@ -154,20 +236,24 @@ function changeLayoutByClickCheckbox() {
   document.addEventListener('change', function () {
     if (checker.checked) {
       if (rowWithCardsCategoryForTrain.innerHTML === '') {
+        removeStatisticsPage();
         changeMenuBg('trainColor');
         creatCategoryForTrain();
         showTrainPage();
       } else {
+        removeStatisticsPage();
         changeMenuBg('trainColor');
         showTrainPage();
       }
     }
     if (!checker.checked) {
       if (rowWithCardsCategoryForPlay.innerHTML === '') {
+        removeStatisticsPage();
         changeMenuBg('playColor');
         creatCategoryForPlay();
         showPlayPage();
       } else {
+        removeStatisticsPage();
         changeMenuBg('playColor');
         showPlayPage();
       }
@@ -312,7 +398,6 @@ function createPageInsideCategory(divCardId, whereToPut) {
   const secondRow = document.createElement('div');
   const title = document.createElement('h3');
   let linkMenu = Array.from(document.querySelectorAll('#containerApp header' + ' nav ul li a'));
-
   title.classList.add('text-center');
   title.style.letterSpacing = '2px';
   title.style.fontWeight = 'bold';
@@ -533,8 +618,10 @@ function initGame() {
               cleanAnswerRow();
               giveResult();
             }, 1000);
-            btnPlay.innerHTML = 'Start Game';
-            btnPlay.classList.remove('round-btn');
+            setTimeout(function () {
+              btnPlay.innerHTML = 'Start Game';
+              btnPlay.classList.remove('round-btn');
+            }, 3000);
 
             setTimeout(function () {
               starYes = 0;
@@ -556,3 +643,20 @@ function initGame() {
 }
 
 initGame();
+
+// pageMenu.addEventListener('load', function () {
+//
+//   statisticsPage.addEventListener('click', function () {
+//     console.log('statisticsPage');
+//   });
+// });
+const statisticsPage = document.querySelector('#statistics');
+function createStatisticsPage() {
+  statisticsPage.classList.remove('d-none');
+  statisticsPage.classList.add('d-block');
+}
+
+function removeStatisticsPage() {
+  statisticsPage.classList.add('d-none');
+  statisticsPage.classList.remove('d-block');
+}
