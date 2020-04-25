@@ -6,3 +6,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './assets/scss/all_styles.scss';
 import './assets/js/main.js';
+import './assets/js/card.component';
+import './assets/js/work_with_dom/sort-table';
+import './assets/js/work_with_dom/generate-tbody';
+import './assets/js/work_with_dom/generate-variables';

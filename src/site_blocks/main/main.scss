@@ -4,6 +4,7 @@ main {
 
 table.table thead th {
   cursor: pointer;
+  white-space: nowrap;
 
   &:hover,
   &:focus,

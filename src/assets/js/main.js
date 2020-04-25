@@ -1,49 +1,56 @@
-import cards from './cards.data';
-import categoryData from './category.data';
 import CardComponent from './card.component';
-import cards_and_categoriesData from './cards_and_categories.data';
-import storage from './operateStats';
-import { sortTable, sortGrid } from './table_sorter';
+import cards from './data/cards.data';
+import categoryData from './data/category.data';
+import {
+  container,
+  trainPage,
+  playPage,
+  checker,
+  rowWithCardsCategoryForTrain,
+  rowWithCardsCategoryForPlay,
+  pageMenu,
+  firstLi,
+  firstA,
+  menuListStat,
+  menuListLinkStat,
+  menuLinks,
+  containerItem,
+  btnPlay,
+  rowForAnswers,
+  col12,
+  btnFinish,
+  audioYes,
+  audioNo,
+  finalPage,
+  finalTitle,
+  finalResultText,
+  close,
+  header,
+  statisticsPage,
+} from './work_with_dom/generate-variables';
+
+import generateTbody from './work_with_dom/generate-tbody';
+import { sortTable, sortGrid } from './work_with_dom/sort-table';
 
 window.addEventListener('load', function () {
   initFunctions();
 });
 
 function initFunctions() {
-  changeLayoutByClickCheckbox();
   createMenu();
+  hideMenu();
+  changeLayoutByClickCheckbox();
   toggleMenu();
-  storage(cards_and_categoriesData);
+  generateTbody(cards);
   sortTable();
   sortGrid();
 }
 
-const container = document.querySelector('#containerApp');
-const trainPage = document.querySelector('#trainPage');
-const playPage = document.querySelector('#playPage');
-const checker = document.querySelector('#switcher');
-const rowWithCardsCategoryForTrain = document.querySelector('#rowWithCardsCategoryForTrain');
-const rowWithCardsCategoryForPlay = document.querySelector('#rowWithCardsCategoryForPlay');
-
 //====== создание гамбургера меню
-
-const pageMenu = document.querySelector('ul.page-menu');
-const firstLi = document.createElement('li');
-const firstA = document.createElement('a');
 firstLi.classList.add('p-1');
 firstLi.append(firstA);
 firstA.innerHTML = 'Main menu';
 pageMenu.append(firstLi);
-
-//генерация списка меню
-function changeMenuBg(colorClass) {
-  if (checker.checked) {
-    pageMenu.classList.add(colorClass);
-  }
-  if (!checker.checked) {
-    pageMenu.classList.remove(colorClass);
-  }
-}
 
 function createMenu() {
   categoryData.forEach((item) => {
@@ -118,15 +125,33 @@ function createMenu() {
       }
     });
   });
+}
 
-  trainPage.addEventListener('load', function () {
-    console.log('ddd');
+function changeMenuBg(colorClass) {
+  if (checker.checked) {
+    pageMenu.classList.add(colorClass);
+  }
+  if (!checker.checked) {
+    pageMenu.classList.remove(colorClass);
+  }
+}
+
+function toggleMenu() {
+  const hamburgerIcon = document.querySelector('.hamburger');
+  container.addEventListener('click', function (e) {
+    if (e.target === hamburgerIcon) {
+      pageMenu.classList.toggle('d-none');
+    } else {
+      pageMenu.classList.add('d-none');
+    }
   });
 }
 
 function hideMenu() {
   pageMenu.classList.add('d-none');
 }
+
+//генерация списка меню
 
 function cleanTrainPage() {
   trainPage.innerHTML = '';
@@ -142,18 +167,6 @@ function createEnviromentForCategories(what, whereToAdd) {
   what.append(containerFluid);
   whereToAdd.classList.remove('d-none');
   containerFluid.append(whereToAdd);
-}
-
-function toggleMenu() {
-  const hamburgerIcon = document.querySelector('.hamburger');
-
-  container.addEventListener('click', function (e) {
-    if (e.target === hamburgerIcon) {
-      pageMenu.classList.toggle('d-none');
-    } else {
-      pageMenu.classList.add('d-none');
-    }
-  });
 }
 
 function showTrainPage() {
@@ -314,22 +327,17 @@ function turnOrAudioOnClick() {
   });
 }
 
-const containerItem = document.querySelectorAll('.scene .card');
-
 containerItem.forEach((a) => a.addEventListener('click', flipCard));
 
 //====== создание страницы  внутри категории
 
-const btnPlay = document.createElement('button');
 btnPlay.innerHTML = 'Start Game';
 btnPlay.style.width = '200px';
 btnPlay.classList.add('btn', 'btn-play');
 
 //====== ряд для звезд
 
-let rowForAnswers = document.createElement('div');
 rowForAnswers.classList.add('row');
-let col12 = document.createElement('div');
 col12.classList.add('col-12', 'row-star');
 rowForAnswers.append(col12);
 col12.innerHTML = '';
@@ -350,8 +358,6 @@ function cleanAnswerRow() {
   col12.innerHTML = '';
 }
 
-const btnFinish = document.createElement('input');
-
 function createBtnFinishGame() {
   const blockToInsertBtn = document.querySelector('#playPage.d-block' + ' div.d-block');
 
@@ -368,19 +374,24 @@ function createBtnFinishGame() {
   btnFinish.style.right = '10px';
   btnFinish.addEventListener('click', function () {
     location.reload();
-    console.log('reload');
   });
   blockToInsertBtn.append(btnFinish);
 }
 
 function removeBntFinish() {}
 
+// todo меню работает но с багами- при переключении режимов не меняется на
+// новый пункт
+//особо глючит переключение на главное меню
+
 function createPageInsideCategory(divCardId, whereToPut) {
   const cardBlock = document.createElement('div');
   const row = document.createElement('div');
   const secondRow = document.createElement('div');
   const title = document.createElement('h3');
-  let linkMenu = Array.from(document.querySelectorAll('#containerApp header' + ' nav ul li a'));
+  const linkMenu = Array.from(
+    document.querySelectorAll('#containerApp' + ' header' + ' nav ul li a'),
+  );
   title.classList.add('text-center');
   title.style.letterSpacing = '2px';
   title.style.fontWeight = 'bold';
@@ -389,22 +400,6 @@ function createPageInsideCategory(divCardId, whereToPut) {
   cardBlock.append(title);
   row.classList.add('row');
   secondRow.classList.add('col-12', 'd-flex', 'justify-content-center');
-
-  // todo меню работает но с багами- при переключении режимов не меняется на
-  // новый пункт
-  //особо глючит переключение на главное меню
-
-  // linkMenu.forEach((item) => {
-  //   if (item.innerText === title.innerText) {
-  //     item.style.color = 'black';
-  //     item.style.fontWeight = 'bold';
-  //   }
-  //
-  //   if (item.innerText !== title.innerText) {
-  //     item.style.color = 'white';
-  //     item.style.fontWeight = 'normal';
-  //   }
-  // });
 
   if (checker.checked) {
     row.id = `inside${divCardId}Train`;
@@ -497,6 +492,32 @@ function createPageInsideCategory(divCardId, whereToPut) {
 
   cardBlock.append(row);
   whereToPut.append(cardBlock);
+
+  linkMenu.forEach((item) => {
+    if (checker.checked) {
+      if (item.innerText === title.innerText) {
+        item.style.color = 'blue';
+        item.style.fontWeight = 'bold';
+      }
+
+      if (item.innerText !== title.innerText) {
+        item.style.color = 'black';
+        item.style.fontWeight = 'normal';
+      }
+    }
+
+    if (!checker.checked) {
+      if (item.innerText === title.innerText) {
+        item.style.color = 'violet';
+        item.style.fontWeight = 'bold';
+      }
+
+      if (item.innerText !== title.innerText) {
+        item.style.color = 'white';
+        item.style.fontWeight = 'normal';
+      }
+    }
+  });
 }
 
 function shuffle(array) {
@@ -508,9 +529,6 @@ function returnIdFromAudio(word) {
   return word.slice(8);
 }
 
-const audioYes = document.querySelector('#yes');
-const audioNo = document.querySelector('#no');
-
 function playYes() {
   audioYes.play();
 }
@@ -519,21 +537,13 @@ function playNo() {
   audioNo.play();
 }
 
-let starYes = 0;
-let starNo = 0;
-let finalPage = document.querySelector('.final-page');
-let finalTitle = document.querySelector('.final-page h1');
-let finalResultText = document.createElement('div');
 finalResultText.classList.add('d-flex', 'align-items-center', 'flex-column', 'text-secondary');
-
-const close = document.querySelector('.final-page span');
 
 close.addEventListener('click', function () {
   finalPage.classList.add('d-none');
   cleanPlayPage();
   createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
 });
-const header = document.querySelector('header');
 
 function hideHeader() {
   header.classList.remove('d-flex');
@@ -545,8 +555,11 @@ function showHeader() {
   header.classList.remove('d-none');
 }
 
+let starYes = 0;
+let starNo = 0;
+
 function initGame() {
-  btnPlay.addEventListener('click', function (e) {
+  btnPlay.addEventListener('click', function () {
     hideHeader();
     createBtnFinishGame();
     const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
@@ -577,7 +590,6 @@ function initGame() {
 
         finalTitle.append(finalResultText);
         showHeader();
-        // removeBntFinish();
       }
 
       //кнопка повтора
@@ -592,10 +604,6 @@ function initGame() {
 
       playPage.addEventListener('click', function (e) {
         let audioId = returnIdFromAudio(containerCards[containerCards.length - 1].id);
-        console.log([containerCards.length - 1]);
-        console.log(containerCards[containerCards.length - 1].id);
-        console.log(containerCards);
-
         if (e.target.closest('.btn-play') === btnPlay) {
           playOnce();
         }
@@ -609,9 +617,9 @@ function initGame() {
         }
 
         if (audioId === e.target.alt) {
+          playYes();
           deleteOne();
           createSunIcon();
-          playYes();
           starYes++;
 
           setTimeout(function () {
@@ -649,8 +657,6 @@ function initGame() {
 }
 
 initGame();
-
-const statisticsPage = document.querySelector('#statistics');
 
 function createStatisticsPage() {
   statisticsPage.classList.remove('d-none');
