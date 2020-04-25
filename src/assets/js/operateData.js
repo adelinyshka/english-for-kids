@@ -3,10 +3,11 @@ import data from './data';
 // import { makeBlur, ask } from './preloader';
 
 function storage(data) {
-  localStorage.setItem('data', JSON.stringify(data));
+  // localStorage.setItem('data', JSON.stringify(data));
+  //
+  // localStorage.setItem(data, JSON.stringify(data));
+  // data = JSON.parse(localStorage.getItem('data'));
 
-  localStorage.setItem(data, JSON.stringify(data));
-  data = JSON.parse(localStorage.getItem('data'));
   let dataWithCategories;
   let result = [];
   function getEnWords() {
@@ -18,14 +19,17 @@ function storage(data) {
     data.forEach((item, index, dataWithCategories) => {
       if (index > 0) {
         let tableBody = document.querySelector('tbody');
-        for (let i = 0; i < result.length; i++) {
+        for (let i = 0; i < 8; i++) {
           for (let j = 0; j < 8; j++) {
-            let tableRow = document.createElement('tr');
-            tableRow.innerHTML = `
+            console.log(result[j]);
+          }
+
+          let tableRow = document.createElement('tr');
+          tableRow.innerHTML = `
 			<tr>
 			<td class="to-insert">${result[i]}</td>
-			<td>${item[j].word}</td>
-			<td>${item[j].translation}</td>
+			<td>${item[i].word}</td>
+			<td>${item[i].translation}</td>
 			<td>0</td>
 			<td>0</td>
 			<td>0</td>
@@ -33,8 +37,7 @@ function storage(data) {
 			<td>0</td>
 			<tr>
 			`;
-            tableBody.append(tableRow);
-          }
+          tableBody.append(tableRow);
         }
       }
     });

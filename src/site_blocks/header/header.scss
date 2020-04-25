@@ -108,16 +108,14 @@ ul.page-menu li a {
   border-radius: 16px;
   box-shadow: 20px 20px 20px grey;
   width: 100%;
-  height: max-content;
+  height: 100%;
   background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
   padding: 30px;
   text-align: center;
   z-index: 999;
   position: absolute;
-  min-height: 400px;
-  max-height: 95%;
   font-family: 'Exo', sans-serif;
-  margin: -20px;
+  margin: -72px -20px -20px;
 
   & span {
     color: grey;
