@@ -505,8 +505,8 @@ function returnIdFromAudio(word) {
   return word.slice(8);
 }
 
-const audioYes = playPage.querySelector('#yes');
-const audioNo = playPage.querySelector('#no');
+const audioYes = document.querySelector('#yes');
+const audioNo = document.querySelector('#no');
 
 function playYes() {
   audioYes.play();
@@ -565,11 +565,13 @@ function initGame() {
         if (starNo === 0) {
           document.querySelector('#goodEnd').play();
           finalImg.classList.add('final-img', 'goodResult');
+          finalResultText.append(finalImg);
         } else {
           document.querySelector('#badEnd').play();
           finalImg.classList.add('final-img', 'badResult');
+          finalResultText.append(finalImg);
         }
-        finalResultText.append(finalImg);
+
         finalTitle.append(finalResultText);
         showHeader();
         // removeBntFinish();
@@ -587,6 +589,9 @@ function initGame() {
 
       playPage.addEventListener('click', function (e) {
         let audioId = returnIdFromAudio(containerCards[containerCards.length - 1].id);
+        console.log([containerCards.length - 1]);
+        console.log(containerCards[containerCards.length - 1].id);
+        console.log(containerCards);
 
         if (e.target.closest('.btn-play') === btnPlay) {
           playOnce();
@@ -603,9 +608,7 @@ function initGame() {
         if (audioId === e.target.alt) {
           deleteOne();
           createSunIcon();
-          setTimeout(function () {
-            playYes();
-          }, 100);
+          playYes();
           starYes++;
 
           setTimeout(function () {
@@ -639,17 +642,13 @@ function initGame() {
       });
     }
   });
+  showHeader();
 }
 
 initGame();
 
-// pageMenu.addEventListener('load', function () {
-//
-//   statisticsPage.addEventListener('click', function () {
-//     console.log('statisticsPage');
-//   });
-// });
 const statisticsPage = document.querySelector('#statistics');
+
 function createStatisticsPage() {
   statisticsPage.classList.remove('d-none');
   statisticsPage.classList.add('d-block');

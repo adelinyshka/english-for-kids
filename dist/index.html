@@ -10,17 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link href="/assets/css/app.css" rel="stylesheet"></head>
   <body>
-    <div class="preloader p-5">
-      <h5 class="p-3 text-center">Здравствуйте!</h5>
-      <p>
-        Прошу вас проверить работу не раньше субботы, 25 апреля, пожалуйста, пока что не все успела сделать.</p>
-      <p class="font-weight-bold"> Спасибо!</p>
-      <p>Если можете, то оставьте свои контакты, пожалуйста, при выставлении оценки</p>
-      <div class="btn btn-danger text-center">Хорошо</div>
-    </div>
     <div id="containerApp">
-      <header class="d-flex justify-content-between">
-        <nav><a class="hamburger" title="open menu"></a>
+      <header class="d-flex justify-content-between" role="banner">
+        <nav role="navigation"><a class="hamburger" title="open menu"></a>
           <ul class="page-menu list-unstyled flex-column d-none"><span></span></ul>
         </nav>
         <div class="custom-control custom-switch switch">
@@ -31,21 +23,47 @@
       <div class="final-page d-none"><span>×</span>
         <h1 class="text-danger font-weight-bold">Ваши результаты</h1>
       </div>
-      <div class="d-none" id="trainPage">
-        <div class="container-fluid">
-          <div class="row" id="rowWithCardsCategoryForTrain"></div>
+      <main role="main">
+        <div class="d-none" id="statistics">
+          <h1>Statistic</h1>
+          <div class="d-flex justify-content-center">
+            <input class="btn-secondary m-2 text-center p-2 bold" value="reset" style="border-radius:8px;cursor:pointer;">
+            <input class="btn-warning m-2 text-center p-2" value="train difficult words" style="border-radius:8px;font-weight: bold;cursor:pointer;">
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">category</th>
+                  <th scope="col">word</th>
+                  <th scope="col">translation</th>
+                  <th scope="col">train mode</th>
+                  <th scope="col">play mode</th>
+                  <th scope="col">right</th>
+                  <th scope="col">wrong</th>
+                  <th scope="col">wrong %</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
         </div>
-      </div>
-      <div class="d-none" id="playPage">
-        <audio id="yes" src="./assets/audio/yes.mp3"></audio>
-        <audio id="no" src="./assets/audio/nope.mp3"></audio>
-        <audio id="goodEnd" src="./assets/audio/goodEnd.mp3"></audio>
-        <audio id="badEnd" src="./assets/audio/badEnd.mp3"></audio>
-        <div class="container-fluid">
-          <div class="row" id="rowWithCardsCategoryForPlay"></div>
+        <div class="d-none" id="trainPage">
+          <div class="container-fluid">
+            <div class="row" id="rowWithCardsCategoryForTrain"></div>
+          </div>
         </div>
-      </div>
-      <footer><a class="telegram-link p-3" href="https://tlgg.ru/@adel_dubinnikova" title="telegram">Telegram</a><a class="github-link p-3" href="https://github.com/adelinyshka" title="github">Github</a></footer>
+        <div class="d-none" id="playPage">
+          <div class="container-fluid">
+            <div class="row" id="rowWithCardsCategoryForPlay"></div>
+          </div>
+        </div>
+      </main>
+      <footer role="footer"><a class="telegram-link p-3" href="https://tlgg.ru/@adel_dubinnikova" title="telegram">Telegram</a><a class="github-link p-3" href="https://github.com/adelinyshka" title="github">Github
+          <audio id="yes" src="./assets/audio/yes.mp3"></audio>
+          <audio id="no" src="./assets/audio/nope.mp3"></audio>
+          <audio id="goodEnd" src="./assets/audio/goodEnd.mp3"></audio>
+          <audio id="badEnd" src="./assets/audio/badEnd.mp3"></audio></a></footer>
     </div>
   <script type="text/javascript" src="/assets/js/app.js"></script></body>
 </html>

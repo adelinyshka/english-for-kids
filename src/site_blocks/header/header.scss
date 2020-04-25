@@ -109,7 +109,7 @@ ul.page-menu li a {
   box-shadow: 20px 20px 20px grey;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+  background: white;
   padding: 30px;
   text-align: center;
   z-index: 999;
@@ -137,17 +137,15 @@ ul.page-menu li a {
 }
 
 .final-img.goodResult {
-  background: url('./../../assets/img/yesGif2.gif');
-  width: 200px;
-  height: 200px;
-  display: inline-block;
+  background: url('./../../assets/img/GoodEnd.jpg');
+  width: 300px;
+  height: 430px;
 }
 
 .final-img.badResult {
-  background: url('./../../assets/img/NoGif.gif');
-  width: 250px;
-  height: 319px;
-  display: inline-block;
+  background: url('./../../assets/img/badEnd.jpg');
+  width: 300px;
+  height: 240px;
 }
 
 .active-link {
