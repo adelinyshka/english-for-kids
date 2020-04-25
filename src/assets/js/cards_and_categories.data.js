@@ -1,4 +1,4 @@
-const data = [
+const cards_and_categoriesData = [
   [
     {
       word: 'Animals',
@@ -438,4 +438,4 @@ const data = [
   ],
 ];
 
-export default data;
+export default cards_and_categoriesData;

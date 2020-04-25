@@ -75,14 +75,14 @@ class CardComponent {
     return cardWord;
   }
 
-  //генерация массива карточек
+  //генерация массива карточек для тренировки
   iterateArrCard(arr, num, where, bgColor) {
     arr.forEach((item, index) => {
       let card = this.createCard(arr[num][index].word, arr[num][index].translation, bgColor);
       where.append(card);
     });
   }
-
+  //генерация массива карточек для игры
   iterateArrCardPlay(arr, num, where) {
     arr.forEach((item, index) => {
       let card = this.createCardPlayMode(arr[num][index].word);

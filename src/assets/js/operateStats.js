@@ -1,12 +1,12 @@
-import data from './data';
+import cards_and_categoriesData from './cards_and_categories.data';
 
 // import { makeBlur, ask } from './preloader';
 
 function storage(data) {
-  // localStorage.setItem('data', JSON.stringify(data));
+  // localStorage.setItem('cards_and_categoriesData', JSON.stringify(cards_and_categoriesData));
   //
-  // localStorage.setItem(data, JSON.stringify(data));
-  // data = JSON.parse(localStorage.getItem('data'));
+  // localStorage.setItem(cards_and_categoriesData, JSON.stringify(cards_and_categoriesData));
+  // cards_and_categoriesData = JSON.parse(localStorage.getItem('cards_and_categoriesData'));
 
   let dataWithCategories;
   let result = [];
@@ -21,7 +21,7 @@ function storage(data) {
         let tableBody = document.querySelector('tbody');
         for (let i = 0; i < 8; i++) {
           for (let j = 0; j < 8; j++) {
-            console.log(result[j]);
+            // console.log(result[j]);
           }
 
           let tableRow = document.createElement('tr');
@@ -54,22 +54,6 @@ function storage(data) {
       }
     });
   }
-
-  // let tableRowToInsert = Array.from(document.querySelectorAll('.to-insert'));
-  //
-  // function getCategories() {
-  //   data[0].forEach((word) => {
-  //     for (let i = 0; i < 8; i++) {
-  //       // tableRowToInsert.forEach((item) => {
-  //         item.innerText = `
-  //         ${word.word}
-  //         `;
-  //       // });
-  //     }
-  //   });
-  // }
-  //
-  // console.log(getCategories());
 }
 
 export default storage;

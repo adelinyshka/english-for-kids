@@ -1,21 +1,18 @@
-import cards from './wordsData';
-import categoryData from './categoryData';
+import cards from './cards.data';
+import categoryData from './category.data';
 import CardComponent from './card.component';
-import data from './data';
-import storage from './operateData';
-// import { makeBlur, ask } from './preloader';
+import cards_and_categoriesData from './cards_and_categories.data';
+import storage from './operateStats';
 
 window.addEventListener('load', function () {
   initFunctions();
 });
 
 function initFunctions() {
-  // makeBlur();
-  // ask();
   changeLayoutByClickCheckbox();
   createMenu();
   toggleMenu();
-  storage(data);
+  storage(cards_and_categoriesData);
 }
 
 const container = document.querySelector('#containerApp');
@@ -509,9 +506,21 @@ close.addEventListener('click', function () {
   cleanPlayPage();
   createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
 });
+const header = document.querySelector('header');
+
+function hideHeader() {
+  header.classList.remove('d-flex');
+  header.classList.add('d-none');
+}
+
+function showHeader() {
+  header.classList.add('d-flex');
+  header.classList.remove('d-none');
+}
 
 function initGame() {
   btnPlay.addEventListener('click', function (e) {
+    hideHeader();
     const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
 
     if (btnPlay.innerText === 'Start Game') {
@@ -537,6 +546,7 @@ function initGame() {
         }
         finalResultText.append(finalImg);
         finalTitle.append(finalResultText);
+        showHeader();
       }
 
       //кнопка повтора
