@@ -59,7 +59,6 @@ function createMenu() {
   menuListLinkStat.id = 'statistics-menu-link';
   menuListStat.append(menuListLinkStat);
   pageMenu.append(menuListStat);
-  // const menuLinks = Array.from(pageMenu.querySelectorAll('li a'));
 
   function removeButtonGame() {
     btnPlay.classList.add('d-none');
@@ -348,6 +347,31 @@ function cleanAnswerRow() {
   col12.innerHTML = '';
 }
 
+const btnFinish = document.createElement('input');
+
+function createBtnFinishGame() {
+  const blockToInsertBtn = document.querySelector('#playPage.d-block' + ' div.d-block');
+
+  btnFinish.classList.add('btn-danger', 'btn-end');
+  btnFinish.value = 'Stop';
+  btnFinish.style.maxHeight = '42px';
+  btnFinish.style.maxWidth = '100px';
+  btnFinish.style.padding = '5px';
+  btnFinish.style.borderRadius = '8px';
+  btnFinish.style.textAlign = 'center';
+  btnFinish.style.cursor = 'pointer';
+  btnFinish.style.position = 'absolute';
+  btnFinish.style.top = '0px';
+  btnFinish.style.right = '10px';
+  btnFinish.addEventListener('click', function () {
+    location.reload();
+    console.log('reload');
+  });
+  blockToInsertBtn.append(btnFinish);
+}
+
+function removeBntFinish() {}
+
 function createPageInsideCategory(divCardId, whereToPut) {
   const cardBlock = document.createElement('div');
   const row = document.createElement('div');
@@ -521,6 +545,7 @@ function showHeader() {
 function initGame() {
   btnPlay.addEventListener('click', function (e) {
     hideHeader();
+    createBtnFinishGame();
     const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
 
     if (btnPlay.innerText === 'Start Game') {
@@ -547,6 +572,7 @@ function initGame() {
         finalResultText.append(finalImg);
         finalTitle.append(finalResultText);
         showHeader();
+        // removeBntFinish();
       }
 
       //кнопка повтора
@@ -564,6 +590,10 @@ function initGame() {
 
         if (e.target.closest('.btn-play') === btnPlay) {
           playOnce();
+        }
+
+        if (e.target === btnFinish) {
+          return;
         }
 
         if (e.target.alt == null) {
