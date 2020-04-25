@@ -13,8 +13,9 @@
 }
 
 .row-star.col-12 {
-  height: 54px;
+  max-height: 54px;
   overflow-x: hidden;
+  overflow-y: hidden;
   display: flex;
   flex-wrap: nowrap;
   width: content-box;

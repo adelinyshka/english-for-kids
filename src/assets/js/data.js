@@ -143,7 +143,7 @@ const data = [
     },
     {
       word: 'pineapple',
-      translation: 'цыплёнок',
+      translation: 'ананас',
       image: './assets/img/pineapple.jpg',
       audioSrc: './assets/audio/pineapple.mp3',
     },

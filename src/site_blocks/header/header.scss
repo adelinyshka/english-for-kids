@@ -121,9 +121,10 @@ ul.page-menu li a {
     color: grey;
     font-size: 50px;
     display: flex;
-    justify-content: right;
-    cursor: pointer;
     outline: none;
+    justify-content: flex-end;
+    cursor: pointer;
+    padding-right: 20px;
 
     &:hover,
     &:focus,
