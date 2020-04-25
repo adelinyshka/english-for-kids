@@ -3,6 +3,7 @@ import categoryData from './category.data';
 import CardComponent from './card.component';
 import cards_and_categoriesData from './cards_and_categories.data';
 import storage from './operateStats';
+import { sortTable, sortGrid } from './table_sorter';
 
 window.addEventListener('load', function () {
   initFunctions();
@@ -13,6 +14,8 @@ function initFunctions() {
   createMenu();
   toggleMenu();
   storage(cards_and_categoriesData);
+  sortTable();
+  sortGrid();
 }
 
 const container = document.querySelector('#containerApp');

@@ -18,17 +18,25 @@ style='border-radius:8px;cursor:pointer;')
 					input.btn-warning.m-2.text-center.p-2(value='train difficult ' +
 'words'	style='border-radius:8px;font-weight: bold;cursor:pointer;')
 				.table-responsive
-					table.table
+					table.table#grid
 						thead
 							tr
-								th(scope='col') category
-								th(scope='col') word
-								th(scope='col') translation
-								th(scope='col') train mode
-								th(scope='col') play mode
-								th(scope='col') right
-								th(scope='col') wrong
-								th(scope='col') wrong %
+								th(scope='col' data-type="string")
+									<i class="fas fa-sort"></i> category
+								th(scope='col' data-type="string")
+									<i class="fas fa-sort"></i> word
+								th(scope='col' data-type="string")
+									<i class="fas fa-sort"></i> translation
+								th(scope='col' data-type="number")
+									<i class="fas fa-sort"></i> train mode
+								th(scope='col' data-type="number")
+									<i class="fas fa-sort"></i> play mode
+								th(scope='col' data-type="number")
+									<i class="fas fa-sort"></i> right
+								th(scope='col' data-type="number")
+									<i class="fas fa-sort"></i> wrong
+								th(scope='col' data-type="number")
+									<i class="fas fa-sort"></i> wrong %
 						tbody
 
 
