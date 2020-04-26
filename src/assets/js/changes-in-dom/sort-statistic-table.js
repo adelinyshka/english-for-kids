@@ -1,4 +1,4 @@
-function sortTable() {
+function sortStatisticTable() {
   const table = document.querySelector('#grid');
   table.addEventListener('click', function (e) {
     if (e.target.tagName !== 'TH') return;
@@ -33,4 +33,4 @@ function sortGrid(colNum, type) {
   tbody.append(...rowsArray);
 }
 
-export { sortTable, sortGrid };
+export { sortStatisticTable, sortGrid };

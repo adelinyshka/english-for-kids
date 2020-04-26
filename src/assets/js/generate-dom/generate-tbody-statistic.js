@@ -1,26 +1,26 @@
 import cards from '../data/cards.data';
 import categoryData from '../data/category.data';
 
-function generateTbody(cards) {
+function generateTbodyStatistic(cards) {
   let dataWithCategories;
   let result = [];
   function getEnWords() {
-    for (let i = 0; i < cards[0].length; i++) {
-      dataWithCategories = cards[0][i].word;
-      result.push(dataWithCategories);
-    }
+    categoryData.forEach((item) => {
+      for (let i = 0; i < 8; i++) {
+        dataWithCategories = item.word;
+        result.push(dataWithCategories);
+      }
+      return result;
+    });
 
     cards.forEach((item, index) => {
       let tableBody = document.querySelector('tbody');
       for (let i = 0; i < 8; i++) {
-        // for (let j = 0; j < 8; j++) {
-        //   // console.log(result[j]);
-        // }
-
-        let tableRow = document.createElement('tr');
-        tableRow.innerHTML = `
+        for (let j = 0; j < 1; j++) {
+          let tableRow = document.createElement('tr');
+          tableRow.innerHTML = `
 			<tr>
-			<td class="to-insert">category</td>
+			<td class="to-insert">${result[i]}</td>
 			<td>${item[i].word}</td>
 			<td>${item[i].translation}</td>
 			<td>0</td>
@@ -30,7 +30,8 @@ function generateTbody(cards) {
 			<td>0</td>
 			<tr>
 			`;
-        tableBody.append(tableRow);
+          tableBody.append(tableRow);
+        }
       }
     });
   }
@@ -48,4 +49,4 @@ function generateTbody(cards) {
   }
 }
 
-export default generateTbody;
+export default generateTbodyStatistic;

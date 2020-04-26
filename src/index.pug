@@ -13,10 +13,9 @@ block content
 			div#statistics.d-none
 				h1 Statistic
 				.d-flex.justify-content-center
-					input.btn-secondary.m-2.text-center.p-2.bold(value='reset'
-style='border-radius:8px;cursor:pointer;')
-					input.btn-warning.m-2.text-center.p-2(value='train difficult ' +
-'words'	style='border-radius:8px;font-weight: bold;cursor:pointer;')
+					input.btn-danger.m-2.text-center.p-2.bold.btn-reset(value='reset')
+					input.btn-warning.m-2.text-center.p-2.btn-repeat(value='train ' +
+					'difficult words')
 				.table-responsive
 					table.table#grid
 						thead

@@ -27,10 +27,23 @@ import {
   close,
   header,
   statisticsPage,
-} from './work_with_dom/generate-variables';
-
-import generateTbody from './work_with_dom/generate-tbody';
-import { sortTable, sortGrid } from './work_with_dom/sort-table';
+} from './generate-dom/generate-variables';
+import { cleanTrainPage, showTrainPage } from './changes-in-dom/change-train-page';
+import { cleanPlayPage, showPlayPage } from './changes-in-dom/change-play-page';
+import { hideHeader, showHeader } from './changes-in-dom/change-header';
+import { createCategories } from './generate-dom/generate-categories';
+import { changeCardInTrainMode } from './changes-in-dom/change-card-in-train-mode';
+import { shuffle, returnIdFromAudio, createEnviromentForCategories } from './helpers';
+import { changeMenuBg, toggleMenu, hideMenu } from './changes-in-dom/change-menu';
+import { createStatisticsPage, removeStatisticsPage } from './changes-in-dom/change-statistic-page';
+import { createBtnFinishGame } from './generate-dom/generate-btn-finish-game';
+import generateTbodyStatistic from './generate-dom/generate-tbody-statistic';
+import { sortStatisticTable, sortGrid } from './changes-in-dom/sort-statistic-table';
+import {
+  createSunIcon,
+  createCloudIcon,
+  cleanAnswerRow,
+} from './generate-dom/generate-answer-icons';
 
 window.addEventListener('load', function () {
   initFunctions();
@@ -41,8 +54,8 @@ function initFunctions() {
   hideMenu();
   changeLayoutByClickCheckbox();
   toggleMenu();
-  generateTbody(cards);
-  sortTable();
+  generateTbodyStatistic(cards);
+  sortStatisticTable();
   sortGrid();
 }
 
@@ -83,7 +96,7 @@ function createMenu() {
 
   menuLinks.forEach((item) => {
     item.addEventListener('click', function (e) {
-      if (checker.checked) {
+      if (trainMode()) {
         if (e.target.textContent === 'Main menu') {
           removeStatisticsPage();
           cleanTrainPage();
@@ -99,12 +112,12 @@ function createMenu() {
           cleanTrainPage();
           createPageInsideCategory(e.target.textContent, trainPage);
           returnButtonGame();
-          turnOrAudioOnClick();
+          changeCardInTrainMode();
           hideMenu();
         }
       }
 
-      if (!checker.checked) {
+      if (playMode()) {
         if (e.target.textContent === 'Main menu') {
           removeStatisticsPage();
           cleanPlayPage();
@@ -127,74 +140,16 @@ function createMenu() {
   });
 }
 
-function changeMenuBg(colorClass) {
-  if (checker.checked) {
-    pageMenu.classList.add(colorClass);
-  }
-  if (!checker.checked) {
-    pageMenu.classList.remove(colorClass);
-  }
-}
-
-function toggleMenu() {
-  const hamburgerIcon = document.querySelector('.hamburger');
-  container.addEventListener('click', function (e) {
-    if (e.target === hamburgerIcon) {
-      pageMenu.classList.toggle('d-none');
-    } else {
-      pageMenu.classList.add('d-none');
-    }
-  });
-}
-
-function hideMenu() {
-  pageMenu.classList.add('d-none');
-}
-
-//генерация списка меню
-
-function cleanTrainPage() {
-  trainPage.innerHTML = '';
-}
-
-function cleanPlayPage() {
-  playPage.innerHTML = '';
-}
-
-function createEnviromentForCategories(what, whereToAdd) {
-  const containerFluid = document.createElement('div');
-  containerFluid.classList.add('container-fluid');
-  what.append(containerFluid);
-  whereToAdd.classList.remove('d-none');
-  containerFluid.append(whereToAdd);
-}
-
-function showTrainPage() {
-  playPage.classList.remove('d-block');
-  playPage.classList.add('d-none');
-  trainPage.classList.remove('d-none');
-  trainPage.classList.add('d-block');
-}
-
-function showPlayPage() {
-  trainPage.classList.remove('d-block');
-  trainPage.classList.add('d-none');
-  playPage.classList.remove('d-none');
-  playPage.classList.add('d-block');
-}
-
 //====== отрисовка экрана в зависимости от положения свитчера
 
 window.addEventListener('load', function () {
-  if (checker.checked) {
+  if (trainMode()) {
     removeStatisticsPage();
-
     changeMenuBg('trainColor');
     creatCategoryForTrain();
     showTrainPage();
   } else {
     removeStatisticsPage();
-
     changeMenuBg('playColor');
     creatCategoryForPlay();
     showPlayPage();
@@ -203,9 +158,17 @@ window.addEventListener('load', function () {
 
 //====== смена режима тренировка/игра по клику на свитчер
 
+const trainMode = () => {
+  return checker.checked;
+};
+
+const playMode = () => {
+  return !checker.checked;
+};
+
 function changeLayoutByClickCheckbox() {
   document.addEventListener('change', function () {
-    if (checker.checked) {
+    if (trainMode()) {
       if (rowWithCardsCategoryForTrain.innerHTML === '') {
         removeStatisticsPage();
         changeMenuBg('trainColor');
@@ -217,7 +180,7 @@ function changeLayoutByClickCheckbox() {
         showTrainPage();
       }
     }
-    if (!checker.checked) {
+    if (playMode()) {
       if (rowWithCardsCategoryForPlay.innerHTML === '') {
         removeStatisticsPage();
         changeMenuBg('playColor');
@@ -229,37 +192,6 @@ function changeLayoutByClickCheckbox() {
         showPlayPage();
       }
     }
-  });
-}
-
-//====== создание страницы с категориями
-
-function createCategories(arr, where, bgColor, color) {
-  arr.forEach((card) => {
-    const cardElement = document.createElement('div');
-    cardElement.classList.add(
-      'col-sm-6',
-      'col-md-4',
-      'col-lg-3',
-      'col-12',
-      'justify-content-center',
-      'd-flex',
-    );
-    cardElement.innerHTML =
-      `<div class="card category-card" 
-        style="background:${bgColor};
-        width: 13rem; height: 200px;margin:10px;border:4px solid white;
-        border-radius: 8px; color:${color}" 
-        id=${card.word}>` +
-      `<div class="card-face"><img class="card-img-top"` +
-      ` src="${card.pic}" alt="..." style="width:70%;"` +
-      `        <div class="card-body">` +
-      `           <h5 class="card-title front">${card.word}</h5>` +
-      `        </div>` +
-      `    </div>` +
-      `</div>`;
-
-    where.append(cardElement);
   });
 }
 
@@ -288,11 +220,11 @@ function creatCategoryForPlay() {
 function moveInsideCategory(fromWhere, toWhere) {
   fromWhere.addEventListener('click', function (e) {
     if (e.target.closest('.card')) {
-      if (checker.checked) {
+      if (trainMode()) {
         fromWhere.classList.add('d-none');
 
         createPageInsideCategory(e.target.closest('.card').id, toWhere);
-        turnOrAudioOnClick();
+        changeCardInTrainMode();
       } else {
         fromWhere.classList.add('d-none');
         createPageInsideCategory(e.target.closest('.card').id, toWhere);
@@ -303,29 +235,6 @@ function moveInsideCategory(fromWhere, toWhere) {
 
 moveInsideCategory(rowWithCardsCategoryForTrain, trainPage);
 moveInsideCategory(rowWithCardsCategoryForPlay, playPage);
-
-function turnOrAudioOnClick() {
-  const cardsClicked = Array.from(document.querySelectorAll('.scene'));
-
-  cardsClicked.forEach((element) => {
-    const btnInCard = element.querySelector('a.btn-turn');
-    const cardFace = element.querySelector('.card');
-    const audio = element.querySelector('audio');
-
-    element.addEventListener('click', function (e) {
-      e.preventDefault();
-      if (e.target === btnInCard) {
-        cardFace.classList.add('is-flipped');
-      } else audio.play();
-    });
-
-    cardFace.addEventListener('mouseleave', function (e) {
-      if (e.target.classList.contains('is-flipped')) {
-        cardFace.classList.remove('is-flipped');
-      }
-    });
-  });
-}
 
 containerItem.forEach((a) => a.addEventListener('click', flipCard));
 
@@ -341,44 +250,6 @@ rowForAnswers.classList.add('row');
 col12.classList.add('col-12', 'row-star');
 rowForAnswers.append(col12);
 col12.innerHTML = '';
-
-function createSunIcon() {
-  col12.innerHTML += `
-  <div class = 'star m-1 text-warning fas fa-sun fa-3x'></div>
-  `;
-}
-
-function createCloudIcon() {
-  col12.innerHTML += `
-  <div class = 'star m-1 text-secondary fas fa-cloud fa-3x'></div>
-  `;
-}
-
-function cleanAnswerRow() {
-  col12.innerHTML = '';
-}
-
-function createBtnFinishGame() {
-  const blockToInsertBtn = document.querySelector('#playPage.d-block' + ' div.d-block');
-
-  btnFinish.classList.add('btn-danger', 'btn-end');
-  btnFinish.value = 'Stop';
-  btnFinish.style.maxHeight = '42px';
-  btnFinish.style.maxWidth = '100px';
-  btnFinish.style.padding = '5px';
-  btnFinish.style.borderRadius = '8px';
-  btnFinish.style.textAlign = 'center';
-  btnFinish.style.cursor = 'pointer';
-  btnFinish.style.position = 'absolute';
-  btnFinish.style.top = '0px';
-  btnFinish.style.right = '10px';
-  btnFinish.addEventListener('click', function () {
-    location.reload();
-  });
-  blockToInsertBtn.append(btnFinish);
-}
-
-function removeBntFinish() {}
 
 // todo меню работает но с багами- при переключении режимов не меняется на
 // новый пункт
@@ -401,7 +272,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
   row.classList.add('row');
   secondRow.classList.add('col-12', 'd-flex', 'justify-content-center');
 
-  if (checker.checked) {
+  if (trainMode()) {
     row.id = `inside${divCardId}Train`;
     title.style.color = '#009efd';
 
@@ -444,7 +315,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
     }
   }
 
-  if (!checker.checked) {
+  if (playMode()) {
     row.id = `inside${divCardId}Play`;
     title.style.color = '#7873f5';
 
@@ -522,15 +393,6 @@ function createPageInsideCategory(divCardId, whereToPut) {
   // });
 }
 
-function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
-}
-
-//возврат значения из id audio
-function returnIdFromAudio(word) {
-  return word.slice(8);
-}
-
 function playYes() {
   audioYes.play();
 }
@@ -546,16 +408,6 @@ close.addEventListener('click', function () {
   cleanPlayPage();
   createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
 });
-
-function hideHeader() {
-  header.classList.remove('d-flex');
-  header.classList.add('d-none');
-}
-
-function showHeader() {
-  header.classList.add('d-flex');
-  header.classList.remove('d-none');
-}
 
 let starYes = 0;
 let starNo = 0;
@@ -659,13 +511,3 @@ function initGame() {
 }
 
 initGame();
-
-function createStatisticsPage() {
-  statisticsPage.classList.remove('d-none');
-  statisticsPage.classList.add('d-block');
-}
-
-function removeStatisticsPage() {
-  statisticsPage.classList.add('d-none');
-  statisticsPage.classList.remove('d-block');
-}
