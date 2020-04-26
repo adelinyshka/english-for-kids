@@ -20,7 +20,7 @@ function generateTbodyStatistic(cards) {
           let tableRow = document.createElement('tr');
           tableRow.innerHTML = `
 			<tr>
-			<td class="to-insert">${result[i]}</td>
+			<td class="to-insert">${categoryData[index].word}</td>
 			<td>${item[i].word}</td>
 			<td>${item[i].translation}</td>
 			<td>0</td>
