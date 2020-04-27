@@ -23,8 +23,17 @@ const finalResultText = document.createElement('div');
 const close = document.querySelector('.final-page span');
 const header = document.querySelector('header');
 const statisticsPage = document.querySelector('#statistics');
+const trainMode = () => {
+  return checker.checked;
+};
+
+const playMode = () => {
+  return !checker.checked;
+};
 
 export {
+  trainMode,
+  playMode,
   container,
   trainPage,
   playPage,

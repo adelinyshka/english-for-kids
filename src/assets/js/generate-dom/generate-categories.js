@@ -1,3 +1,6 @@
+import categoryData from '../data/category.data';
+import { rowWithCardsCategoryForPlay, rowWithCardsCategoryForTrain } from './generate-variables';
+
 function createCategories(arr, where, bgColor, color) {
   arr.forEach((card) => {
     const cardElement = document.createElement('div');
@@ -27,4 +30,22 @@ function createCategories(arr, where, bgColor, color) {
   });
 }
 
-export { createCategories };
+function creatCategoryForTrain() {
+  createCategories(
+    categoryData,
+    rowWithCardsCategoryForTrain,
+    ' linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);',
+    'black',
+  );
+}
+
+function creatCategoryForPlay() {
+  createCategories(
+    categoryData,
+    rowWithCardsCategoryForPlay,
+    'linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);',
+    'white',
+  );
+}
+
+export { createCategories, creatCategoryForTrain, creatCategoryForPlay };

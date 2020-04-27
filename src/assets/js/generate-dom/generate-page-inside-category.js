@@ -1,6 +1,7 @@
 import CardComponent from '../card.component';
 import cards from '../data/cards.data';
 import { btnPlay, rowForAnswers } from './generate-variables';
+import { trainMode, playMode } from './generate-variables';
 
 function createPageInsideCategory(divCardId, whereToPut) {
   const cardBlock = document.createElement('div');
