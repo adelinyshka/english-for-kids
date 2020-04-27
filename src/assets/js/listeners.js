@@ -17,7 +17,9 @@ function closeOnClick() {
 }
 
 function flipCardOnClick() {
-  containerItem.forEach((a) => a.addEventListener('click', flipCard));
+  containerItem.forEach((a) => {
+    a.addEventListener('click', flipCard);
+  });
 }
 
 export { closeOnClick, flipCardOnClick };

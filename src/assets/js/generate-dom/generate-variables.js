@@ -23,6 +23,8 @@ const finalResultText = document.createElement('div');
 const close = document.querySelector('.final-page span');
 const header = document.querySelector('header');
 const statisticsPage = document.querySelector('#statistics');
+const title = document.querySelector('h3');
+
 const trainMode = () => {
   return checker.checked;
 };
@@ -59,4 +61,5 @@ export {
   close,
   header,
   statisticsPage,
+  title,
 };

@@ -3,6 +3,7 @@ import {
   playMode,
   rowWithCardsCategoryForPlay,
   rowWithCardsCategoryForTrain,
+  title,
 } from '../generate-dom/generate-variables';
 import { removeStatisticsPage } from '../changes-in-dom/change-statistic-page';
 import { changeMenuBg } from '../changes-in-dom/change-menu';
@@ -13,27 +14,35 @@ import { creatCategoryForPlay, creatCategoryForTrain } from '../generate-dom/gen
 function changeLayoutByClickCheckbox() {
   document.addEventListener('change', function () {
     if (trainMode()) {
-      if (rowWithCardsCategoryForTrain.innerHTML === '') {
-        removeStatisticsPage();
-        changeMenuBg('trainColor');
-        creatCategoryForTrain();
-        showTrainPage();
+      if (title) {
+        console.log('yes for title');
       } else {
-        removeStatisticsPage();
-        changeMenuBg('trainColor');
-        showTrainPage();
+        if (rowWithCardsCategoryForTrain.innerHTML === '') {
+          removeStatisticsPage();
+          changeMenuBg('trainColor');
+          creatCategoryForTrain();
+          showTrainPage();
+        } else {
+          removeStatisticsPage();
+          changeMenuBg('trainColor');
+          showTrainPage();
+        }
       }
     }
     if (playMode()) {
-      if (rowWithCardsCategoryForPlay.innerHTML === '') {
-        removeStatisticsPage();
-        changeMenuBg('playColor');
-        creatCategoryForPlay();
-        showPlayPage();
+      if (title) {
+        console.log('yes for title Play mode');
       } else {
-        removeStatisticsPage();
-        changeMenuBg('playColor');
-        showPlayPage();
+        if (rowWithCardsCategoryForPlay.innerHTML === '') {
+          removeStatisticsPage();
+          changeMenuBg('playColor');
+          creatCategoryForPlay();
+          showPlayPage();
+        } else {
+          removeStatisticsPage();
+          changeMenuBg('playColor');
+          showPlayPage();
+        }
       }
     }
   });
