@@ -20,18 +20,18 @@ import {
 } from '../generate-dom/generate-answer-icons';
 import { closeOnClick } from '../listeners';
 
-function playYes() {
-  audioYes.play();
-}
-
-function playNo() {
-  audioNo.play();
-}
-
 let starYes = 0;
 let starNo = 0;
 
 function initGame() {
+  function playYes() {
+    audioYes.play();
+  }
+
+  function playNo() {
+    audioNo.play();
+  }
+
   //создание кнопки для игры
   btnPlay.innerHTML = 'Start Game';
   btnPlay.style.width = '200px';
@@ -65,7 +65,7 @@ function initGame() {
           'flex-column',
           'text-secondary',
         );
-        finalResultText.innerHTML = 'Верных ответов: ' + starYes + '.  Ошибок: ' + starNo + '.';
+        finalResultText.innerHTML = 'Ошибок: ' + starNo + '.';
         let finalImg = document.createElement('div');
 
         if (starNo === 0) {
@@ -80,6 +80,13 @@ function initGame() {
 
         finalTitle.append(finalResultText);
         showHeader();
+        setTimeout(function () {
+          finalPage.classList.remove('d-flex');
+          finalPage.classList.add('d-none');
+        }, 3000);
+        setTimeout(function () {
+          location.reload();
+        }, 2900);
       }
 
       //кнопка повтора
@@ -146,4 +153,4 @@ function initGame() {
   showHeader();
 }
 
-export { initGame, playYes, playNo };
+export { initGame };

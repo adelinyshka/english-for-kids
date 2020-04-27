@@ -7,7 +7,7 @@ function createPageInsideCategory(divCardId, whereToPut) {
   const cardBlock = document.createElement('div');
   const row = document.createElement('div');
   const secondRow = document.createElement('div');
-  const title = document.createElement('h3');
+  const title = document.createElement('h4');
   const linkMenu = Array.from(
     document.querySelectorAll('#containerApp' + ' header' + ' nav ul li a'),
   );

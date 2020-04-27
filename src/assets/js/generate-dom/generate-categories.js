@@ -2,6 +2,11 @@ import categoryData from '../data/category.data';
 import { rowWithCardsCategoryForPlay, rowWithCardsCategoryForTrain } from './generate-variables';
 
 function createCategories(arr, where, bgColor, color) {
+  const col12 = document.createElement('div');
+  col12.classList.add('col-12', 'text-center');
+  const title = document.createElement('h3');
+  title.innerText = 'Main menu';
+  col12.append(title);
   arr.forEach((card) => {
     const cardElement = document.createElement('div');
     cardElement.classList.add(
@@ -27,6 +32,7 @@ function createCategories(arr, where, bgColor, color) {
       `</div>`;
 
     where.append(cardElement);
+    where.prepend(col12);
   });
 }
 
