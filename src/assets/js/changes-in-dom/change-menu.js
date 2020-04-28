@@ -14,8 +14,10 @@ function toggleMenu() {
   container.addEventListener('click', function (e) {
     if (e.target === hamburgerIcon) {
       pageMenu.classList.toggle('d-none');
+      hamburgerIcon.classList.toggle('inside');
     } else {
       pageMenu.classList.add('d-none');
+      hamburgerIcon.classList.remove('inside');
     }
   });
 }
