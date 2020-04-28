@@ -22,7 +22,9 @@ moveInsideCategory(rowWithCardsCategoryForTrain, trainPage);
 moveInsideCategory(rowWithCardsCategoryForPlay, playPage);
 flipCardOnClick();
 closeOnClick();
-initGame();
+if (playMode()) {
+  initGame();
+}
 
 function getNeededRowIdTrain() {
   if (trainMode()) {

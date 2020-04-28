@@ -20,10 +20,10 @@ import {
 } from '../generate-dom/generate-answer-icons';
 import { closeOnClick } from '../listeners';
 
-let starYes = 0;
-let starNo = 0;
-
 function initGame() {
+  let starYes = 0;
+  let starNo = 0;
+
   function playYes() {
     audioYes.play();
   }
@@ -83,6 +83,8 @@ function initGame() {
         setTimeout(function () {
           finalPage.classList.remove('d-flex');
           finalPage.classList.add('d-none');
+          starNo = 0;
+          containerCards.length = 0;
         }, 3000);
         setTimeout(function () {
           location.reload();
@@ -90,7 +92,7 @@ function initGame() {
       }
 
       //кнопка повтора
-      let iconReload = document.createElement('i');
+      const iconReload = document.createElement('i');
       iconReload.classList.add('text-light', 'fas', 'fa-redo-alt', 'f-2x');
       btnPlay.innerHTML = '';
       btnPlay.classList.add('round-btn');
