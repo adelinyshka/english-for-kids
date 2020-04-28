@@ -140,7 +140,7 @@ function initGame() {
               starNo = 0;
             }, 10000);
           } else {
-            setTimeout(playOnce, 600);
+            setTimeout(playOnce, 900);
           }
         } else if (audioId !== e.target.alt && e.target.style.opacity === '0.5') {
           return;
