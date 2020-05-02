@@ -1,113 +1,45 @@
 import CardComponent from '../card.component';
 import cards from '../data/cards.data';
-import { btnPlay, rowForAnswers } from './generate-variables';
-import { trainMode, playMode } from './generate-variables';
+import { rowForAnswers } from './generate-variables';
+import { trainMode, playMode, btnStartGame } from './generate-variables';
+import categoryData from '../data/category.data';
 
 function createPageInsideCategory(divCardId, whereToPut) {
   const cardBlock = document.createElement('div');
   const row = document.createElement('div');
   const secondRow = document.createElement('div');
   const title = document.createElement('h4');
-  const linkMenu = Array.from(
-    document.querySelectorAll('#containerApp' + ' header' + ' nav ul li a'),
-  );
+  const bgColorTrain = 'linear-gradient(to top, #fff1eb' + ' 0%, #ace0f9 100%);';
+  const bgColorPlay = 'linear-gradient(to top,' + ' #feada6 0%, #f5efef 100%);';
 
-  title.classList.add('text-center');
-  title.style.letterSpacing = '2px';
-  title.style.fontWeight = 'bold';
+  title.classList.add('text-center', 'title-inside');
   title.innerText = divCardId;
   cardBlock.classList.add('d-block');
   cardBlock.append(title);
   row.classList.add('row');
   secondRow.classList.add('col-12', 'd-flex', 'justify-content-center');
+  let card = new CardComponent();
 
   if (trainMode()) {
     row.id = `inside${divCardId}Train`;
-    title.style.color = '#009efd';
-
-    if (divCardId === 'Animals') {
-      let card = new CardComponent();
-      card.iterateArrCard(cards, 0, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
-    }
-
-    if (divCardId === 'Dishes') {
-      let card = new CardComponent();
-      card.iterateArrCard(cards, 1, row, 'linear-gradient(to top, #fff1eb' + ' 0%, #ace0f9 100%);');
-    }
-
-    if (divCardId === 'Fruits') {
-      let card = new CardComponent();
-      card.iterateArrCard(cards, 2, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
-    }
-
-    if (divCardId === 'House') {
-      let card = new CardComponent();
-      card.iterateArrCard(cards, 3, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
-    }
-    if (divCardId === 'Nature') {
-      let card = new CardComponent();
-      card.iterateArrCard(cards, 4, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
-    }
-    if (divCardId === 'Clothes') {
-      let card = new CardComponent();
-      card.iterateArrCard(cards, 5, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
-    }
-
-    if (divCardId === 'Toys') {
-      let card = new CardComponent();
-      card.iterateArrCard(cards, 6, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
-    }
-
-    if (divCardId === 'Vegetables') {
-      let card = new CardComponent();
-      card.iterateArrCard(cards, 7, row, 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);');
+    for (let i = 0; i < categoryData.length; i++) {
+      if (categoryData[i].word === divCardId) {
+        card.iterateArrCard(cards, i, row, bgColorTrain);
+      }
     }
   }
 
   if (playMode()) {
     row.id = `inside${divCardId}Play`;
-    title.style.color = '#7873f5';
-
-    if (divCardId === 'Animals') {
-      let card = new CardComponent();
-      card.iterateArrCardPlay(cards, 0, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
-    }
-
-    if (divCardId === 'Dishes') {
-      let card = new CardComponent();
-      card.iterateArrCardPlay(cards, 1, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
-    }
-    if (divCardId === 'Fruits') {
-      let card = new CardComponent();
-      card.iterateArrCardPlay(cards, 2, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
-    }
-
-    if (divCardId === 'House') {
-      let card = new CardComponent();
-      card.iterateArrCardPlay(cards, 3, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
-    }
-    if (divCardId === 'Nature') {
-      let card = new CardComponent();
-      card.iterateArrCardPlay(cards, 4, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
-    }
-    if (divCardId === 'Clothes') {
-      let card = new CardComponent();
-      card.iterateArrCardPlay(cards, 5, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
-    }
-
-    if (divCardId === 'Toys') {
-      let card = new CardComponent();
-      card.iterateArrCardPlay(cards, 6, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
-    }
-
-    if (divCardId === 'Vegetables') {
-      let card = new CardComponent();
-      card.iterateArrCardPlay(cards, 7, row, 'linear-gradient(to top, #feada6 0%, #f5efef 100%);');
+    for (let i = 0; i < categoryData.length; i++) {
+      if (categoryData[i].word === divCardId) {
+        card.iterateArrCardPlay(cards, i, row, bgColorPlay);
+      }
     }
 
     row.append(secondRow);
     title.after(rowForAnswers);
-    secondRow.append(btnPlay);
+    secondRow.append(btnStartGame);
   }
 
   cardBlock.append(row);

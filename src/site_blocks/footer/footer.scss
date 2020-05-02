@@ -2,17 +2,19 @@ footer {
   display: flex;
   margin-top: 20px;
   justify-content: center;
-  height: 50px;
+  height: 60px;
+  background-color: #5d63d9;
+
   & a {
     text-decoration: none;
     outline: none;
-    color: black;
+    color: #ffdd76;
     font-size: 20px;
 
     &:hover,
     &:focus,
     &:active {
-      color: white;
+      color: #ad984d;
       text-decoration: none;
       outline: none;
     }

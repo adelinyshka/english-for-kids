@@ -1,23 +1,4 @@
 class CardComponent {
-  constructor(id, audio) {
-    //внутри карточки
-    this.id = id;
-    this.audio = audio;
-
-    //учет для статистики
-    this.clickedInPlayMode = 0;
-    this.clickedInTrainMode = 0;
-    this.guessRight = 0;
-    this.guessWrong = 0;
-  }
-
-  clickedPlayMode() {
-    cardWord.addEventListener('click', function () {
-      this.clickedInPlayMode++;
-      console.log(clickedInPlayMode);
-    });
-  }
-
   createCard(wordEn, wordRu, bgColor) {
     const cardWord = document.createElement('div');
     cardWord.classList.add(
@@ -82,6 +63,7 @@ class CardComponent {
       where.append(card);
     });
   }
+
   //генерация массива карточек для игры
   iterateArrCardPlay(arr, num, where) {
     arr.forEach((item, index) => {

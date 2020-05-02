@@ -11,7 +11,6 @@ const menuListStat = document.createElement('li');
 const menuListLinkStat = document.createElement('a');
 const menuLinks = Array.from(pageMenu.querySelectorAll('li a'));
 const containerItem = document.querySelectorAll('.scene .card');
-const btnPlay = document.createElement('button');
 const rowForAnswers = document.createElement('div');
 const col12 = document.createElement('div');
 const btnFinish = document.createElement('input');
@@ -24,6 +23,10 @@ const close = document.querySelector('.final-page span');
 const header = document.querySelector('header');
 const statisticsPage = document.querySelector('#statistics');
 const title = document.querySelector('h3');
+const btnStartGame = document.createElement('button');
+btnStartGame.innerHTML = 'Start Game';
+btnStartGame.style.width = '200px';
+btnStartGame.classList.add('btn', 'btn-play');
 
 const trainMode = () => {
   return checker.checked;
@@ -36,6 +39,7 @@ const playMode = () => {
 export {
   trainMode,
   playMode,
+  btnStartGame,
   container,
   trainPage,
   playPage,
@@ -49,7 +53,6 @@ export {
   menuListLinkStat,
   menuLinks,
   containerItem,
-  btnPlay,
   rowForAnswers,
   col12,
   btnFinish,

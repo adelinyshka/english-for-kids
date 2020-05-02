@@ -1,6 +1,5 @@
 import categoryData from '../data/category.data';
 import {
-  btnPlay,
   firstA,
   firstLi,
   pageMenu,
@@ -10,6 +9,7 @@ import {
   rowWithCardsCategoryForTrain,
   trainMode,
   trainPage,
+  btnStartGame,
 } from './generate-variables';
 import {
   createStatisticsPage,
@@ -46,12 +46,12 @@ function createMenu() {
   pageMenu.append(menuListStat);
 
   function removeButtonGame() {
-    btnPlay.classList.add('d-none');
+    btnStartGame.classList.add('d-none');
   }
 
   function returnButtonGame() {
-    btnPlay.classList.remove('d-none');
-    btnPlay.classList.add('d-block');
+    btnStartGame.classList.remove('d-none');
+    btnStartGame.classList.add('d-block');
   }
 
   const menuLinks = Array.from(pageMenu.querySelectorAll('li a'));
@@ -63,19 +63,16 @@ function createMenu() {
           removeStatisticsPage();
           cleanTrainPage();
           createEnviromentForCategories(trainPage, rowWithCardsCategoryForTrain);
-          hideMenu();
         } else if (e.target.innerText === 'Statistics') {
           cleanTrainPage();
           createStatisticsPage();
           removeButtonGame();
-          hideMenu();
         } else {
           removeStatisticsPage();
           cleanTrainPage();
           createPageInsideCategory(e.target.textContent, trainPage);
           returnButtonGame();
           changeCardInTrainMode();
-          hideMenu();
         }
       }
 
@@ -84,21 +81,19 @@ function createMenu() {
           removeStatisticsPage();
           cleanPlayPage();
           createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
-          hideMenu();
         } else if (e.target.innerText === 'Statistics') {
           cleanPlayPage();
           createStatisticsPage();
           removeButtonGame();
-          hideMenu();
         } else {
           removeStatisticsPage();
           cleanPlayPage();
           createPageInsideCategory(e.target.textContent, playPage);
           returnButtonGame();
-          hideMenu();
         }
       }
     });
+    hideMenu();
   });
 }
 

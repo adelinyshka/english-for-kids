@@ -1,5 +1,6 @@
 main {
-  min-height: calc(100vh - 50px - 52px - 40px);
+  min-height: calc(100vh - 80px);
+  padding: 60px 20px 20px 20px;
 }
 
 table.table thead th {
@@ -11,4 +12,17 @@ table.table thead th {
   &:active {
     color: #c44949;
   }
+}
+
+.btn-end {
+  right: 25px;
+  top: 25px;
+  margin-top: 25px;
+  height: 42px;
+  max-width: 100px;
+  padding-top: 5px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
 }

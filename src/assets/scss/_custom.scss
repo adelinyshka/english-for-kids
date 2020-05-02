@@ -2,7 +2,8 @@
 
 .custom-switch {
   padding-left: 0;
-  padding-right: 3rem;
+  padding-right: 65px;
+  padding-top: 2px;
 }
 
 .custom-control-label::before,
@@ -22,10 +23,10 @@
 .custom-control-input:checked ~ .custom-control-label::before {
   content: 'train';
   padding-left: 6px;
-  color: black;
+  color: white;
   font-weight: bold;
   line-height: 30px;
-  background-image: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);
+  background: #0b95cc;
   border: 2px solid white;
   letter-spacing: 1px;
   outline: none;
@@ -35,13 +36,13 @@
   content: 'play';
   padding-left: 35px;
   line-height: 29px;
-  color: white;
+  color: black;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .custom-switch .custom-control-label::after {
-  background: white;
+  background: #dd2d5d;
   width: calc(2rem - 6px);
   height: calc(2rem - 8px);
 }
@@ -55,14 +56,8 @@
 
 .custom-control-label::before {
   pointer-events: none;
-  background-image: linear-gradient(
-    to right,
-    #eea2a2 0%,
-    #bbc1bf 19%,
-    #57c6e1 42%,
-    #b49fda 79%,
-    #7ac5d8 100%
-  );
+  background: #ffdd76;
+  color: black;
   border: 2px solid white;
 }
 

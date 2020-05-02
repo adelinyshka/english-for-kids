@@ -1,5 +1,14 @@
+header {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background: #dd2d5d;
+  z-index: 2;
+}
+
 nav {
   position: relative;
+  padding-top: 10px;
 }
 
 header nav a.hamburger {
@@ -8,9 +17,9 @@ header nav a.hamburger {
   outline: none;
   text-decoration: none;
   font-weight: bold;
-  color: white !important;
+  color: #ffdd76 !important;
   font-size: 35px;
-  position: relative;
+  position: fixed;
   z-index: 7;
   cursor: pointer;
 
@@ -27,7 +36,7 @@ header nav a.hamburger {
     cursor: pointer;
     outline: none;
     text-decoration: none;
-    color: black !important;
+    color: white !important;
   }
 }
 
@@ -37,13 +46,14 @@ header nav a.hamburger.inside {
     display: inline-block;
     width: 50px;
     height: 50px;
+    color: white !important;
   }
 }
 
 .page-menu {
-  position: absolute;
+  position: fixed;
   z-index: 5;
-  background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+  background: #dd2d5d;
   border-radius: 79%;
   left: -176px;
   padding: 89px 20px 20px 182px;
@@ -55,19 +65,14 @@ header nav a.hamburger.inside {
 
   & span {
     display: inline-block;
-    background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+    background: #dd2d5d;
     position: absolute;
     width: 100px;
     height: 100px;
-
     bottom: -95px;
-
     border-top-left-radius: 150%;
-
     transform: rotate(226deg);
-
     right: 160px;
-
     z-index: 2;
   }
 }
@@ -101,11 +106,11 @@ ul.page-menu li a {
 }
 
 .trainColor {
-  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
-  color: black;
+  background: #0b95cc;
+  color: white;
 
   & span {
-    background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+    background: #0b95cc;
   }
 }
 
@@ -153,7 +158,10 @@ ul.page-menu li a {
   height: 240px;
 }
 
-.active-link {
-  font-weight: bold;
-  color: #121a7f;
+.page-menu li.p-1 {
+  &:hover,
+  &:focus,
+  &:active {
+    color: #ffdd76;
+  }
 }

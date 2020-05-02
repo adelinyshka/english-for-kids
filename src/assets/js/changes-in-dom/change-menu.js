@@ -1,13 +1,21 @@
-import { checker, container, pageMenu } from '../generate-dom/generate-variables';
+import {
+  checker,
+  container,
+  pageMenu,
+  menuLinks,
+  trainMode,
+  playMode,
+} from '../generate-dom/generate-variables';
 
-function changeMenuBg(colorClass) {
-  if (checker.checked) {
-    pageMenu.classList.add(colorClass);
-  }
-  if (!checker.checked) {
-    pageMenu.classList.remove(colorClass);
-  }
-}
+//cмена цвета меню при переключении свитчера
+// function changeMenuBg(colorClass) {
+//   if (checker.checked) {
+//     pageMenu.classList.add(colorClass);
+//   }
+//   if (!checker.checked) {
+//     pageMenu.classList.remove(colorClass);
+//   }
+// }
 
 function toggleMenu() {
   const hamburgerIcon = document.querySelector('.hamburger');
@@ -26,10 +34,10 @@ function hideMenu() {
   pageMenu.classList.add('d-none');
 }
 
-// todo меню работает но с багами- при переключении режимов не меняется на
+// todo меню работает но с багами- при переключении режимов не меняется
 function makeActiveLinkDueToPage() {
-  linkMenu.forEach((item) => {
-    if (checker.checked) {
+  menuLinks.forEach((item) => {
+    if (trainMode()) {
       item.style.color = 'black';
       item.style.fontWeight = 'normal';
       if (item.innerText === title.innerText) {
@@ -41,7 +49,7 @@ function makeActiveLinkDueToPage() {
       }
     }
 
-    if (!checker.checked) {
+    if (playMode()) {
       if (item.innerText === title.innerText) {
         item.style.color = 'violet';
         item.style.fontWeight = 'bold';
@@ -53,33 +61,30 @@ function makeActiveLinkDueToPage() {
   });
 }
 
-//2
-// linkMenu.forEach((item) => {
-//   if(checker.checked) {
-//     item.style.color = 'black';
-//     item.style.fontWeight = 'normal';
-//     if (item.innerText === title.innerText) {
-//       item.style.color = 'blue';
-//       item.style.fontWeight = 'bold';
-//     }
-//
-//     else if (item.innerText !== title.innerText) {
-//       item.style.color = 'black';
-//       item.style.fontWeight = 'normal';
-//     }
-//   }
-//
-//   if(!checker.checked) {
-//     if (item.innerText === title.innerText) {
-//       item.style.color = 'violet';
-//       item.style.fontWeight = 'bold';
-//     }
-//
-//     else if (item.innerText !== title.innerText) {
-//       item.style.color = 'white';
-//       item.style.fontWeight = 'normal';
-//     }
-//   }
-// });
+(function changeLinkMenuColor() {
+  menuLinks.forEach((item) => {
+    if (trainMode()) {
+      item.style.color = 'black';
+      item.style.fontWeight = 'normal';
+      if (item.innerText === title.innerText) {
+        item.style.color = 'blue';
+        item.style.fontWeight = 'bold';
+      } else if (item.innerText !== title.innerText) {
+        item.style.color = 'black';
+        item.style.fontWeight = 'normal';
+      }
+    }
 
-export { changeMenuBg, toggleMenu, hideMenu };
+    if (playMode()) {
+      if (item.innerText === title.innerText) {
+        item.style.color = 'violet';
+        item.style.fontWeight = 'bold';
+      } else if (item.innerText !== title.innerText) {
+        item.style.color = 'blue';
+        item.style.fontWeight = 'normal';
+      }
+    }
+  });
+})();
+
+export { toggleMenu, hideMenu };

@@ -2,13 +2,13 @@ import {
   audioNo,
   audioYes,
   btnFinish,
-  btnPlay,
   col12,
   finalPage,
   finalResultText,
   finalTitle,
   playPage,
   rowForAnswers,
+  btnStartGame,
 } from '../generate-dom/generate-variables';
 import { hideHeader, showHeader } from './change-header';
 import { createBtnFinishGame } from '../generate-dom/generate-btn-finish-game';
@@ -19,6 +19,9 @@ import {
   createSunIcon,
 } from '../generate-dom/generate-answer-icons';
 import { closeOnClick } from '../listeners';
+
+let clicksPlayModeWrong = 0;
+let clicksPlayModeRight = 0;
 
 function initGame() {
   let starYes = 0;
@@ -32,23 +35,18 @@ function initGame() {
     audioNo.play();
   }
 
-  //создание кнопки для игры
-  btnPlay.innerHTML = 'Start Game';
-  btnPlay.style.width = '200px';
-  btnPlay.classList.add('btn', 'btn-play');
-
   //создание ряда для записи ответов
   rowForAnswers.classList.add('row');
   col12.classList.add('col-12', 'row-star');
   rowForAnswers.append(col12);
   col12.innerHTML = '';
 
-  btnPlay.addEventListener('click', function () {
+  btnStartGame.addEventListener('click', function () {
     hideHeader();
     createBtnFinishGame();
     const containerCards = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
 
-    if (btnPlay.innerText === 'Start Game') {
+    if (btnStartGame.innerText === 'Start Game') {
       function playOnce() {
         containerCards[containerCards.length - 1].play();
       }
@@ -94,16 +92,16 @@ function initGame() {
       //кнопка повтора
       const iconReload = document.createElement('i');
       iconReload.classList.add('text-light', 'fas', 'fa-redo-alt', 'f-2x');
-      btnPlay.innerHTML = '';
-      btnPlay.classList.add('round-btn');
-      btnPlay.append(iconReload);
+      btnStartGame.innerHTML = '';
+      btnStartGame.classList.add('round-btn');
+      btnStartGame.append(iconReload);
 
       shuffle(containerCards);
       playOnce();
 
       playPage.addEventListener('click', function (e) {
         let audioId = returnIdFromAudio(containerCards[containerCards.length - 1].id);
-        if (e.target.closest('.btn-play') === btnPlay) {
+        if (e.target.closest('.btn-play') === btnStartGame) {
           playOnce();
         }
 
@@ -131,8 +129,8 @@ function initGame() {
               giveResult();
             }, 1000);
             setTimeout(function () {
-              btnPlay.innerHTML = 'Start Game';
-              btnPlay.classList.remove('round-btn');
+              btnStartGame.innerHTML = 'Start Game';
+              btnStartGame.classList.remove('round-btn');
             }, 3000);
 
             setTimeout(function () {
@@ -144,7 +142,7 @@ function initGame() {
           }
         } else if (audioId !== e.target.alt && e.target.style.opacity === '0.5') {
           return;
-        } else if (audioId !== e.target.alt && e.target.closest('.btn-play') !== btnPlay) {
+        } else if (audioId !== e.target.alt && e.target.closest('.btn-play') !== btnStartGame) {
           createCloudIcon();
           playNo();
           starNo++;

@@ -1,9 +1,9 @@
 import { trainMode } from '../generate-dom/generate-variables';
 
 function changeCardInTrainMode() {
-  if (trainMode) {
-    const cardsClicked = Array.from(document.querySelectorAll('.scene'));
+  const cardsClicked = Array.from(document.querySelectorAll('.scene'));
 
+  if (trainMode()) {
     cardsClicked.forEach((element) => {
       const btnInCard = element.querySelector('a.btn-turn');
       const cardFace = element.querySelector('.card');
@@ -24,6 +24,7 @@ function changeCardInTrainMode() {
     });
   } else {
     cardsClicked.length = 0;
+    audio.pause();
   }
 }
 

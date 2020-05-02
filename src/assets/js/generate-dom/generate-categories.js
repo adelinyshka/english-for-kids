@@ -5,6 +5,7 @@ function createCategories(arr, where, bgColor, color) {
   const col12 = document.createElement('div');
   col12.classList.add('col-12', 'text-center');
   const title = document.createElement('h3');
+  title.style.fontWeight = 'bold';
   title.innerText = 'Main menu';
   col12.append(title);
   arr.forEach((card) => {
@@ -37,21 +38,11 @@ function createCategories(arr, where, bgColor, color) {
 }
 
 function creatCategoryForTrain() {
-  createCategories(
-    categoryData,
-    rowWithCardsCategoryForTrain,
-    ' linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);',
-    'black',
-  );
+  createCategories(categoryData, rowWithCardsCategoryForTrain, '#0B95CC', 'white');
 }
 
 function creatCategoryForPlay() {
-  createCategories(
-    categoryData,
-    rowWithCardsCategoryForPlay,
-    'linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);',
-    'white',
-  );
+  createCategories(categoryData, rowWithCardsCategoryForPlay, '#FFDD76', 'black');
 }
 
 export { createCategories, creatCategoryForTrain, creatCategoryForPlay };

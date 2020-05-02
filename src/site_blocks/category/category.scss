@@ -3,7 +3,7 @@
   height: 60px;
   display: block;
   margin: 30px;
-  background: #7873f5;
+  background: #dd2d5d;
 
   font-weight: bold;
   border: 2px solid white;
@@ -30,25 +30,11 @@
   width: 100px !important;
   height: 100px;
   border-radius: 100%;
-  background-image: linear-gradient(
-    to right,
-    #eea2a2 0%,
-    #bbc1bf 19%,
-    #57c6e1 42%,
-    #b49fda 79%,
-    #7ac5d8 100%
-  );
+  background: #f4ba49;
 
   &:hover,
   &:focus,
   &:active {
-    background-image: linear-gradient(
-      to right,
-      #bc7f7f 0%,
-      #949a98 19%,
-      #48a0b7 42%,
-      #a28fc4 79%,
-      #5a92a2 100%
-    );
+    background: #dd2d5d;
   }
 }
