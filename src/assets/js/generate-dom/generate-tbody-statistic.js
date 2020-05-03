@@ -4,6 +4,7 @@ import categoryData from '../data/category.data';
 function generateTbodyStatistic(cards) {
   let dataWithCategories;
   let result = [];
+
   function getEnWords() {
     categoryData.forEach((item) => {
       for (let i = 0; i < 8; i++) {
@@ -15,6 +16,7 @@ function generateTbodyStatistic(cards) {
 
     cards.forEach((item, index) => {
       let tableBody = document.querySelector('tbody');
+
       for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 1; j++) {
           let neededPointsTrain;
@@ -24,6 +26,37 @@ function generateTbodyStatistic(cards) {
             neededPointsTrain = localStorage.getItem(item[i].word);
           }
 
+          let neededPointsPlay;
+          if (localStorage.getItem(item[i].word + ' play') === null) {
+            neededPointsPlay = 0;
+          } else {
+            neededPointsPlay = localStorage.getItem(item[i].word + ' play');
+          }
+          let neededPointsRight;
+          if (localStorage.getItem(item[i].word + ' right') === null) {
+            neededPointsRight = 0;
+          } else {
+            neededPointsRight = localStorage.getItem(item[i].word + ' right');
+          }
+
+          let neededPointsWrong;
+          if (localStorage.getItem(item[i].word + ' wrong') === null) {
+            neededPointsWrong = 0;
+          } else {
+            neededPointsWrong = localStorage.getItem(item[i].word + ' wrong');
+          }
+
+          let percentWrong;
+          if (localStorage.getItem(item[i].word + ' wrong') === null) {
+            percentWrong = 0;
+          } else {
+            percentWrong = Math.round(
+              100 /
+                (localStorage.getItem(item[i].word + ' right') /
+                  localStorage.getItem(item[i].word + ' wrong')),
+            );
+          }
+
           let tableRow = document.createElement('tr');
           tableRow.innerHTML = `
 			<tr>
@@ -31,9 +64,10 @@ function generateTbodyStatistic(cards) {
 			<td>${item[i].word}</td>
 			<td>${item[i].translation}</td>
 			<td>${neededPointsTrain}</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
+			<td>${neededPointsPlay}</td>
+			<td>${neededPointsRight}</td>
+			<td>${neededPointsWrong}</td>
+			<td>${percentWrong}</td>
 			<tr>
 			`;
           tableBody.append(tableRow);
@@ -43,16 +77,6 @@ function generateTbodyStatistic(cards) {
   }
 
   getEnWords();
-
-  function getRuWords() {
-    cards.forEach((item, index) => {
-      if (index > 0) {
-        for (let i = 1; i < 8; i++) {
-          console.log(item[i].translation);
-        }
-      }
-    });
-  }
 }
 
 export { generateTbodyStatistic };

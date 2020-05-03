@@ -19,12 +19,9 @@ import {
   createSunIcon,
 } from '../generate-dom/generate-answer-icons';
 import { hideFooter, showFooter } from './change-footer';
-
-import { closeOnClick } from '../listeners';
-import cards from '../data/cards.data';
-
-let clicksPlayModeWrong = 0;
-let clicksPlayModeRight = 0;
+import { putStatsToLocalStoragePlay } from './../localStorage/put-stats-for-play-mode';
+import { putStatsToLocalStoragePlayWrong } from './../localStorage/put-stats-for-play-wrong';
+import { putStatsToLocalStoragePlayRight } from './../localStorage/put-stats-for-play-mode-right';
 
 function initGame() {
   let starYes = 0;
@@ -69,6 +66,7 @@ function initGame() {
         'flex-column',
         'text-secondary',
       );
+
       finalResultText.innerHTML = 'Ошибок: ' + starNo + '.';
       let finalImg = document.createElement('div');
 
@@ -126,6 +124,8 @@ function initGame() {
           deleteOne();
           createSunIcon();
           starYes++;
+          putStatsToLocalStoragePlay(e.target.alt);
+          putStatsToLocalStoragePlayRight(e.target.alt);
 
           setTimeout(function () {
             e.target.style.opacity = '0.5';
@@ -148,15 +148,19 @@ function initGame() {
             setTimeout(playOnce, 900);
           }
         }
-        if ((audioId !== e.target.alt && e.target.style.opacity === '0.5') || !e.target.alt) {
-          return;
+        if (audioId !== e.target.alt && e.target.style.opacity === '0.5') {
+          putStatsToLocalStoragePlay(e.target.alt);
+          putStatsToLocalStoragePlayWrong(audioId);
+          putStatsToLocalStoragePlayWrong(e.target.alt);
         }
-        // if (audioId !== e.target.alt && e.target.closest('.btn-play') !== btnStartGame) {
 
         if (audioId !== e.target.alt && e.target.closest('.btn-play') !== btnStartGame) {
           createCloudIcon();
           playNo();
           starNo++;
+          putStatsToLocalStoragePlay(e.target.alt);
+          putStatsToLocalStoragePlayWrong(audioId);
+          putStatsToLocalStoragePlayWrong(e.target.alt);
         }
       });
     }
