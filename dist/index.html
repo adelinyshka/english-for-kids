@@ -8,7 +8,7 @@
     <meta name="keywords" content="application for kids for learning english">
     <title>English for kids</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  </head>
+  <link href="/assets/css/app.css" rel="stylesheet"></head>
   <body>
     <div id="containerApp">
       <header class="d-flex justify-content-between" role="banner">
@@ -27,8 +27,8 @@
         <div class="d-none" id="statistics">
           <h1>Statistic</h1>
           <div class="d-flex justify-content-center">
-            <input class="btn-danger m-2 text-center p-2 bold btn-reset" value="reset">
-            <input class="btn-warning m-2 text-center p-2 btn-repeat" value="train difficult words">
+            <input class="btn-danger m-2 text-center p-2 bold btn-reset" type="submit" value="reset">
+            <input class="btn-warning m-2 text-center p-2 btn-repeat" type="submit" value="train difficult words">
           </div>
           <div class="table-responsive">
             <table class="table" id="grid">
@@ -50,12 +50,12 @@
         </div>
         <div class="d-none" id="trainPage">
           <div class="container-fluid">
-            <div class="row" id="rowWithCardsCategoryForTrain"></div>
+            <div class="row justify-content-center" id="rowWithCardsCategoryForTrain"></div>
           </div>
         </div>
         <div class="d-none" id="playPage">
           <div class="container-fluid">
-            <div class="row" id="rowWithCardsCategoryForPlay"></div>
+            <div class="row justify-content-center" id="rowWithCardsCategoryForPlay"></div>
           </div>
         </div>
       </main>

@@ -17,11 +17,11 @@ function generateTbodyStatistic(cards) {
       let tableBody = document.querySelector('tbody');
       for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 1; j++) {
-          let neededPoint;
+          let neededPointsTrain;
           if (localStorage.getItem(item[i].word) === null) {
-            neededPoint = 0;
+            neededPointsTrain = 0;
           } else {
-            neededPoint = localStorage.getItem(item[i].word);
+            neededPointsTrain = localStorage.getItem(item[i].word);
           }
 
           let tableRow = document.createElement('tr');
@@ -30,8 +30,7 @@ function generateTbodyStatistic(cards) {
 			<td class="to-insert">${categoryData[index].word}</td>
 			<td>${item[i].word}</td>
 			<td>${item[i].translation}</td>
-			<td>${neededPoint}</td>
-			<td>0</td>
+			<td>${neededPointsTrain}</td>
 			<td>0</td>
 			<td>0</td>
 			<td>0</td>
@@ -56,4 +55,4 @@ function generateTbodyStatistic(cards) {
   }
 }
 
-export default generateTbodyStatistic;
+export { generateTbodyStatistic };

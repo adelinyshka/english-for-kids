@@ -21,6 +21,7 @@ const finalTitle = document.querySelector('.final-page h1');
 const finalResultText = document.createElement('div');
 const close = document.querySelector('.final-page span');
 const header = document.querySelector('header');
+const footer = document.querySelector('footer');
 const statisticsPage = document.querySelector('#statistics');
 const resetBtn = statisticsPage.querySelector('.btn-reset');
 const title = document.querySelector('h3');
@@ -38,6 +39,7 @@ const playMode = () => {
 };
 
 export {
+  footer,
   trainMode,
   playMode,
   btnStartGame,

@@ -10,3 +10,4 @@ import './assets/js/card.component';
 import './assets/js/changes-in-dom/sort-statistic-table';
 import './assets/js/generate-dom/generate-tbody-statistic';
 import './assets/js/generate-dom/generate-variables';
+import './assets/js/data/cards.data';

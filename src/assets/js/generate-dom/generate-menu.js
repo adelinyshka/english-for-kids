@@ -10,6 +10,7 @@ import {
   trainMode,
   trainPage,
   btnStartGame,
+  statisticsPage,
 } from './generate-variables';
 import {
   createStatisticsPage,
