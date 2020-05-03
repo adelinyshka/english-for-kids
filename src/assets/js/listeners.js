@@ -3,6 +3,7 @@ import {
   containerItem,
   finalPage,
   playPage,
+  resetBtn,
   rowWithCardsCategoryForPlay,
 } from './generate-dom/generate-variables';
 import { cleanPlayPage } from './changes-in-dom/change-play-page';
@@ -22,4 +23,10 @@ function flipCardOnClick() {
   });
 }
 
-export { closeOnClick, flipCardOnClick };
+function resetStats() {
+  resetBtn.addEventListener('click', function () {
+    localStorage.clear();
+  });
+}
+
+export { closeOnClick, flipCardOnClick, resetStats };

@@ -19,6 +19,7 @@ import {
   createSunIcon,
 } from '../generate-dom/generate-answer-icons';
 import { closeOnClick } from '../listeners';
+import cards from '../data/cards.data';
 
 let clicksPlayModeWrong = 0;
 let clicksPlayModeRight = 0;

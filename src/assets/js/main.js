@@ -8,9 +8,10 @@ import {
   playMode,
 } from './generate-dom/generate-variables';
 import { moveInsideCategory } from './changes-in-dom/move-inside-category-on-click';
-import { closeOnClick, flipCardOnClick } from './listeners';
+import { closeOnClick, flipCardOnClick, resetStats } from './listeners';
 import { generateLayoutOnLoad } from './generate-dom/generate-layout-onload';
 import { initGame } from './changes-in-dom/init-game';
+
 // import { moveBetweenPagesInsideCategoriesBySwitcher } from './changes-in-dom/test-switcher';
 import { createPageInsideCategory } from './generate-dom/generate-page-inside-category';
 import { changeCardInTrainMode } from './changes-in-dom/change-card-in-train-mode';
@@ -22,6 +23,8 @@ moveInsideCategory(rowWithCardsCategoryForTrain, trainPage);
 moveInsideCategory(rowWithCardsCategoryForPlay, playPage);
 flipCardOnClick();
 closeOnClick();
+resetStats();
+
 if (playMode()) {
   initGame();
 }

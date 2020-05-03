@@ -7,6 +7,7 @@ const cards = [
       audioSrc: './assets/audio/cat.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'chick',
@@ -15,6 +16,7 @@ const cards = [
       audioSrc: './assets/audio/chick.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'chicken',
@@ -23,6 +25,7 @@ const cards = [
       audioSrc: './assets/audio/chicken.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'dog',
@@ -31,6 +34,7 @@ const cards = [
       audioSrc: './assets/audio/dog.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'horse',
@@ -39,6 +43,7 @@ const cards = [
       audioSrc: './assets/audio/horse.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'pig',
@@ -47,6 +52,7 @@ const cards = [
       audioSrc: './assets/audio/pig.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'rabbit',
@@ -55,6 +61,7 @@ const cards = [
       audioSrc: './assets/audio/rabbit.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'sheep',
@@ -63,6 +70,7 @@ const cards = [
       audioSrc: './assets/audio/sheep.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
   ],
   [
@@ -73,6 +81,7 @@ const cards = [
       audioSrc: './assets/audio/cup.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'plate',
@@ -81,6 +90,7 @@ const cards = [
       audioSrc: './assets/audio/plate.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'spoon',
@@ -89,6 +99,7 @@ const cards = [
       audioSrc: './assets/audio/spoon.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'fork',
@@ -97,6 +108,7 @@ const cards = [
       audioSrc: './assets/audio/fork.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'knife',
@@ -105,6 +117,7 @@ const cards = [
       audioSrc: './assets/audio/knife.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'teapot',
@@ -113,6 +126,7 @@ const cards = [
       audioSrc: './assets/audio/teapot.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'saucepan',
@@ -121,6 +135,7 @@ const cards = [
       audioSrc: './assets/audio/saucepan.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'skillet',
@@ -129,6 +144,7 @@ const cards = [
       audioSrc: './assets/audio/skillet.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
   ],
   [
@@ -138,6 +154,7 @@ const cards = [
       image: './assets/img/banana.jpg',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
       audioSrc: './assets/audio/banana.mp3',
     },
     {
@@ -147,6 +164,7 @@ const cards = [
       audioSrc: './assets/audio/pineapple.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'apple',
@@ -155,6 +173,7 @@ const cards = [
       audioSrc: './assets/audio/apple.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'orange',
@@ -163,6 +182,7 @@ const cards = [
       audioSrc: './assets/audio/orange.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'coconut',
@@ -171,6 +191,7 @@ const cards = [
       audioSrc: './assets/audio/coconut.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'kiwi',
@@ -179,6 +200,7 @@ const cards = [
       audioSrc: './assets/audio/kiwi.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'lemon',
@@ -187,6 +209,7 @@ const cards = [
       audioSrc: './assets/audio/lemon.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'watermelon',
@@ -195,6 +218,7 @@ const cards = [
       audioSrc: './assets/audio/watermelon.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
   ],
   [
@@ -205,6 +229,7 @@ const cards = [
       audioSrc: './assets/audio/chair.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'sofa',
@@ -213,6 +238,7 @@ const cards = [
       audioSrc: './assets/audio/sofa.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'cupboard',
@@ -221,6 +247,7 @@ const cards = [
       audioSrc: './assets/audio/cupboard.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'table',
@@ -229,6 +256,7 @@ const cards = [
       audioSrc: './assets/audio/table.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'lamp',
@@ -237,6 +265,7 @@ const cards = [
       audioSrc: './assets/audio/lamp.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'door',
@@ -245,6 +274,7 @@ const cards = [
       audioSrc: './assets/audio/door.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'wall',
@@ -253,6 +283,7 @@ const cards = [
       audioSrc: './assets/audio/wall.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'window',
@@ -261,6 +292,7 @@ const cards = [
       audioSrc: './assets/audio/window.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
   ],
   [
@@ -271,6 +303,7 @@ const cards = [
       audioSrc: './assets/audio/sky.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'tree',
@@ -279,6 +312,7 @@ const cards = [
       audioSrc: './assets/audio/tree.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'grass',
@@ -287,6 +321,7 @@ const cards = [
       audioSrc: './assets/audio/grass.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'flower',
@@ -295,6 +330,7 @@ const cards = [
       audioSrc: './assets/audio/flower.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'sea',
@@ -303,6 +339,7 @@ const cards = [
       audioSrc: './assets/audio/sea.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'sand',
@@ -311,6 +348,7 @@ const cards = [
       audioSrc: './assets/audio/sand.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'wind',
@@ -319,6 +357,7 @@ const cards = [
       audioSrc: './assets/audio/wind.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'stone',
@@ -327,6 +366,7 @@ const cards = [
       audioSrc: './assets/audio/stone.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
   ],
   [
@@ -337,6 +377,7 @@ const cards = [
       audioSrc: './assets/audio/belt.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'dress',
@@ -345,6 +386,7 @@ const cards = [
       audioSrc: './assets/audio/dress.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'hat',
@@ -353,6 +395,7 @@ const cards = [
       audioSrc: './assets/audio/hat.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'skirt',
@@ -361,6 +404,7 @@ const cards = [
       audioSrc: './assets/audio/skirt.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'socks',
@@ -369,6 +413,7 @@ const cards = [
       audioSrc: './assets/audio/socks.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'shirt',
@@ -377,6 +422,7 @@ const cards = [
       audioSrc: './assets/audio/shirt.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'button',
@@ -385,6 +431,7 @@ const cards = [
       audioSrc: './assets/audio/button.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'pants',
@@ -393,6 +440,7 @@ const cards = [
       audioSrc: './assets/audio/pants.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
   ],
 
@@ -404,6 +452,7 @@ const cards = [
       audioSrc: './assets/audio/rocket.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'car',
@@ -412,6 +461,7 @@ const cards = [
       audioSrc: './assets/audio/car.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'doll',
@@ -420,6 +470,7 @@ const cards = [
       audioSrc: './assets/audio/doll.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'blocks',
@@ -428,6 +479,7 @@ const cards = [
       audioSrc: './assets/audio/blocks.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'drum',
@@ -436,6 +488,7 @@ const cards = [
       audioSrc: './assets/audio/drum.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'ball',
@@ -444,6 +497,7 @@ const cards = [
       audioSrc: './assets/audio/ball.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'robot',
@@ -452,6 +506,7 @@ const cards = [
       audioSrc: './assets/audio/robot.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'train',
@@ -460,6 +515,7 @@ const cards = [
       audioSrc: './assets/audio/train.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
   ],
 
@@ -471,6 +527,7 @@ const cards = [
       audioSrc: './assets/audio/potato.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'carrot',
@@ -479,6 +536,7 @@ const cards = [
       audioSrc: './assets/audio/carrot.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'onion',
@@ -487,6 +545,7 @@ const cards = [
       audioSrc: './assets/audio/onion.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'pepper',
@@ -495,6 +554,7 @@ const cards = [
       audioSrc: './assets/audio/pepper.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'corn',
@@ -503,6 +563,7 @@ const cards = [
       audioSrc: './assets/audio/corn.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'cucumber',
@@ -511,6 +572,7 @@ const cards = [
       audioSrc: './assets/audio/cucumber.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'tomato',
@@ -519,6 +581,7 @@ const cards = [
       audioSrc: './assets/audio/tomato.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
     {
       word: 'eggplant',
@@ -527,6 +590,7 @@ const cards = [
       audioSrc: './assets/audio/eggplant.mp3',
       clickedRight: 0,
       clickedWrong: 0,
+      clickedTrain: 0,
     },
   ],
 ];

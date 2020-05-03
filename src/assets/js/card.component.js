@@ -1,3 +1,5 @@
+import { trainMode } from './generate-dom/generate-variables';
+
 class CardComponent {
   createCard(wordEn, wordRu, bgColor) {
     const cardWord = document.createElement('div');
