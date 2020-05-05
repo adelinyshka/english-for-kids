@@ -23,30 +23,30 @@ import { putStatsToLocalStoragePlay } from '../localStorage/put-stats-for-play-m
 import { putStatsToLocalStoragePlayWrong } from '../localStorage/put-stats-for-play-wrong';
 import { putStatsToLocalStoragePlayRight } from '../localStorage/put-stats-for-play-mode-right';
 
+function playSoundYes() {
+  audioYes.play();
+}
 
-function initGame() {
+function playSoundNo() {
+  audioNo.play();
+}
 
-  let counterAnswerRight = 0;
-  let counterAnswerWrong = 0;
-
-  function playSoundYes() {
-    audioYes.play();
-  }
-
-  function playSoundNo() {
-    audioNo.play();
-  }
-
+function createRowForAnswers() {
   rowForAnswers.classList.add('row');
   col12.classList.add('col-12', 'row-star');
   rowForAnswers.append(col12);
   col12.innerHTML = '';
+}
+
+function initGame() {
+  let counterAnswerRight = 0;
+  let counterAnswerWrong = 0;
+
+
+
+  createRowForAnswers();
 
   btnStartGame.addEventListener('click', function () {
-    hideHeader();
-    hideFooter();
-    createBtnFinishGame();
-
     const arrayOfCardsOnPage = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
 
     function deleteOneCardFromArray() {
@@ -82,7 +82,6 @@ function initGame() {
       }
 
       finalTitle.append(finalResultText);
-      showHeader();
       setTimeout(function () {
         finalPage.classList.remove('d-flex');
         finalPage.classList.add('d-none');
@@ -92,8 +91,11 @@ function initGame() {
       }, 3000);
     }
 
+    hideHeader();
+    hideFooter();
+    createBtnFinishGame();
+
     if (btnStartGame.innerText === 'Start Game') {
-      //поменять вид кнопки начала игры на repeat
       const iconReload = document.createElement('i');
       iconReload.classList.add('text-light', 'fas', 'fa-redo-alt', 'f-2x');
       btnStartGame.innerHTML = '';
@@ -126,24 +128,23 @@ function initGame() {
           putStatsToLocalStoragePlay(e.target.alt);
           putStatsToLocalStoragePlayRight(e.target.alt);
 
-          setTimeout(function () {
             e.target.style.opacity = '0.5';
-          }, 300);
 
           if (arrayOfCardsOnPage.length === 0) {
             setTimeout(function () {
               cleanAnswerRow();
               giveResult();
-            }, 1000);
-            setTimeout(function () {
               btnStartGame.innerHTML = 'Start Game';
               btnStartGame.classList.remove('round-btn');
-            }, 3000);
+            },1000);
+
             setTimeout(function () {
               counterAnswerRight = 0;
               counterAnswerWrong = 0;
             }, 4000);
-          } else {
+          }
+
+          else {
             setTimeout(playCardAudio, 900);
           }
         }
