@@ -1,0 +1,38 @@
+main(role='main')
+	div#statistics.d-none
+		h1 Statistic
+		.d-flex.justify-content-center
+			input.btn-danger.m-2.text-center.p-2.bold.btn-reset(type='submit' value='reset')
+			input.btn-warning.m-2.text-center.p-2.btn-repeat(type='submit'
+				value='train difficult words')
+		.table-responsive
+			table.table#grid
+				thead
+					tr
+						th(scope='col' data-type="string")
+							<i class="fas fa-sort"></i> category
+						th(scope='col' data-type="string")
+							<i class="fas fa-sort"></i> word
+						th(scope='col' data-type="string")
+							<i class="fas fa-sort"></i> translation
+						th(scope='col' data-type="number")
+							<i class="fas fa-sort"></i> train mode
+						th(scope='col' data-type="number")
+							<i class="fas fa-sort"></i> play mode
+						th(scope='col' data-type="number")
+							<i class="fas fa-sort"></i> right
+						th(scope='col' data-type="number")
+							<i class="fas fa-sort"></i> wrong
+						th(scope='col' data-type="number")
+							<i class="fas fa-sort"></i> wrong %
+				tbody
+
+
+	div#trainPage.d-none
+		.container-fluid
+			.row(class='justify-content-center')#rowWithCardsCategoryForTrain
+
+	div#playPage.d-none
+
+		.container-fluid
+			.row(class='justify-content-center')#rowWithCardsCategoryForPlay

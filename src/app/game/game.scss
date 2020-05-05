@@ -1,0 +1,71 @@
+.final-img.goodResult {
+	background: url('./assets/img/GoodEnd.jpg');
+	width: 300px;
+	height: 430px;
+	}
+
+.final-img.badResult {
+	background: url('./assets/img/badEnd.jpg');
+	width: 300px;
+	height: 240px;
+	}
+
+.final-page {
+	border-radius: 16px;
+	box-shadow: 20px 20px 20px grey;
+	width: 100%;
+	height: 100%;
+	background: white;
+	padding: 30px;
+	text-align: center;
+	z-index: 999;
+	position: absolute;
+	font-family: 'Exo', sans-serif;
+	margin: 1px -2px -20px 1px;
+	}
+
+.btn.btn-danger {
+	cursor: pointer;
+	max-height: 40px;
+	}
+
+.btn-play {
+	width: 200px;
+	height: 60px;
+	display: block;
+	margin: 30px;
+	background: #dd2d5d;
+
+	font-weight: bold;
+	border: 2px solid white;
+	border-radius: 12px;
+	color: white;
+	font-size: 30px;
+	}
+
+.row-star.col-12 {
+	max-height: 54px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	display: flex;
+	flex-wrap: nowrap;
+	width: content-box;
+	justify-content: flex-end;
+	}
+
+.star {
+	flex-shrink: 0;
+	}
+
+.round-btn {
+	width: 100px !important;
+	height: 100px;
+	border-radius: 100%;
+	background: #f4ba49;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background: #dd2d5d;
+		}
+	}
