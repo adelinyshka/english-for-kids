@@ -21,6 +21,7 @@ import { createEnviromentForCategories } from '../helpers';
 import { hideMenu } from './change-menu';
 import { changeCardInTrainMode } from '../card/change-card-in-train-mode';
 import {createTrainPageInsideCategory, createPlayPageInsideCategory} from "../switcher";
+import {cleanPlayPage} from "../playPage/change-play-page";
 
 function createMenu() {
   firstLi.classList.add('p-1');
@@ -61,17 +62,18 @@ function createMenu() {
     item.addEventListener('click', function (e) {
       titleInHeader.innerText = e.target.textContent;
       if (trainMode()) {
+        cleanTrainPage();
         if (e.target.textContent === 'Main') {
           removeStatisticsPage();
-          cleanTrainPage();
           createEnviromentForCategories(trainPage, rowWithCardsCategoryForTrain);
         } else if (e.target.innerText === 'Statistics') {
-          cleanTrainPage();
+
           createStatisticsPage();
+          // cleanTrainPage();
           removeButtonGame();
         } else {
           removeStatisticsPage();
-          cleanTrainPage();
+          // cleanTrainPage();
           createTrainPageInsideCategory(e.target.textContent);
           returnButtonGame();
           changeCardInTrainMode();
@@ -79,15 +81,19 @@ function createMenu() {
       }
 
       if (playMode()) {
+        cleanPlayPage();
         if (e.target.textContent === 'Main') {
           removeStatisticsPage();
+
           createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
           removeButtonGame();
         } else if (e.target.innerText === 'Statistics') {
           createStatisticsPage();
+          // cleanPlayPage();
           removeButtonGame();
         } else {
           removeStatisticsPage();
+          // cleanPlayPage();
           createPlayPageInsideCategory(e.target.textContent);
         }
       }

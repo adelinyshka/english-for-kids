@@ -10,4 +10,5 @@ import { changeLayoutByClickCheckbox } from './switcher';
 generateLayoutOnLoad();
 changeLayoutByClickCheckbox();
 moveInsideCategory(rowWithCardsCategoryForTrain, trainPage);
+moveInsideCategory(rowWithCardsCategoryForPlay, playPage);
 resetStats();

@@ -162,7 +162,7 @@ function initGame() {
 
         if (audioId !== e.target.alt && e.target.closest('.btn-play') !== btnStartGame) {
           createCloudIcon();
-          
+
           playSoundNo();
           counterAnswerWrong++;
           putStatsToLocalStoragePlay(e.target.alt);

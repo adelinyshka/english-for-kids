@@ -16,16 +16,12 @@ import {initGame} from "./game/init-game";
 
 
 function createPlayPageInsideCategory(neededCategory) {
-  cleanTrainPage();
   showPlayPage();
   cleanPlayPage();
 
   titleInHeader.innerText =  neededCategory;
   rowWithPlayCards.innerHTML='';
-  if(neededCategory==='Main'){
-    creatCategoryForPlay();
-  }
-  else {
+
     let card = new CardComponent();
     rowWithPlayCards.id = `inside${neededCategory}Play`;
 
@@ -40,13 +36,11 @@ function createPlayPageInsideCategory(neededCategory) {
     rowWithPlayCards.append(rowForButtonStartGame);
 
     initGame();
-  }
 
 }
 
 function createTrainPageInsideCategory(neededCategory) {
 
-  cleanPlayPage();
   showTrainPage();
   cleanTrainPage();
 
@@ -71,7 +65,9 @@ function changeLayoutByClickCheckbox() {
   checker.addEventListener('change', function () {
 
     let innerTextTitleInHeader = titleInHeader.innerText;
+
     if(innerTextTitleInHeader !== 'Main') {
+      console.log('not main');
 
       if (trainMode()) {
         createTrainPageInsideCategory(innerTextTitleInHeader);
@@ -81,7 +77,8 @@ function changeLayoutByClickCheckbox() {
         createPlayPageInsideCategory(innerTextTitleInHeader);
       }
     }
-    else {
+    if(innerTextTitleInHeader === 'Main') {
+
       if(trainMode()) {
         showTrainPage();
         creatCategoryForTrain();

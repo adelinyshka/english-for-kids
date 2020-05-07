@@ -6,6 +6,7 @@ function createCategories(arr, where, bgColor, color) {
   col12.classList.add('col-12', 'text-center');
 
   titleInHeader.innerText = 'Main';
+
   arr.forEach((card) => {
     const cardElement = document.createElement('div');
     cardElement.classList.add(
