@@ -1,7 +1,7 @@
 import { btnFinish } from '../generate-variables';
 
 function createBtnFinishGame() {
-  const blockToInsertBtn = document.querySelector('#playPage.d-block' + ' div.d-block');
+  const blockToInsertBtn = document.querySelector('#playPage.d-block div.row');
 
   btnFinish.classList.add('btn-danger', 'btn-end');
   btnFinish.value = 'Stop';

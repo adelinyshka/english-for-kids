@@ -10,6 +10,7 @@ import {
   trainMode,
   trainPage,
   btnStartGame,
+  titleInHeader,
 } from '../generate-variables';
 import {
   createStatisticsPage,
@@ -19,13 +20,12 @@ import { cleanTrainPage } from '../trainPage/change-train-page';
 import { createEnviromentForCategories } from '../helpers';
 import { hideMenu } from './change-menu';
 import { changeCardInTrainMode } from '../card/change-card-in-train-mode';
-import { cleanPlayPage } from '../playPage/change-play-page';
-import { createPageInsideCategory } from '../category/generate-page-inside-category';
+import {createTrainPageInsideCategory, createPlayPageInsideCategory} from "../switcher";
 
 function createMenu() {
   firstLi.classList.add('p-1');
   firstLi.append(firstA);
-  firstA.innerHTML = 'Main menu';
+  firstA.innerHTML = 'Main';
   pageMenu.append(firstLi);
 
   categoryData.forEach((item) => {
@@ -57,9 +57,11 @@ function createMenu() {
   const menuLinks = Array.from(pageMenu.querySelectorAll('li a'));
 
   menuLinks.forEach((item) => {
+
     item.addEventListener('click', function (e) {
+      titleInHeader.innerText = e.target.textContent;
       if (trainMode()) {
-        if (e.target.textContent === 'Main menu') {
+        if (e.target.textContent === 'Main') {
           removeStatisticsPage();
           cleanTrainPage();
           createEnviromentForCategories(trainPage, rowWithCardsCategoryForTrain);
@@ -70,31 +72,30 @@ function createMenu() {
         } else {
           removeStatisticsPage();
           cleanTrainPage();
-          createPageInsideCategory(e.target.textContent, trainPage);
+          createTrainPageInsideCategory(e.target.textContent);
           returnButtonGame();
           changeCardInTrainMode();
         }
       }
 
       if (playMode()) {
-        if (e.target.textContent === 'Main menu') {
+        if (e.target.textContent === 'Main') {
           removeStatisticsPage();
-          cleanPlayPage();
           createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
+          removeButtonGame();
         } else if (e.target.innerText === 'Statistics') {
-          cleanPlayPage();
           createStatisticsPage();
           removeButtonGame();
         } else {
           removeStatisticsPage();
-          cleanPlayPage();
-          createPageInsideCategory(e.target.textContent, playPage);
-          returnButtonGame();
+          createPlayPageInsideCategory(e.target.textContent);
         }
       }
     });
     hideMenu();
   });
 }
+
+
 
 export { createMenu };

@@ -1,13 +1,11 @@
 import categoryData from '../data/category.data';
-import { rowWithCardsCategoryForPlay, rowWithCardsCategoryForTrain } from '../generate-variables';
+import { rowWithCardsCategoryForPlay, rowWithCardsCategoryForTrain,titleInHeader } from '../generate-variables';
 
 function createCategories(arr, where, bgColor, color) {
   const col12 = document.createElement('div');
   col12.classList.add('col-12', 'text-center');
-  const title = document.createElement('h3');
-  title.style.fontWeight = 'bold';
-  title.innerText = 'Main menu';
-  col12.append(title);
+
+  titleInHeader.innerText = 'Main';
   arr.forEach((card) => {
     const cardElement = document.createElement('div');
     cardElement.classList.add(
@@ -38,10 +36,12 @@ function createCategories(arr, where, bgColor, color) {
 }
 
 function creatCategoryForTrain() {
+  rowWithCardsCategoryForTrain.innerHTML = '';
   createCategories(categoryData, rowWithCardsCategoryForTrain, '#0B95CC', 'white');
 }
 
 function creatCategoryForPlay() {
+  rowWithCardsCategoryForPlay.innerHTML = '';
   createCategories(categoryData, rowWithCardsCategoryForPlay, '#FFDD76', 'black');
 }
 

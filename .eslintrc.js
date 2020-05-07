@@ -19,10 +19,5 @@ module.exports = {
         }
     },
     rules: {
-        'no-plusplus': 'off',
-        'max-len': ['error', 100, 2, { ignoreUrls: true, }],
-        'no-console': 'error',
-        'no-alert': 'error',
-        'prettier/prettier': ['error'],
     },
 };

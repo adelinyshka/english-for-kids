@@ -10,7 +10,6 @@ import {
   rowForAnswers,
   btnStartGame,
 } from '../generate-variables';
-import { hideHeader, showHeader } from '../header/change-header';
 import { createBtnFinishGame } from './generate-btn-finish-game';
 import { returnIdFromAudio, shuffle } from '../helpers';
 import {
@@ -18,10 +17,11 @@ import {
   createCloudIcon,
   createSunIcon,
 } from './generate-answer-icons';
-import { hideFooter, showFooter } from '../footer/change-footer';
 import { putStatsToLocalStoragePlay } from '../localStorage/put-stats-for-play-mode';
 import { putStatsToLocalStoragePlayWrong } from '../localStorage/put-stats-for-play-wrong';
 import { putStatsToLocalStoragePlayRight } from '../localStorage/put-stats-for-play-mode-right';
+import { hideFooter, showFooter } from './../footer/footer';
+import { hideHeader, showHeader } from './../header/header';
 
 function playSoundYes() {
   audioYes.play();
@@ -36,18 +36,20 @@ function createRowForAnswers() {
   col12.classList.add('col-12', 'row-star');
   rowForAnswers.append(col12);
   col12.innerHTML = '';
+  playPage.prepend(rowForAnswers);
 }
 
 function initGame() {
   let counterAnswerRight = 0;
   let counterAnswerWrong = 0;
 
-
-
   createRowForAnswers();
 
+
   btnStartGame.addEventListener('click', function () {
-    const arrayOfCardsOnPage = Array.from(document.querySelectorAll('.scene' + ' .card audio'));
+
+    const arrayOfCardsOnPage = Array.from(document.querySelectorAll(' #playPage .scene' +
+      ' .card > audio'));
 
     function deleteOneCardFromArray() {
       arrayOfCardsOnPage.pop();
@@ -87,15 +89,19 @@ function initGame() {
         finalPage.classList.add('d-none');
         counterAnswerWrong = 0;
         arrayOfCardsOnPage.length = 0;
+        showHeader();
+        showFooter();
         location.reload();
       }, 3000);
     }
 
-    hideHeader();
-    hideFooter();
     createBtnFinishGame();
 
     if (btnStartGame.innerText === 'Start Game') {
+
+      hideHeader();
+      hideFooter();
+
       const iconReload = document.createElement('i');
       iconReload.classList.add('text-light', 'fas', 'fa-redo-alt', 'f-2x');
       btnStartGame.innerHTML = '';
@@ -106,8 +112,8 @@ function initGame() {
       playCardAudio();
 
       playPage.addEventListener('click', function (e) {
-        let audioId = returnIdFromAudio(arrayOfCardsOnPage[arrayOfCardsOnPage.length - 1].id);
 
+        let audioId = returnIdFromAudio(arrayOfCardsOnPage[arrayOfCardsOnPage.length - 1].id);
         if (e.target.closest('.btn-play') === btnStartGame) {
           playCardAudio();
         }
@@ -165,8 +171,7 @@ function initGame() {
       });
     }
   });
-  showHeader();
-  showFooter();
+
 }
 
 export { initGame };

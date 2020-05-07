@@ -1,6 +1,7 @@
 import { changeCardInTrainMode } from '../card/change-card-in-train-mode';
-import { trainMode } from '../generate-variables';
+import { trainMode} from '../generate-variables';
 import { createPageInsideCategory } from './generate-page-inside-category';
+
 
 function moveInsideCategory(fromWhere, toWhere) {
   fromWhere.addEventListener('click', function (e) {
@@ -17,5 +18,7 @@ function moveInsideCategory(fromWhere, toWhere) {
     }
   });
 }
+
+
 
 export { moveInsideCategory };
