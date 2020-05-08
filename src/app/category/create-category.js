@@ -1,7 +1,7 @@
-import categoryData from '../data/category.data';
+import categoryData from '../data/categories';
 import { rowWithCardsCategoryForPlay, rowWithCardsCategoryForTrain,titleInHeader } from '../variables';
 
-function createCategories(arr, where, bgColor, color) {
+function createCategory(arr, whereToAppend, bgColor, color) {
   const col12 = document.createElement('div');
   col12.classList.add('col-12', 'text-center');
 
@@ -31,19 +31,19 @@ function createCategories(arr, where, bgColor, color) {
       `    </div>` +
       `</div>`;
 
-    where.append(cardElement);
-    where.prepend(col12);
+    whereToAppend.append(cardElement);
+    whereToAppend.prepend(col12);
   });
 }
 
 function creatCategoryForTrain() {
   rowWithCardsCategoryForTrain.innerHTML = '';
-  createCategories(categoryData, rowWithCardsCategoryForTrain, '#0B95CC', 'white');
+  createCategory(categoryData, rowWithCardsCategoryForTrain, '#0B95CC', 'white');
 }
 
 function creatCategoryForPlay() {
   rowWithCardsCategoryForPlay.innerHTML = '';
-  createCategories(categoryData, rowWithCardsCategoryForPlay, '#FFDD76', 'black');
+  createCategory(categoryData, rowWithCardsCategoryForPlay, '#FFDD76', 'black');
 }
 
-export { createCategories, creatCategoryForTrain, creatCategoryForPlay };
+export { createCategory, creatCategoryForTrain, creatCategoryForPlay };

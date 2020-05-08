@@ -7,10 +7,10 @@ import {
 } from './variables';
 import {cleanTrainPage, showTrainPage} from './trainPage/change-train-page';
 import {cleanPlayPage, showPlayPage} from './playPage/change-play-page';
-import { creatCategoryForPlay, creatCategoryForTrain } from './category/generate-categories';
+import { creatCategoryForPlay, creatCategoryForTrain } from './category/create-category';
 import CardComponent from './card/card.component';
-import cards from './data/cards.data';
-import categoryData from "./data/category.data";
+import cards from './data/cards';
+import categoryData from "./data/categories";
 import {changeCardInTrainMode} from "./card/change-card-in-train-mode";
 import {initGame} from "./game/init-game";
 
@@ -39,7 +39,7 @@ function createPlayCards(neededCategory) {
 
 }
 
-function createTrainPageInsideCategory(neededCategory) {
+function createTrainCards(neededCategory) {
 
   showTrainPage();
   cleanTrainPage();
@@ -70,7 +70,7 @@ function changeLayoutByClickCheckbox() {
       console.log('not main');
 
       if (trainMode()) {
-        createTrainPageInsideCategory(innerTextTitleInHeader);
+        createTrainCards(innerTextTitleInHeader);
       }
 
       if (playMode()) {
@@ -91,4 +91,4 @@ function changeLayoutByClickCheckbox() {
   });
 }
 
-export { changeLayoutByClickCheckbox, createPlayCards,  createTrainPageInsideCategory};
+export { changeLayoutByClickCheckbox, createPlayCards,  createTrainCards};

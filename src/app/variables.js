@@ -1,6 +1,7 @@
 const container = document.querySelector('#containerApp');
 const trainPage = document.querySelector('#trainPage');
 const playPage = document.querySelector('#playPage');
+const main = document.querySelector('main');
 const checker = document.querySelector('#switcher');
 const rowWithCardsCategoryForTrain = document.querySelector('#rowWithCardsCategoryForTrain');
 const rowWithCardsCategoryForPlay = document.querySelector('#rowWithCardsCategoryForPlay');
@@ -59,6 +60,7 @@ const playMode = () => {
 };
 
 export {
+  main,
   hamburger,
   rowWithTrainCards,
   bgColorTrain,

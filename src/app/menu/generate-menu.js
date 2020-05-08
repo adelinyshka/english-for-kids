@@ -1,4 +1,4 @@
-import categoryData from '../data/category.data';
+import categoryData from '../data/categories';
 import {
   firstA,
   firstLi,
@@ -20,7 +20,7 @@ import { cleanTrainPage } from '../trainPage/change-train-page';
 import { createEnviromentForCategories } from '../helpers';
 import { hideMenu } from './change-menu';
 import { changeCardInTrainMode } from '../card/change-card-in-train-mode';
-import {createTrainPageInsideCategory, createPlayCards} from "../switcher";
+import {createTrainCards, createPlayCards} from "../switcher";
 import {cleanPlayPage} from "../playPage/change-play-page";
 
 function createMenu() {
@@ -72,7 +72,7 @@ function createMenu() {
           removeButtonGame();
         } else {
           removeStatisticsPage();
-          createTrainPageInsideCategory(e.target.textContent);
+          createTrainCards(e.target.textContent);
           returnButtonGame();
           changeCardInTrainMode();
         }

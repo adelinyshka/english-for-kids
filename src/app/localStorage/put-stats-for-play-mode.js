@@ -1,4 +1,4 @@
-import cards from '../data/cards.data';
+import cards from '../data/cards';
 
 function putStatsToLocalStoragePlay(word) {
   let wordToStats = word + ' play';

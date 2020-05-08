@@ -1,4 +1,4 @@
-import cards from '../data/cards.data';
+import cards from '../data/cards';
 
 function putStatsToLocalStorage(word) {
   let idWord = word.childNodes.item(1).id;

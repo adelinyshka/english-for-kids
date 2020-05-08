@@ -1,24 +1,22 @@
-import { changeCardInTrainMode } from '../card/change-card-in-train-mode';
-import { trainMode} from '../variables';
-import { createPageInsideCategory } from './generate-page-inside-category';
+import {playMode, trainMode, main} from '../variables';
+import {  createPlayCards,  createTrainCards} from './../switcher';
+import {showTrainPage} from "../trainPage/change-train-page";
+import {showPlayPage} from "../playPage/change-play-page";
 
+function moveInsideCategory() {
+  main.addEventListener('click', function (e) {
 
-function moveInsideCategory(fromWhere, toWhere) {
-  fromWhere.addEventListener('click', function (e) {
-    if (e.target.closest('.card')) {
+    let nameOfCategory = e.target.closest('.card').id;
+
+    if (nameOfCategory) {
       if (trainMode()) {
-        fromWhere.classList.add('d-none');
-
-        createPageInsideCategory(e.target.closest('.card').id, toWhere);
-        changeCardInTrainMode();
-      } else {
-        fromWhere.classList.add('d-none');
-        createPageInsideCategory(e.target.closest('.card').id, toWhere);
+        showTrainPage();
+      } if(playMode()) {
+        showPlayPage();
       }
+      createPlayCards(nameOfCategory);
     }
   });
 }
-
-
 
 export { moveInsideCategory };
