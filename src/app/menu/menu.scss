@@ -13,9 +13,8 @@ header nav a.hamburger {
 
 	&:after {
 		content: '|||';
-		display: inline-block;
-		width: 50px;
-		height: 50px;
+		display: block;
+		margin-top: -21px;
 		}
 
 	&:hover,
@@ -31,9 +30,8 @@ header nav a.hamburger {
 header nav a.hamburger.inside {
 	&:after {
 		content: '×';
-		display: inline-block;
-		width: 50px;
-		height: 50px;
+		display: block;
+		margin-top: -21px;
 		color: white !important;
 		}
 	}
