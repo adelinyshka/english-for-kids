@@ -1,18 +1,17 @@
 import cards from '../data/cards';
 
-function putStatsToLocalStoragePlayRight(word) {
-  let wordToStats = word + ' right';
-  // let neededWordPlay = wordToStats.slice(0, -4);
+function putStatsToLocalStoragePlay(word) {
+  let wordToStats = word + ' play';
 
   for (let i = 0; i < cards.length; i++) {
     for (let j = 0; j < cards[i].length; j++) {
-      let wordPutInLocalStorage = cards[i][j].word + ' right';
+      let wordPutInLocalStorage = cards[i][j].word + ' play';
       let stringWithWord = localStorage.getItem(wordPutInLocalStorage);
       let stringToNum = Number.parseInt(stringWithWord);
       let getWord = localStorage.getItem(wordPutInLocalStorage);
 
-      if (cards[i][j].word + ' right' === wordToStats) {
-        cards[i][j].clickedRight++;
+      if (cards[i][j].word + ' play' === wordToStats) {
+        cards[i][j].clickedPlay++;
 
         for (let key in localStorage) {
           if (!localStorage.hasOwnProperty(key)) {
@@ -21,7 +20,7 @@ function putStatsToLocalStoragePlayRight(word) {
             if (getWord === null) {
               localStorage.setItem(wordToStats, 1);
             } else {
-              stringToNum = cards[i][j].clickedRight;
+              stringToNum = cards[i][j].clickedPlay;
               localStorage.setItem(wordToStats, stringToNum);
             }
           }
@@ -31,4 +30,4 @@ function putStatsToLocalStoragePlayRight(word) {
   }
 }
 
-export { putStatsToLocalStoragePlayRight };
+export { putStatsToLocalStoragePlay };

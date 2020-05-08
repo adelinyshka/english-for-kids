@@ -50,9 +50,8 @@ function generateTbodyStatistic(cards) {
             percentWrong = 0;
           } else {
             percentWrong = Math.round(
-              100 /
                 (localStorage.getItem(item[i].word + ' right') /
-                  localStorage.getItem(item[i].word + ' wrong')),
+                  localStorage.getItem(item[i].word + ' play'))*100,
             );
           }
 

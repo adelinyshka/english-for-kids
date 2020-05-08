@@ -5,7 +5,7 @@ import {
 import { moveInsideCategory } from './category/move-inside-category-on-click';
 import { resetStats } from './listeners';
 import { generateLayoutOnLoad } from './main/generate-layout-onload';
-import { changeLayoutByClickCheckbox } from './switcher';
+import { changeLayoutByClickCheckbox } from './main/change-layout-by-switcher';
 
 generateLayoutOnLoad();
 changeLayoutByClickCheckbox();

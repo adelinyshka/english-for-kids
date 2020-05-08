@@ -1,13 +1,10 @@
 import {
-  trainMode,
-  playMode,
-  checker, playPage, rowForAnswers, trainPage, titleInHeader,  rowForButtonStartGame,
+  playPage, rowForAnswers, trainPage, titleInHeader,  rowForButtonStartGame,
   rowWithPlayCards,rowWithTrainCards,
   bgColorTrain,
 } from './variables';
 import {cleanTrainPage, showTrainPage} from './trainPage/change-train-page';
 import {cleanPlayPage, showPlayPage} from './playPage/change-play-page';
-import { creatCategoryForPlay, creatCategoryForTrain } from './category/create-category';
 import CardComponent from './card/card.component';
 import cards from './data/cards';
 import categoryData from "./data/category";
@@ -57,39 +54,6 @@ function createTrainCards(neededCategory) {
   }
   trainPage.append(rowWithTrainCards);
   changeCardInTrainMode();
-
 }
 
-function changeLayoutByClickCheckbox() {
-
-  checker.addEventListener('change', function () {
-
-    let innerTextTitleInHeader = titleInHeader.innerText;
-
-    if(innerTextTitleInHeader !== 'Main') {
-      console.log('not main');
-
-      if (trainMode()) {
-        createTrainCards(innerTextTitleInHeader);
-      }
-
-      if (playMode()) {
-        createPlayCards(innerTextTitleInHeader);
-      }
-    }
-
-    if(innerTextTitleInHeader === 'Main') {
-
-      if(trainMode()) {
-        showTrainPage();
-        creatCategoryForTrain();
-      }
-      if (playMode()) {
-        showPlayPage();
-        creatCategoryForPlay();
-      }
-    }
-  });
-}
-
-export { changeLayoutByClickCheckbox, createPlayCards,  createTrainCards};
+export { createPlayCards,  createTrainCards};

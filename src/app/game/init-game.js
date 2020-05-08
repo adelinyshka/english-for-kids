@@ -1,4 +1,5 @@
 import {
+  iconReload,
   audioNo,
   audioYes,
   btnFinish,
@@ -17,9 +18,9 @@ import {
   createCloudIcon,
   createSunIcon,
 } from './generate-answer-icons';
-import { putStatsToLocalStoragePlay } from '../localStorage/put-stats-for-play-mode';
-import { putStatsToLocalStoragePlayWrong } from '../localStorage/put-stats-for-play-wrong';
-import { putStatsToLocalStoragePlayRight } from '../localStorage/put-stats-for-play-mode-right';
+import { putStatsToLocalStoragePlay } from '../statistics/put-stats-for-play-mode';
+import { putStatsToLocalStoragePlayWrong } from '../statistics/put-stats-for-play-wrong';
+import { putStatsToLocalStoragePlayRight } from '../statistics/put-stats-for-play-mode-right';
 import { hideFooter, showFooter } from './../footer/footer';
 import { hideHeader, showHeader } from './../header/header';
 
@@ -43,7 +44,7 @@ function initGame() {
   let counterAnswerRight = 0;
   let counterAnswerWrong = 0;
 
-  createRowForAnswers();
+
 
 
   btnStartGame.addEventListener('click', function () {
@@ -89,21 +90,19 @@ function initGame() {
         finalPage.classList.add('d-none');
         counterAnswerWrong = 0;
         arrayOfCardsOnPage.length = 0;
-        showHeader();
-        showFooter();
         location.reload();
       }, 3000);
     }
 
-    createBtnFinishGame();
+
 
     if (btnStartGame.innerText === 'Start Game') {
 
       hideHeader();
       hideFooter();
+      createBtnFinishGame();
+      createRowForAnswers();
 
-      const iconReload = document.createElement('i');
-      iconReload.classList.add('text-light', 'fas', 'fa-redo-alt', 'f-2x');
       btnStartGame.innerHTML = '';
       btnStartGame.classList.add('round-btn');
       btnStartGame.append(iconReload);
@@ -155,9 +154,7 @@ function initGame() {
           }
         }
         if (audioId !== e.target.alt && e.target.style.opacity === '0.5') {
-          putStatsToLocalStoragePlay(e.target.alt);
-          putStatsToLocalStoragePlayWrong(audioId);
-          putStatsToLocalStoragePlayWrong(e.target.alt);
+          return;
         }
 
         if (audioId !== e.target.alt && e.target.closest('.btn-play') !== btnStartGame && e.target.style.opacity !== '0.5') {
@@ -165,9 +162,8 @@ function initGame() {
 
           playSoundNo();
           counterAnswerWrong++;
-          putStatsToLocalStoragePlay(e.target.alt);
+          putStatsToLocalStoragePlay(audioId);
           putStatsToLocalStoragePlayWrong(audioId);
-          putStatsToLocalStoragePlayWrong(e.target.alt);
         }
       });
     }

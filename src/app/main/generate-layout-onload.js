@@ -2,7 +2,7 @@ import { trainMode} from '../variables';
 import { hideMenu, toggleMenu } from '../menu/change-menu';
 import {  creatCategoryForTrain } from '../category/create-category';
 import {showTrainPage} from '../trainPage/change-train-page';
-import { createMenu } from '../menu/generate-menu';
+import { createMenu } from '../menu/create-menu';
 import { generateTbodyStatistic } from '../statistics/generate-tbody-statistic';
 import cards from '../data/cards';
 import { sortGrid, sortStatisticTable } from '../statistics/sort-statistic-table';

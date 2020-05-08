@@ -1,5 +1,5 @@
 import { trainMode } from '../variables';
-import { putStatsToLocalStorage } from '../localStorage/put-stats-for-train-mode';
+import { putStatsToLocalStorage } from '../statistics/put-stats-for-train-mode';
 
 function changeCardInTrainMode() {
   const arrCardsOnPage = Array.from(document.querySelectorAll('.scene'));

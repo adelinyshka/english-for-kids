@@ -49,7 +49,8 @@ rowWithPlayCards.classList.add('row','row-with-play-cards','justify-content-cent
 const rowWithTrainCards = document.createElement('div');
 rowWithTrainCards.classList.add('row','row-with-train-cards','justify-content-center');
 const bgColorTrain = 'linear-gradient(to top, #fff1eb' + ' 0%, #ace0f9 100%);';
-
+const iconReload = document.createElement('i');
+iconReload.classList.add('text-light', 'fas', 'fa-redo-alt', 'f-2x');
 
 const trainMode = () => {
   return checker.checked;
@@ -60,6 +61,7 @@ const playMode = () => {
 };
 
 export {
+  iconReload,
   main,
   hamburger,
   rowWithTrainCards,
