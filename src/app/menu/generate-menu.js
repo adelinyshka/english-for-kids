@@ -11,7 +11,7 @@ import {
   trainPage,
   btnStartGame,
   titleInHeader,
-} from '../generate-variables';
+} from '../variables';
 import {
   createStatisticsPage,
   removeStatisticsPage,
@@ -20,7 +20,7 @@ import { cleanTrainPage } from '../trainPage/change-train-page';
 import { createEnviromentForCategories } from '../helpers';
 import { hideMenu } from './change-menu';
 import { changeCardInTrainMode } from '../card/change-card-in-train-mode';
-import {createTrainPageInsideCategory, createPlayPageInsideCategory} from "../switcher";
+import {createTrainPageInsideCategory, createPlayCards} from "../switcher";
 import {cleanPlayPage} from "../playPage/change-play-page";
 
 function createMenu() {
@@ -69,11 +69,9 @@ function createMenu() {
         } else if (e.target.innerText === 'Statistics') {
 
           createStatisticsPage();
-          // cleanTrainPage();
           removeButtonGame();
         } else {
           removeStatisticsPage();
-          // cleanTrainPage();
           createTrainPageInsideCategory(e.target.textContent);
           returnButtonGame();
           changeCardInTrainMode();
@@ -94,7 +92,7 @@ function createMenu() {
         } else {
           removeStatisticsPage();
           // cleanPlayPage();
-          createPlayPageInsideCategory(e.target.textContent);
+          createPlayCards(e.target.textContent);
         }
       }
     });

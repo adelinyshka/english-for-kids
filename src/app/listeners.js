@@ -1,4 +1,4 @@
-import { resetBtn } from './generate-variables';
+import { resetBtn } from './variables';
 
 function resetStats() {
   resetBtn.addEventListener('click', function () {

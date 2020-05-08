@@ -9,7 +9,7 @@ import {
   playPage,
   rowForAnswers,
   btnStartGame,
-} from '../generate-variables';
+} from '../variables';
 import { createBtnFinishGame } from './generate-btn-finish-game';
 import { returnIdFromAudio, shuffle } from '../helpers';
 import {

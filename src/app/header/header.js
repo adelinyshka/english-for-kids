@@ -1,4 +1,4 @@
-import { header } from '../generate-variables';
+import { header } from '../variables';
 
 function hideHeader() {
 	header.classList.remove('d-flex');

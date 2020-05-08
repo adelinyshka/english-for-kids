@@ -4,7 +4,7 @@ import {
   checker, playPage, rowForAnswers, trainPage, titleInHeader,  rowForButtonStartGame,
   rowWithPlayCards,rowWithTrainCards,
   bgColorTrain,
-} from './generate-variables';
+} from './variables';
 import {cleanTrainPage, showTrainPage} from './trainPage/change-train-page';
 import {cleanPlayPage, showPlayPage} from './playPage/change-play-page';
 import { creatCategoryForPlay, creatCategoryForTrain } from './category/generate-categories';
@@ -15,7 +15,7 @@ import {changeCardInTrainMode} from "./card/change-card-in-train-mode";
 import {initGame} from "./game/init-game";
 
 
-function createPlayPageInsideCategory(neededCategory) {
+function createPlayCards(neededCategory) {
   showPlayPage();
   cleanPlayPage();
 
@@ -27,7 +27,7 @@ function createPlayPageInsideCategory(neededCategory) {
 
     for (let i = 0; i < categoryData.length; i++) {
       if (categoryData[i].word === neededCategory) {
-        card.iterateArrCardPlay(cards, i, rowWithPlayCards);
+        card.createPlayCards(cards, i, rowWithPlayCards);
       }
     }
 
@@ -52,7 +52,7 @@ function createTrainPageInsideCategory(neededCategory) {
   rowWithTrainCards.id = `inside${neededCategory}Train`;
   for (let i = 0; i < categoryData.length; i++) {
     if (categoryData[i].word === neededCategory) {
-      card.iterateArrCard(cards, i, rowWithTrainCards, bgColorTrain);
+      card.createTrainCards(cards, i, rowWithTrainCards, bgColorTrain);
     }
   }
   trainPage.append(rowWithTrainCards);
@@ -74,7 +74,7 @@ function changeLayoutByClickCheckbox() {
       }
 
       if (playMode()) {
-        createPlayPageInsideCategory(innerTextTitleInHeader);
+        createPlayCards(innerTextTitleInHeader);
       }
     }
     if(innerTextTitleInHeader === 'Main') {
@@ -91,4 +91,4 @@ function changeLayoutByClickCheckbox() {
   });
 }
 
-export { changeLayoutByClickCheckbox,createPlayPageInsideCategory,  createTrainPageInsideCategory};
+export { changeLayoutByClickCheckbox, createPlayCards,  createTrainPageInsideCategory};

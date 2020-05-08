@@ -1,4 +1,4 @@
-import { trainMode} from '../generate-variables';
+import { trainMode} from '../variables';
 import { hideMenu, toggleMenu } from '../menu/change-menu';
 import {  creatCategoryForTrain } from '../category/generate-categories';
 import {showTrainPage} from '../trainPage/change-train-page';

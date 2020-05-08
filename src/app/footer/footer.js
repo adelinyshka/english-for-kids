@@ -1,4 +1,4 @@
-import { footer } from '../generate-variables';
+import { footer } from '../variables';
 
 function hideFooter() {
 	footer.classList.remove('d-flex');

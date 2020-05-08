@@ -1,5 +1,5 @@
 import { changeCardInTrainMode } from '../card/change-card-in-train-mode';
-import { trainMode} from '../generate-variables';
+import { trainMode} from '../variables';
 import { createPageInsideCategory } from './generate-page-inside-category';
 
 

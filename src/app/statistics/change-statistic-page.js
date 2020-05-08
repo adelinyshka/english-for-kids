@@ -1,4 +1,4 @@
-import { statisticsPage } from '../generate-variables';
+import { statisticsPage } from '../variables';
 
 function createStatisticsPage() {
   statisticsPage.classList.remove('d-none');

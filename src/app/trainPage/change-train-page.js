@@ -1,4 +1,4 @@
-import { playPage, trainPage } from '../generate-variables';
+import { playPage, trainPage } from '../variables';
 
 function cleanTrainPage() {
   trainPage.innerHTML = '';

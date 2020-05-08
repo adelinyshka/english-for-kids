@@ -1,4 +1,4 @@
-import { col12 } from '../generate-variables';
+import { col12 } from '../variables';
 
 function createSunIcon() {
   col12.innerHTML += `

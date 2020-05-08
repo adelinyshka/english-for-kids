@@ -3,7 +3,7 @@ import {
   pageMenu,
   titleInHeader,
 
-} from '../generate-variables';
+} from '../variables';
 
 function toggleMenu() {
   const hamburgerIcon = document.querySelector('.hamburger');

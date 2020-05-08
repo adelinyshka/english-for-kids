@@ -1,11 +1,11 @@
-import { trainMode } from '../generate-variables';
+import { trainMode } from '../variables';
 import { putStatsToLocalStorage } from '../localStorage/put-stats-for-train-mode';
 
 function changeCardInTrainMode() {
-  const cardsClicked = Array.from(document.querySelectorAll('.scene'));
+  const arrCardsOnPage = Array.from(document.querySelectorAll('.scene'));
 
   if (trainMode()) {
-    cardsClicked.forEach((element) => {
+    arrCardsOnPage.forEach((element) => {
       const btnInCard = element.querySelector('a.btn-turn');
       const cardFace = element.querySelector('.card');
       const audio = element.querySelector('audio');
@@ -25,7 +25,7 @@ function changeCardInTrainMode() {
       });
     });
   } else {
-    cardsClicked.length = 0;
+    arrCardsOnPage.length = 0;
   }
 }
 

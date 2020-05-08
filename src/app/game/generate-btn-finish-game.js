@@ -1,4 +1,4 @@
-import { btnFinish } from '../generate-variables';
+import { btnFinish } from '../variables';
 
 function createBtnFinishGame() {
   const blockToInsertBtn = document.querySelector('#playPage.d-block div.row');

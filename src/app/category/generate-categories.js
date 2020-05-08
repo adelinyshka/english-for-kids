@@ -1,5 +1,5 @@
 import categoryData from '../data/category.data';
-import { rowWithCardsCategoryForPlay, rowWithCardsCategoryForTrain,titleInHeader } from '../generate-variables';
+import { rowWithCardsCategoryForPlay, rowWithCardsCategoryForTrain,titleInHeader } from '../variables';
 
 function createCategories(arr, where, bgColor, color) {
   const col12 = document.createElement('div');
