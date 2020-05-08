@@ -64,8 +64,7 @@ function createMenu() {
       if (trainMode()) {
         cleanTrainPage();
         if (e.target.textContent === 'Main') {
-          removeStatisticsPage();
-          createEnviromentForCategories(trainPage, rowWithCardsCategoryForTrain);
+          location.reload();
         } else if (e.target.innerText === 'Statistics') {
 
           createStatisticsPage();
@@ -81,9 +80,7 @@ function createMenu() {
       if (playMode()) {
         cleanPlayPage();
         if (e.target.textContent === 'Main') {
-          removeStatisticsPage();
-
-          createEnviromentForCategories(playPage, rowWithCardsCategoryForPlay);
+          location.reload();
           removeButtonGame();
         } else if (e.target.innerText === 'Statistics') {
           createStatisticsPage();
