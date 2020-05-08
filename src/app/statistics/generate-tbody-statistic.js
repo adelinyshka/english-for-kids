@@ -1,4 +1,4 @@
-import categoryData from '../data/categories';
+import categoryData from '../data/category';
 
 function generateTbodyStatistic(cards) {
   let dataWithCategories;

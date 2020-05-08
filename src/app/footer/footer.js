@@ -1,13 +1,11 @@
 import { footer } from '../variables';
 
 function hideFooter() {
-	footer.classList.remove('d-flex');
-	footer.classList.add('d-none');
+	footer.classList.add('display-none');
 }
 
 function showFooter() {
-	footer.classList.add('d-flex');
-	footer.classList.remove('d-none');
+	footer.classList.remove('display-none');
 }
 
 export { hideFooter, showFooter };

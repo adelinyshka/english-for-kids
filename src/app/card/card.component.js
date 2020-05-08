@@ -1,5 +1,7 @@
+import { trainMode } from '../variables';
+
 class CardComponent {
-  createCardTrain(wordEn, wordRu, bgColor) {
+  createCard(wordEn, wordRu, bgColor) {
     const cardWord = document.createElement('div');
     cardWord.classList.add(
       'col-sm-6',
@@ -31,7 +33,7 @@ class CardComponent {
     return cardWord;
   }
 
-  createCardPlay(wordEn) {
+  createCardPlayMode(wordEn) {
     const cardWord = document.createElement('div');
     cardWord.classList.add(
       'col-sm-6',
@@ -56,17 +58,19 @@ class CardComponent {
     return cardWord;
   }
 
-  createTrainCards(arr, num, whereToAppend, bgColor) {
+  //генерация массива карточек для тренировки
+  iterateArrCard(arr, num, where, bgColor) {
     arr.forEach((item, index) => {
-      let card = this.createCardTrain(arr[num][index].word, arr[num][index].translation, bgColor);
-      whereToAppend.append(card);
+      let card = this.createCard(arr[num][index].word, arr[num][index].translation, bgColor);
+      where.append(card);
     });
   }
 
-  createPlayCards(arr, num, whereToAppend) {
+  //генерация массива карточек для игры
+  iterateArrCardPlay(arr, num, where) {
     arr.forEach((item, index) => {
-      let card = this.createCardPlay(arr[num][index].word);
-      whereToAppend.append(card);
+      let card = this.createCardPlayMode(arr[num][index].word);
+      where.append(card);
     });
   }
 }

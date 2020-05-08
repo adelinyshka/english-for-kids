@@ -11,3 +11,4 @@ import './app/statistics/sort-statistic-table';
 import './app/statistics/generate-tbody-statistic';
 import './app/variables';
 import './app/data/cards';
+import './app/category/create-page-inside-category';

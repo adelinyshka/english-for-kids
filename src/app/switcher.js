@@ -10,7 +10,7 @@ import {cleanPlayPage, showPlayPage} from './playPage/change-play-page';
 import { creatCategoryForPlay, creatCategoryForTrain } from './category/create-category';
 import CardComponent from './card/card.component';
 import cards from './data/cards';
-import categoryData from "./data/categories";
+import categoryData from "./data/category";
 import {changeCardInTrainMode} from "./card/change-card-in-train-mode";
 import {initGame} from "./game/init-game";
 
@@ -27,7 +27,7 @@ function createPlayCards(neededCategory) {
 
     for (let i = 0; i < categoryData.length; i++) {
       if (categoryData[i].word === neededCategory) {
-        card.createPlayCards(cards, i, rowWithPlayCards);
+        card.iterateArrCardPlay(cards, i, rowWithPlayCards);
       }
     }
 
@@ -52,7 +52,7 @@ function createTrainCards(neededCategory) {
   rowWithTrainCards.id = `inside${neededCategory}Train`;
   for (let i = 0; i < categoryData.length; i++) {
     if (categoryData[i].word === neededCategory) {
-      card.createTrainCards(cards, i, rowWithTrainCards, bgColorTrain);
+      card.iterateArrCard(cards, i, rowWithTrainCards, bgColorTrain);
     }
   }
   trainPage.append(rowWithTrainCards);
@@ -77,6 +77,7 @@ function changeLayoutByClickCheckbox() {
         createPlayCards(innerTextTitleInHeader);
       }
     }
+
     if(innerTextTitleInHeader === 'Main') {
 
       if(trainMode()) {

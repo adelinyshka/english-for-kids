@@ -1,13 +1,11 @@
 import { header } from '../variables';
 
 function hideHeader() {
-	header.classList.remove('d-flex');
-	header.classList.add('d-none');
+	header.classList.add('display-none');
 }
 
 function showHeader() {
-	header.classList.add('d-flex');
-	header.classList.remove('d-none');
+	header.classList.remove('display-none');
 }
 
 export { hideHeader, showHeader };
