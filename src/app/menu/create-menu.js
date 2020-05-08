@@ -20,7 +20,7 @@ import { cleanTrainPage } from '../trainPage/change-train-page';
 import { createEnviromentForCategories } from '../helpers';
 import { hideMenu } from './change-menu';
 import { changeCardInTrainMode } from '../card/change-card-in-train-mode';
-import {createTrainCards, createPlayCards} from "../switcher";
+import {createTrainCards, createPlayCards} from "../card/create-card";
 import {cleanPlayPage} from "../playPage/change-play-page";
 
 function createMenu() {

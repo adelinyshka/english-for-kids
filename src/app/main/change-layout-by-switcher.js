@@ -5,9 +5,9 @@ import {
 	creatCategoryForTrain
 } from "../category/create-category";
 import {showPlayPage} from "../playPage/change-play-page";
-import {createPlayCards, createTrainCards} from "../switcher";
+import {createPlayCards, createTrainCards} from "../card/create-card";
 
-function changeLayoutByClickCheckbox() {
+function changeLayoutBySwitcher() {
 
 	checker.addEventListener('change', function () {
 
@@ -38,4 +38,4 @@ function changeLayoutByClickCheckbox() {
 	});
 }
 
-export {changeLayoutByClickCheckbox};
+export {changeLayoutBySwitcher};

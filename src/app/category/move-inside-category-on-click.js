@@ -1,7 +1,7 @@
 import { changeCardInTrainMode } from '../card/change-card-in-train-mode';
 import {playMode, trainMode} from '../variables';
 import { createPageInsideCategory } from './create-page-inside-category';
-import { changeLayoutByClickCheckbox, createPlayCards,  createTrainCards} from './../switcher';
+import { changeLayoutByClickCheckbox, createPlayCards,  createTrainCards} from '../card/create-card';
 import {showTrainPage} from "../trainPage/change-train-page";
 import {showPlayPage} from "../playPage/change-play-page";
 

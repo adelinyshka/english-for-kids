@@ -2,14 +2,14 @@ import {
   playPage, rowForAnswers, trainPage, titleInHeader,  rowForButtonStartGame,
   rowWithPlayCards,rowWithTrainCards,
   bgColorTrain,
-} from './variables';
-import {cleanTrainPage, showTrainPage} from './trainPage/change-train-page';
-import {cleanPlayPage, showPlayPage} from './playPage/change-play-page';
-import CardComponent from './card/card.component';
-import cards from './data/cards';
-import categoryData from "./data/category";
-import {changeCardInTrainMode} from "./card/change-card-in-train-mode";
-import {initGame} from "./game/init-game";
+} from '../variables';
+import {cleanTrainPage, showTrainPage} from '../trainPage/change-train-page';
+import {cleanPlayPage, showPlayPage} from '../playPage/change-play-page';
+import CardComponent from './card.component';
+import cards from '../data/cards';
+import categoryData from "../data/category";
+import {changeCardInTrainMode} from "./change-card-in-train-mode";
+import {initGame} from "../game/init-game";
 
 
 function createPlayCards(neededCategory) {
