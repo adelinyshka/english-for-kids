@@ -1,0 +1,31 @@
+
+.category-card {
+  color: black;
+  font-size: 40px;
+
+  &:hover,
+  &:focus {
+    transition: transform 1s;
+    transform: scale(1.1);
+    }
+
+  &:active {
+    background: #c44949;
+    box-shadow: none;
+    color: red;
+    }
+  }
+
+.category-card .card-face {
+  padding: 20px;
+  }
+
+
+.trainColor {
+  background: #0b95cc;
+  color: white;
+
+  & span {
+    background: #0b95cc;
+    }
+  }

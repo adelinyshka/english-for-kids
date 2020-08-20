@@ -1,0 +1,17 @@
+extends app/template/template
+
+block content
+
+	div#containerApp
+		include app/header/header
+
+		.final-page.d-none
+			h1.text-danger.font-weight-bold Ваши результаты
+
+		include app/main/main
+
+		include app/footer/footer
+			audio#yes(src='./assets/audio/soundYes.mp3')
+			audio#no(src='./assets/audio/nope.mp3')
+			audio#goodEnd(src='./assets/audio/goodEnd.mp3')
+			audio#badEnd(src='./assets/audio/badEnd.mp3')

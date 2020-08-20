@@ -1,0 +1,21 @@
+block vars
+	- var title2= 'English for kids';
+	- var description2= 'english for kids';
+	- var charset2= 'UTF-8'
+	- var keywords2= 'application for kids for learning english';
+
+doctype html
+html(lang='ru')
+	head
+		meta(charset=charset2)
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(http-equiv='X-UA-Compatible', content='ie=edge')
+		meta(name='description' content=description2)
+		meta(name='keywords' content =keywords2)
+
+		title #{title2}
+
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css')
+
+	body
+		block content

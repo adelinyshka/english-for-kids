@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="english for kids">
+    <meta name="keywords" content="application for kids for learning english">
+    <title>English for kids</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href="/assets/css/app.css" rel="stylesheet"></head>
+  <body>
+    <div id="containerApp">
+      <header class="d-flex justify-content-between" role="banner">
+        <nav role="navigation"><a class="hamburger" title="open menu"></a>
+          <ul class="page-menu list-unstyled flex-column d-none"><span></span></ul>
+        </nav>
+        <h3></h3>
+        <div class="custom-control custom-switch switch">
+          <input class="custom-control-input" id="switcher" type="checkbox" checked>
+          <label class="custom-control-label" for="switcher"></label>
+        </div>
+      </header>
+      <div class="final-page d-none">
+        <h1 class="text-danger font-weight-bold">Ваши результаты</h1>
+      </div>
+      <main role="main">
+        <div class="display-none" id="statistics">
+          <div class="d-flex justify-content-center">
+            <input class="btn-danger m-2 text-center p-2 bold btn-reset" type="submit" value="reset">
+            <input class="btn-secondary m-2 text-center p-2" type="submit" value="train difficult words" disabled="disabled">
+          </div>
+          <div class="table-responsive">
+            <table class="table" id="grid">
+              <thead>
+                <tr>
+                  <th scope="col" data-type="string"><i class="fas fa-sort"></i> category</th>
+                  <th scope="col" data-type="string"><i class="fas fa-sort"></i> word</th>
+                  <th scope="col" data-type="string"><i class="fas fa-sort"></i> translation</th>
+                  <th scope="col" data-type="number"><i class="fas fa-sort"></i> train mode</th>
+                  <th scope="col" data-type="number"><i class="fas fa-sort"></i> play mode</th>
+                  <th scope="col" data-type="number"><i class="fas fa-sort"></i> right</th>
+                  <th scope="col" data-type="number"><i class="fas fa-sort"></i> wrong</th>
+                  <th scope="col" data-type="number"><i class="fas fa-sort"></i> wrong %</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="d-none" id="trainPage">
+          <div class="container-fluid">
+            <div class="row justify-content-center" id="rowWithCardsCategoryForTrain"></div>
+          </div>
+        </div>
+        <div class="d-none" id="playPage">
+          <div class="container-fluid">
+            <div class="row justify-content-center" id="rowWithCardsCategoryForPlay"></div>
+          </div>
+        </div>
+      </main>
+      <footer class="d-flex" role="footer"><a class="telegram-link p-3" href="https://tlgg.ru/@adel_dubinnikova" title="telegram">Telegram</a><a class="github-link p-3" href="https://github.com/adelinyshka" title="github">Github
+          <audio id="yes" src="./assets/audio/soundYes.mp3"></audio>
+          <audio id="no" src="./assets/audio/nope.mp3"></audio>
+          <audio id="goodEnd" src="./assets/audio/goodEnd.mp3"></audio>
+          <audio id="badEnd" src="./assets/audio/badEnd.mp3"></audio></a></footer>
+    </div>
+  <script type="text/javascript" src="/assets/js/app.js"></script></body>
+</html>

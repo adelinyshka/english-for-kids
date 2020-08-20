@@ -1,0 +1,22 @@
+footer {
+  margin-top: 20px;
+  justify-content: center;
+  height: 60px;
+  background-color: #5d63d9;
+
+  & a {
+    text-decoration: none;
+    outline: none;
+    color: #ffdd76;
+    font-size: 20px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #ad984d;
+      text-decoration: none;
+      outline: none;
+    }
+  }
+}
+
