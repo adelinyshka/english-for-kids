@@ -1,13 +1,10 @@
-[**Ссылка на English for kids**](https://adelinyshka-english-for-kids.netlify.app/)
+* сборка - webpack
+* препроцессор HTML - Pug(Jade)
+* препроцессор CSS -  Scss
 
-Установка зависимостей
+Please check branch english-for-kids for code.
 
-```yarn install```
+This app helps children to study english using cards.
 
-Сборка проекта
+The app is here: https://adelinyshka-english-for-kids.netlify.app/
 
-```yarn build```
-
-Запуск локально
-
-```yarn dev```
